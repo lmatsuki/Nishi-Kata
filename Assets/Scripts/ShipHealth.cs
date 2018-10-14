@@ -22,6 +22,14 @@ public class ShipHealth : MonoBehaviour
         }
 
         Debug.Log(other.name + " entered");
+        // Enemy bullet
+        if (other.tag.Contains("Bullet") && !other.tag.Contains(tag))
+        {
+            takeDamage();
+            Destroy(other.transform.parent.gameObject);
+        }
+
+        // Physical collision with ship
         var otherHealth = other.transform.parent.GetComponentInChildren<ShipHealth>();
         if (otherHealth != null)
         {

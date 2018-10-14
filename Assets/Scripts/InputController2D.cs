@@ -6,6 +6,8 @@ public class InputController2D : MonoBehaviour {
 
 	public float speed;
     public Transform characterTransform;
+    public Transform firePosition;
+    public GameObject bullet;
 
     void Start()
     {
@@ -16,8 +18,12 @@ public class InputController2D : MonoBehaviour {
 	{
         float horizontalMovement = handleHorizontalInput();
         float verticalMovement = handleVerticalInput();
-        characterTransform.Translate(horizontalMovement, 0, verticalMovement);
+        characterTransform.Translate(horizontalMovement, 0, verticalMovement);        
+    }
 
+    void Update()
+    {
+        handleFireInput();
     }
 
     float handleHorizontalInput()
@@ -50,5 +56,15 @@ public class InputController2D : MonoBehaviour {
         }
 
         return verticalMovement;
+    }
+
+    void handleFireInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            print("Fire!");
+            GameObject bulletPrefab = Instantiate(bullet, firePosition.position, firePosition.rotation);
+            
+        }
     }
 }
