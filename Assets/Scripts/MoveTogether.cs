@@ -6,6 +6,6 @@ public class MoveTogether : MonoBehaviour
 
 	void Update ()
     {
-        transform.position = follow.position;	
+        transform.position = follow.position;
 	}
 }

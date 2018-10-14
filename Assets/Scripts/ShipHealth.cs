@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipHealth : MonoBehaviour {
-
+public class ShipHealth : MonoBehaviour
+{
     public int health;
 
     private bool alive;
 
-	// Use this for initialization
 	void Start ()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	
+        alive = true;
 	}
 
     void OnTriggerEnter(Collider other)
     {
+        // Ignore if other is sibling
+        if (other.tag == tag)
+        {
+            return;
+        }
+
         Debug.Log(other.name + " entered");
+        var health = other.transform.parent.GetComponentInChildren<ShipHealth>();
+        health.takeDamage();
     }
 
     void takeDamage()
@@ -41,6 +42,7 @@ public class ShipHealth : MonoBehaviour {
     void die()
     {
         alive = false;
-        gameObject.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
+        print(transform.parent.name + "has died!");
     }
 }
