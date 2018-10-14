@@ -7,59 +7,20 @@ public class InputController2D : MonoBehaviour {
 	public float speed;
     public Transform characterTransform;
 
-    private Rigidbody rigidbody;
-
     void Start()
     {
-        rigidbody = GetComponentInChildren<Rigidbody>();
+        
     }
 
 	void FixedUpdate () 
 	{
-        //float horizontalMovement = handleHorizontalInputForce();
-        //float verticalMovement = handleVerticalInputForce();
+        float horizontalMovement = handleHorizontalInput();
+        float verticalMovement = handleVerticalInput();
+        characterTransform.Translate(horizontalMovement, 0, verticalMovement);
 
-        //rigidbody.AddForce(horizontalMovement * speed, 0, verticalMovement * speed, ForceMode.Acceleration);
-
-        handleHorizontalInput();
-        handleVerticalInput();
     }
 
-    float handleHorizontalInputForce()
-    {
-        float horizontalMovement = 0.0f;
-
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            horizontalMovement = -speed;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            horizontalMovement = speed;
-        }
-
-        return horizontalMovement;
-        //rigidbody.AddForce(transform.right * horizontalMovement);
-    }
-
-    float handleVerticalInputForce()
-    {
-        float verticalMovement = 0.0f;
-
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-        {
-            verticalMovement = speed;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            verticalMovement = -speed;
-        }
-
-        return verticalMovement;
-        //rigidbody.AddForce(transform.forward * verticalMovement);
-    }
-
-    void handleHorizontalInput()
+    float handleHorizontalInput()
     {
         float horizontalMovement = 0.0f;
 
@@ -72,10 +33,10 @@ public class InputController2D : MonoBehaviour {
             horizontalMovement = speed * Time.deltaTime;
         }
 
-        characterTransform.Translate(horizontalMovement, 0, 0);
+        return horizontalMovement;
     }
 
-    void handleVerticalInput()
+    float handleVerticalInput()
     {
         float verticalMovement = 0.0f;
 
@@ -88,6 +49,6 @@ public class InputController2D : MonoBehaviour {
             verticalMovement = -speed * Time.deltaTime;
         }
 
-        characterTransform.Translate(0, 0, verticalMovement);
+        return verticalMovement;
     }
 }

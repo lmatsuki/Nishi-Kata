@@ -22,8 +22,11 @@ public class ShipHealth : MonoBehaviour
         }
 
         Debug.Log(other.name + " entered");
-        var health = other.transform.parent.GetComponentInChildren<ShipHealth>();
-        health.takeDamage();
+        var otherHealth = other.transform.parent.GetComponentInChildren<ShipHealth>();
+        if (otherHealth != null)
+        {
+            otherHealth.takeDamage();
+        }
     }
 
     void takeDamage()
