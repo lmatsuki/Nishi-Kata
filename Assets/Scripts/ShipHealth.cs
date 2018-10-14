@@ -20,6 +20,11 @@ public class ShipHealth : MonoBehaviour {
 	
 	}
 
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.name + " entered");
+    }
+
     void takeDamage()
     {
         if (health > 0 && alive)

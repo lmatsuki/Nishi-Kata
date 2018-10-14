@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputController2D : MonoBehaviour {
 
 	public float speed;
+    public Transform characterTransform;
 
     private Rigidbody rigidbody;
 
@@ -71,7 +72,7 @@ public class InputController2D : MonoBehaviour {
             horizontalMovement = speed * Time.deltaTime;
         }
 
-        transform.Translate(horizontalMovement, 0, 0);
+        characterTransform.Translate(horizontalMovement, 0, 0);
     }
 
     void handleVerticalInput()
@@ -87,6 +88,6 @@ public class InputController2D : MonoBehaviour {
             verticalMovement = -speed * Time.deltaTime;
         }
 
-        transform.Translate(0, 0, verticalMovement);
+        characterTransform.Translate(0, 0, verticalMovement);
     }
 }
