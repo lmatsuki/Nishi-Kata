@@ -8,11 +8,12 @@ public class InputController2D : MonoBehaviour {
     public Transform characterTransform;
     public Transform firePosition;
     public GameObject bullet;
-    public Rigidbody rigidbody;
+
+    private Rigidbody rigidbody;
 
     void Start()
     {
-        
+        rigidbody = GetComponent<Rigidbody>();
     }
 
 	void FixedUpdate () 

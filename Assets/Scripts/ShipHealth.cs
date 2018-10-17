@@ -5,12 +5,17 @@ using UnityEngine;
 public class ShipHealth : MonoBehaviour
 {
     public int health;
+    public float blinkTime;
 
+    private Renderer renderer;
+    private Color initialColor;
     private bool alive;
 
 	void Start ()
     {
         alive = true;
+        renderer = transform.parent.GetComponentInChildren<Renderer>();
+        initialColor = renderer.material.color;
 	}
 
     void OnTriggerEnter(Collider other)
@@ -42,12 +47,20 @@ public class ShipHealth : MonoBehaviour
         if (health > 0 && alive)
         {
             health--;
+            StartCoroutine("blinkEffect");
 
             if (health == 0)
             {
                 die();
             }
         }
+    }
+
+    IEnumerator blinkEffect()
+    {
+        renderer.material.color = Color.white;
+        yield return new WaitForSeconds(blinkTime);
+        renderer.material.color = initialColor;
     }
 
     void die()
