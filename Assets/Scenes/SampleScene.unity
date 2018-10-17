@@ -235,7 +235,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 142165890}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cabebaa432e2104783437ec674ecd90, type: 3}
   m_Name: 
@@ -344,12 +344,12 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 339386891}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 70c12d08f05be4a4a88cc4a231b15fb1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2324609, y: 1, z: 0.87274003}
-  m_Center: {x: -0.08294946, y: 0, z: 0.010767712}
+  m_Size: {x: 1.2324609, y: 1, z: 0.99609184}
+  m_Center: {x: -0.08294946, y: 0, z: -0.00042472166}
 --- !u!23 &339386894
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -435,10 +435,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70593bcc3ea2856478871cd09430b110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 22
   characterTransform: {fileID: 1477880703}
   firePosition: {fileID: 142165891}
   bullet: {fileID: 1289616973724026, guid: d6657992113c0b84185ae2ba13f8cd37, type: 2}
+  rigidbody: {fileID: 1477880707}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,12 +568,12 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 550593418}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 70c12d08f05be4a4a88cc4a231b15fb1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1991796, y: 1, z: 1}
-  m_Center: {x: -0.099589825, y: 0, z: 0}
+  m_Size: {x: 1.1991796, y: 1, z: 1.2694973}
+  m_Center: {x: -0.099589825, y: 0, z: 0.001195558}
 --- !u!23 &550593421
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -676,7 +677,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 653783144}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cabebaa432e2104783437ec674ecd90, type: 3}
   m_Name: 
@@ -837,7 +838,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1477880702}
-  m_Material: {fileID: 13400000, guid: 9600dfab4dfde9a4e89d80ccdd39c64b, type: 2}
+  m_Material: {fileID: 13400000, guid: 70c12d08f05be4a4a88cc4a231b15fb1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -937,12 +938,12 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1658685957}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 70c12d08f05be4a4a88cc4a231b15fb1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1991796, y: 1, z: 1}
-  m_Center: {x: -0.099589825, y: 0, z: 0}
+  m_Size: {x: 1.1991796, y: 1, z: 1.1351477}
+  m_Center: {x: -0.099589825, y: 0, z: -0.0036273003}
 --- !u!23 &1658685960
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1022,12 +1023,12 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1738081803}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 70c12d08f05be4a4a88cc4a231b15fb1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2324619, y: 1, z: 1.0066575}
-  m_Center: {x: -0.082948685, y: 0, z: 0.0033279262}
+  m_Size: {x: 1.2324619, y: 1, z: 1.260538}
+  m_Center: {x: -0.082948685, y: 0, z: -0.0014137587}
 --- !u!23 &1738081806
 MeshRenderer:
   m_ObjectHideFlags: 0

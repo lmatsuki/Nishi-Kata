@@ -8,6 +8,7 @@ public class InputController2D : MonoBehaviour {
     public Transform characterTransform;
     public Transform firePosition;
     public GameObject bullet;
+    public Rigidbody rigidbody;
 
     void Start()
     {
@@ -18,7 +19,9 @@ public class InputController2D : MonoBehaviour {
 	{
         float horizontalMovement = handleHorizontalInput();
         float verticalMovement = handleVerticalInput();
-        characterTransform.Translate(horizontalMovement, 0, verticalMovement);        
+        //transform.Translate(horizontalMovement, 0, verticalMovement);
+        Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
+        rigidbody.velocity = movement * speed;
     }
 
     void Update()

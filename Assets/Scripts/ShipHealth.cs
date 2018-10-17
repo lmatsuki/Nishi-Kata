@@ -54,6 +54,6 @@ public class ShipHealth : MonoBehaviour
     {
         alive = false;
         transform.parent.gameObject.SetActive(false);
-        print(transform.parent.name + "has died!");
+        print(transform.parent.name + " has died!");
     }
 }
