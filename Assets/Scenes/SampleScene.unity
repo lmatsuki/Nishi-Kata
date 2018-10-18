@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  blinkTime: 0
+  blinkTime: 0.5
 --- !u!114 &653783148
 MonoBehaviour:
   m_ObjectHideFlags: 0
