@@ -6,16 +6,22 @@ public class PingPongHorizontal : MonoBehaviour
 {
     public bool moving;
     public float speed;
+    public float distance;
 
-	// Use this for initialization
+    private Vector3 startingPosition;
+
 	void Start ()
     {
-		
+        startingPosition = transform.position;
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate ()
     {
-		
-	}
+        if (moving)
+        {
+            Vector3 newPosition = startingPosition;
+            newPosition.x += distance * Mathf.Sin(Time.time * speed);
+            transform.position = newPosition;
+        }
+    }
 }

@@ -9,7 +9,7 @@ public class InputController2D : MonoBehaviour {
     public Transform firePosition;
     public GameObject bullet;
 
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
     void Start()
     {
