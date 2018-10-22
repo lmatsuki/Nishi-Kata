@@ -2,13 +2,13 @@
 
 public class PingPongHorizontal : MonoBehaviour
 {
-    public bool isMoving;
+    public bool canMove;
     public float speed;
     public float distance;
     public float deltaBufferSize;
 
     private Vector3 startingPosition;
-    private bool isReadyToMove;
+    private bool inPositionToMove;
 
 	void Start ()
     {
@@ -19,18 +19,18 @@ public class PingPongHorizontal : MonoBehaviour
     {
         float currentStep = Mathf.Sin(Time.time * speed);
 
-        if (isMoving && isReadyToMove)
+        if (canMove && inPositionToMove)
         {
             Vector3 newPosition = startingPosition;
             newPosition.x += distance * currentStep;
             transform.position = newPosition;
         }
-        else if (!isReadyToMove)
+        else if (!inPositionToMove)
         {
             float delta = Mathf.Abs((distance * currentStep) - transform.position.x);
             if (delta < deltaBufferSize)
             {
-                isReadyToMove = true;
+                inPositionToMove = true;
             }
         }
 
@@ -39,9 +39,9 @@ public class PingPongHorizontal : MonoBehaviour
 
     void EnsureMovesWhenReady()
     {
-        if (!isMoving)
+        if (!canMove)
         {
-            isReadyToMove = false;
+            inPositionToMove = false;
         }
     }
 }
