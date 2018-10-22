@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b8fae0109bbc214485ce05c7041cd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMove: 0
+  canMove: 1
   speed: 1.25
   distance: 6
   deltaBufferSize: 0.3
@@ -1203,6 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78e33a7fd48693409f1f1f86166c49b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 344621178}
   bullet: {fileID: 1892445282781844, guid: ade5785674f8cf449939747adabe0e42, type: 2}
   firePosition: {fileID: 1441656992}
   canFire: 1
