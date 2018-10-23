@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 339386895}
   - component: {fileID: 339386894}
   - component: {fileID: 339386893}
+  - component: {fileID: 339386896}
   m_Layer: 0
   m_Name: Bottom Wall
   m_TagString: Untagged
@@ -379,6 +380,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 339386891}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &339386896
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 339386891}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &344621177
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,9 +800,51 @@ Transform:
   - {fileID: 550593419}
   - {fileID: 339386892}
   - {fileID: 1738081804}
+  - {fileID: 1128308627}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1128308626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1128308627}
+  - component: {fileID: 1128308628}
+  m_Layer: 0
+  m_Name: TestWall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1128308627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1128308626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -8.55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 849466973}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1128308628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1128308626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 19.214327, y: 1, z: 1}
+  m_Center: {x: -0.13535023, y: 0, z: 0}
 --- !u!1 &1441656991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,7 +1259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 344621178}
-  bullet: {fileID: 1892445282781844, guid: ade5785674f8cf449939747adabe0e42, type: 2}
+  bullet: {fileID: 1386618589689998, guid: ade5785674f8cf449939747adabe0e42, type: 2}
   firePosition: {fileID: 1441656992}
   canFire: 1
   fireRate: 3
