@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 344621178}
-  bullet: {fileID: 1386618589689998, guid: ade5785674f8cf449939747adabe0e42, type: 2}
+  bullet: {fileID: 1962870766900526, guid: ade5785674f8cf449939747adabe0e42, type: 2}
   firePosition: {fileID: 1441656992}
   canFire: 1
   fireRate: 3
