@@ -64,7 +64,7 @@ public class InputController2D : MonoBehaviour {
 
     void handleFireInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             print("Fire!");
             GameObject bulletPrefab = Instantiate(bullet, firePosition.position, firePosition.rotation);
