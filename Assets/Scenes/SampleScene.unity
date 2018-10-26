@@ -440,6 +440,7 @@ MonoBehaviour:
   characterTransform: {fileID: 1477880703}
   firePosition: {fileID: 142165891}
   bullet: {fileID: 1289616973724026, guid: d6657992113c0b84185ae2ba13f8cd37, type: 2}
+  fireRate: 0.125
 --- !u!54 &344621180
 Rigidbody:
   m_ObjectHideFlags: 0

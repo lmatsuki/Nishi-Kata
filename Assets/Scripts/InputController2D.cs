@@ -8,8 +8,10 @@ public class InputController2D : MonoBehaviour {
     public Transform characterTransform;
     public Transform firePosition;
     public GameObject bullet;
+    public float fireRate;
 
     private new Rigidbody rigidbody;
+    private float nextFireTime;
 
     void Start()
     {
@@ -64,11 +66,11 @@ public class InputController2D : MonoBehaviour {
 
     void handleFireInput()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && Time.time > nextFireTime)
         {
             print("Fire!");
             GameObject bulletPrefab = Instantiate(bullet, firePosition.position, firePosition.rotation);
-            
+            nextFireTime = Time.time + fireRate;
         }
     }
 }
