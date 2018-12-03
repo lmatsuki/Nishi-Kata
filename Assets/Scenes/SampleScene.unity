@@ -1868,7 +1868,7 @@ MonoBehaviour:
   player: {fileID: 344621178}
   bullet: {fileID: 1962870766900526, guid: ade5785674f8cf449939747adabe0e42, type: 2}
   firePosition: {fileID: 1441656992}
-  canFire: 1
+  canFire: 0
   fireRate: 3
 --- !u!1 &2121381011
 GameObject:

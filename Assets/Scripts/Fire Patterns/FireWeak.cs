@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 
-public class FireWeak : MonoBehaviour
+public class FireWeak : BaseEnemy
 {
     public Transform player;
     public GameObject bullet;
     public Transform firePosition;
-    public bool canFire;
     public float fireRate;
 
     private float nextFireTime;
@@ -15,8 +14,10 @@ public class FireWeak : MonoBehaviour
 		
 	}
 	
-	void Update ()
+	protected override void Update()
     {
+        base.Update();
+
 		if (canFire && Time.time > nextFireTime)
         {
             FireShot();
