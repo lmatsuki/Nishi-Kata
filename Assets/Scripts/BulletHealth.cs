@@ -23,8 +23,8 @@ public class BulletHealth : MonoBehaviour
     {
         if (other.CompareTag("PlayerBullet"))
         {
-            print(other.name);
             health--;
+            Destroy(other.transform.parent.gameObject);
         }
     }
 }
