@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShipHealth : MonoBehaviour
@@ -28,7 +27,7 @@ public class ShipHealth : MonoBehaviour
 
         Debug.Log(other.name + " entered " + transform.parent.name);
         // Enemy bullet
-        if (other.tag.Contains("Bullet") && !other.tag.Contains(tag))
+        if (other.tag.Contains(Tags.Bullet) && !other.tag.Contains(tag))
         {
             takeDamage();
             Destroy(other.transform.parent.gameObject);

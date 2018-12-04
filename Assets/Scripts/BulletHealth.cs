@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BulletHealth : MonoBehaviour
 {
@@ -21,7 +19,7 @@ public class BulletHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerBullet"))
+        if (other.CompareTag(Tags.PlayerBullet))
         {
             health--;
             Destroy(other.transform.parent.gameObject);
