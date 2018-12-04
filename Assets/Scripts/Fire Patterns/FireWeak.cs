@@ -1,17 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class FireWeak : BaseEnemy
 {
     public Transform player;
-    public GameObject bullet;
+    public GameObject[] bullets;
     public Transform firePosition;
     public float fireRate;
+    public float timeBetweenFire;
 
+    private float nextBulletTime;
     private float nextFireTime;
+    private int currentBulletIndex;
 
 	void Start ()
     {
-		
+        currentBulletIndex = 0;
 	}
 	
 	protected override void Update()
@@ -26,8 +30,20 @@ public class FireWeak : BaseEnemy
 
     void FireShot()
     {        
-        GameObject bulletPrefab = Instantiate(bullet, firePosition.position, firePosition.rotation);
-        bulletPrefab.transform.LookAt(player);
-        nextFireTime = Time.time + fireRate;
+        if (Time.time > nextBulletTime)
+        {
+            GameObject bulletPrefab = Instantiate(bullets[currentBulletIndex], firePosition.position, firePosition.rotation);
+            bulletPrefab.transform.LookAt(player);
+
+            // Keep track of current bullet
+            currentBulletIndex = (currentBulletIndex + 1) % bullets.Length;
+            nextBulletTime = Time.time + fireRate;
+        }
+        
+        // Indicates that all bullets have been fired
+        if (currentBulletIndex == 0)
+        {
+            nextFireTime = Time.time + timeBetweenFire;
+        }
     }
 }
