@@ -5,6 +5,7 @@ public class ShipHealth : MonoBehaviour
 {
     public int health;
     public float blinkTime;
+    public GameObject[] healthParts;
 
     private Renderer renderer;
     private Color initialColor;
@@ -29,7 +30,7 @@ public class ShipHealth : MonoBehaviour
         // Enemy bullet
         if (other.tag.Contains(Tags.Bullet) && !other.tag.Contains(tag))
         {
-            takeDamage();
+            TakeDamage();
             Destroy(other.transform.parent.gameObject);
         }
 
@@ -37,35 +38,43 @@ public class ShipHealth : MonoBehaviour
         var otherHealth = other.transform.parent.GetComponentInChildren<ShipHealth>();
         if (otherHealth != null)
         {
-            otherHealth.takeDamage();
+            otherHealth.TakeDamage();
         }
     }
 
-    void takeDamage()
+    void TakeDamage()
     {
         if (health > 0 && alive)
         {
             health--;
             StartCoroutine("blinkEffect");
+            HideHealthPart();
 
             if (health == 0)
             {
-                die();
+                Die();
             }
         }
     }
 
-    IEnumerator blinkEffect()
+    IEnumerator BlinkEffect()
     {
         renderer.material.color = Color.white;
         yield return new WaitForSeconds(blinkTime);
         renderer.material.color = initialColor;
     }
 
-    void die()
+    void HideHealthPart()
+    {
+        if (healthParts.Length > 0 && healthParts.Length > health)
+        {
+            healthParts[health].SetActive(false);
+        }
+    }
+
+    void Die()
     {
         alive = false;
-        transform.parent.gameObject.SetActive(false);
         print(transform.parent.name + " has died!");
     }
 }
