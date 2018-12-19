@@ -47,7 +47,7 @@ public class ShipHealth : MonoBehaviour
         if (health > 0 && alive)
         {
             health--;
-            StartCoroutine("BlinkEffect");
+            StartCoroutine(BlinkEffect());
             HideHealthPart();
 
             if (health == 0)
