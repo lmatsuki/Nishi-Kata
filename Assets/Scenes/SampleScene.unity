@@ -1962,7 +1962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  blinkTime: 0.5
+  blinkTime: 0.05
+  renderer: {fileID: 1946465532}
   healthParts:
   - {fileID: 344621177}
   - {fileID: 700109400}
@@ -1972,7 +1973,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh12528
+  m_Name: pb_Mesh13048
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3315,7 +3316,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1022772
+  m_Name: pb_Mesh12852
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3470,7 +3471,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-352598
+  m_Name: pb_Mesh12964
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -4011,6 +4012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   blinkTime: 0.03
+  renderer: {fileID: 819564888}
   healthParts:
   - {fileID: 2019093765}
 --- !u!1 &1946465528

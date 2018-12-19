@@ -5,16 +5,16 @@ public class ShipHealth : MonoBehaviour
 {
     public int health;
     public float blinkTime;
+    public Renderer renderer;
     public GameObject[] healthParts;
 
-    private Renderer renderer;
     private Color initialColor;
     private bool alive;
 
 	void Start ()
     {
         alive = true;
-        renderer = transform.parent.GetComponentInChildren<Renderer>();
+        //renderer = transform.parent.GetComponentInChildren<Renderer>();
         initialColor = renderer.material.color;
 	}
 
@@ -47,7 +47,7 @@ public class ShipHealth : MonoBehaviour
         if (health > 0 && alive)
         {
             health--;
-            StartCoroutine("blinkEffect");
+            StartCoroutine("BlinkEffect");
             HideHealthPart();
 
             if (health == 0)
