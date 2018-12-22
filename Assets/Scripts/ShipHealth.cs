@@ -5,18 +5,28 @@ public class ShipHealth : MonoBehaviour
 {
     public int health;
     public float blinkTime;
+    public float smoothVelocity;
     public Renderer renderer;
     public GameObject[] healthParts;
 
     private Color initialColor;
+    private bool takingDamage;
+    private float currentSmoothTime;
     private bool alive;
 
-	void Start ()
+	void Start()
     {
         alive = true;
-        //renderer = transform.parent.GetComponentInChildren<Renderer>();
         initialColor = renderer.material.color;
 	}
+
+    void Update()
+    {
+        if (takingDamage)
+        {
+            GradualWhiteningEffect();
+        }
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -35,7 +45,7 @@ public class ShipHealth : MonoBehaviour
         }
 
         // Physical collision with ship
-        var otherHealth = other.transform.parent.GetComponentInChildren<ShipHealth>();
+        ShipHealth otherHealth = other.transform.parent.GetComponentInChildren<ShipHealth>();
         if (otherHealth != null)
         {
             otherHealth.TakeDamage();
@@ -47,7 +57,8 @@ public class ShipHealth : MonoBehaviour
         if (health > 0 && alive)
         {
             health--;
-            StartCoroutine(BlinkEffect());
+            takingDamage = true;
+            currentSmoothTime = 0;
             HideHealthPart();
 
             if (health == 0)
@@ -62,6 +73,17 @@ public class ShipHealth : MonoBehaviour
         renderer.material.color = Color.white;
         yield return new WaitForSeconds(blinkTime);
         renderer.material.color = initialColor;
+    }
+
+    void GradualWhiteningEffect()
+    {
+        currentSmoothTime = Mathf.SmoothDamp(currentSmoothTime, 1, ref smoothVelocity, blinkTime);
+        renderer.material.color = Color.Lerp(Color.white, initialColor, currentSmoothTime);
+
+        if (Mathf.Approximately(currentSmoothTime, 1))
+        {
+            takingDamage = false;
+        }
     }
 
     void HideHealthPart()

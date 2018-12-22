@@ -1963,6 +1963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   blinkTime: 0.05
+  smoothVelocity: 0
   renderer: {fileID: 1946465532}
   healthParts:
   - {fileID: 344621177}
@@ -2141,7 +2142,7 @@ GameObject:
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!64 &700109401
 MeshCollider:
@@ -4011,7 +4012,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  blinkTime: 0.03
+  blinkTime: 0.1
+  smoothVelocity: 0
   renderer: {fileID: 819564888}
   healthParts:
   - {fileID: 2019093765}
