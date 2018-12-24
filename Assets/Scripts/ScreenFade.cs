@@ -26,14 +26,8 @@ public class ScreenFade : MonoBehaviour
 
     public void SetScreenFade(bool fadeOut)
     {
-        if (fadeOut)
-        {
-            FadeOut();
-        }
-        else
-        {
-            FadeIn();
-        }
+        isFadingOut = fadeOut;
+        isFadingIn = !fadeOut;
     }
 
     void FadeOut()

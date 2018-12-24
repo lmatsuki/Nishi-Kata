@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-public class InputController2D : MonoBehaviour {
-
+public class InputController2D : BaseMovement
+{
 	public float speed;
     public Transform characterTransform;
     public Transform firePosition;
@@ -18,9 +18,13 @@ public class InputController2D : MonoBehaviour {
 
 	void FixedUpdate () 
 	{
+        if (!canMove)
+        {
+            return;
+        }
+
         float horizontalMovement = handleHorizontalInput();
         float verticalMovement = handleVerticalInput();
-        //transform.Translate(horizontalMovement, 0, verticalMovement);
         Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
         rigidbody.velocity = movement * speed;
     }

@@ -99,4 +99,9 @@ public class ShipHealth : MonoBehaviour
         alive = false;
         print(transform.parent.name + " has died!");
     }
+
+    public bool IsAlive()
+    {
+        return alive;
+    }
 }
