@@ -24,7 +24,7 @@ public class ShipHealth : MonoBehaviour
     {
         if (takingDamage)
         {
-            GradualWhiteningEffect();
+            FadeWhiteEffect();
         }
     }
 
@@ -75,7 +75,7 @@ public class ShipHealth : MonoBehaviour
         renderer.material.color = initialColor;
     }
 
-    void GradualWhiteningEffect()
+    void FadeWhiteEffect()
     {
         currentSmoothTime = Mathf.SmoothDamp(currentSmoothTime, 1, ref smoothVelocity, blinkTime);
         renderer.material.color = Color.Lerp(Color.white, initialColor, currentSmoothTime);
