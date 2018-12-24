@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 
-public class InputController2D : BaseMovement
+public class PlayerMovement : BaseMovement
 {
 	public float speed;
     public Transform characterTransform;
-    public Transform firePosition;
-    public GameObject bullet;
-    public float fireRate;
 
     private new Rigidbody rigidbody;
-    private float nextFireTime;
 
     void Start()
     {
@@ -27,11 +23,6 @@ public class InputController2D : BaseMovement
         float verticalMovement = handleVerticalInput();
         Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
         rigidbody.velocity = movement * speed;
-    }
-
-    void Update()
-    {
-        handleFireInput();
     }
 
     float handleHorizontalInput()
@@ -64,15 +55,5 @@ public class InputController2D : BaseMovement
         }
 
         return verticalMovement;
-    }
-
-    void handleFireInput()
-    {
-        if (Input.GetKey(KeyCode.Space) && Time.time > nextFireTime)
-        {
-            print("Fire!");
-            GameObject bulletPrefab = Instantiate(bullet, firePosition.position, firePosition.rotation);
-            nextFireTime = Time.time + fireRate;
-        }
     }
 }

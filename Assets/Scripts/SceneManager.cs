@@ -4,10 +4,14 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour
 {
     public List<GameObject> itemsToDisable;
+
     public ShipHealth playerShip;
     public BaseMovement playerMovement;
+    public BaseFire playerFire;
+
     public ShipHealth lastEnemyShip;
     public BaseMovement lastEnemyMovement;
+    public BaseFire lastEnemyFire;
 
     private ScreenFade screenFade;
 
@@ -21,10 +25,10 @@ public class SceneManager : MonoBehaviour
     {
 		if (!lastEnemyShip.IsAlive() || !playerShip.IsAlive())
         {
-            print("DISABLE SHIT NAO");
             DisableItems();
-            playerMovement.canMove = false;
-            lastEnemyMovement.canMove = false;
+            DisableMovement();
+            DisableAttacks();
+
             screenFade.SetScreenFade(true);
             gameObject.SetActive(false);
         }
@@ -41,5 +45,17 @@ public class SceneManager : MonoBehaviour
         {
             itemsToDisable[i].SetActive(false);
         }
+    }
+
+    void DisableMovement()
+    {
+        playerMovement.canMove = false;
+        lastEnemyMovement.canMove = false;
+    }
+
+    void DisableAttacks()
+    {
+        playerFire.canFire = false;
+        lastEnemyFire.canFire = false;
     }
 }

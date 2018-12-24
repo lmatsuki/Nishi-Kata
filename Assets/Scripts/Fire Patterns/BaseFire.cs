@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour
+public abstract class BaseFire : MonoBehaviour
 {
     public bool canFire;
     public float initialDelay;

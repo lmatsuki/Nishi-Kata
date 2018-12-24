@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FireWeak : BaseEnemy
+public class FireWeak : BaseFire
 {
     public Transform player;
     public GameObject[] bullets;
