@@ -21,7 +21,8 @@ public class FireWeak : BaseFire
     {
         base.Update();
 
-		if (canFire && Time.time > nextFireTime)
+		if (canFire && IsInitialDelayOver() && 
+            Time.time > nextFireTime)
         {
             FireShot();
         }

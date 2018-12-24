@@ -19,8 +19,7 @@ public class PlayerFire : BaseFire
     void handleFireInput()
     {
         if (Input.GetKey(KeyCode.Space) &&
-            canFire && 
-            Time.time > nextFireTime)
+            canFire && Time.time > nextFireTime)
         {
             if (fireSound != null)
             {
