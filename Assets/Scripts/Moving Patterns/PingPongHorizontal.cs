@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-public class PingPongHorizontal : MonoBehaviour
+public class PingPongHorizontal : BaseMovement
 {
-    public bool canMove;
     public float speed;
     public float distance;
     public float deltaBufferSize;
