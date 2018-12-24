@@ -4012,7 +4012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  blinkTime: 0.1
+  blinkTime: 0.2
   smoothVelocity: 0
   renderer: {fileID: 819564888}
   healthParts:
