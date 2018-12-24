@@ -20,6 +20,11 @@ public class ScreenFade : MonoBehaviour
         postProcessingProfile = GetComponent<PostProcessingBehaviour>().profile;
         depthOfFieldSettings = postProcessingProfile.depthOfField.settings;
         image = GetComponentInChildren<Image>();
+
+        // Set initial gray screen alpha
+        Color newColor = image.color;
+        newColor.a = 0.42f;
+        image.color = newColor;
 	}
 	
 	void Update()
