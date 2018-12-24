@@ -4,6 +4,9 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour
 {
     public List<GameObject> itemsToDisable;
+    public List<GameObject> itemsToEnable;
+    public GameObject victoryText;
+    public GameObject defeatText;
 
     public ShipHealth playerShip;
     public BaseMovement playerMovement;
@@ -28,8 +31,10 @@ public class SceneManager : MonoBehaviour
             DisableItems();
             DisableMovement();
             DisableAttacks();
+            EnableItems();
 
             screenFade.SetScreenFade(true);
+            DisplayVictoryOrDefeatText();
             gameObject.SetActive(false);
         }
 	}
@@ -47,6 +52,19 @@ public class SceneManager : MonoBehaviour
         }
     }
 
+    void EnableItems()
+    {
+        if (itemsToEnable.Count <= 0)
+        {
+            return;
+        }
+
+        for (int i = 0; i < itemsToEnable.Count; i++)
+        {
+            itemsToEnable[i].SetActive(true);
+        }
+    }
+
     void DisableMovement()
     {
         playerMovement.canMove = false;
@@ -57,5 +75,17 @@ public class SceneManager : MonoBehaviour
     {
         playerFire.canFire = false;
         lastEnemyFire.canFire = false;
+    }
+
+    void DisplayVictoryOrDefeatText()
+    {
+        if (!lastEnemyShip.IsAlive())
+        {
+            victoryText.SetActive(true);
+        }
+        else
+        {
+            defeatText.SetActive(true);
+        }
     }
 }
