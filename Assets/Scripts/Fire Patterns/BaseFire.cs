@@ -8,7 +8,7 @@ public abstract class BaseFire : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (initialDelay > 0)
+        if (initialDelay > 0 && !canFire)
         {
             StartCoroutine("WaitForInitialDelay");
         }

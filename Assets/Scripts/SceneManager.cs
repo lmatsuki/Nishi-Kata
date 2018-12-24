@@ -74,6 +74,9 @@ public class SceneManager : MonoBehaviour
     void DisableAttacks()
     {
         playerFire.canFire = false;
+
+        // Override initial delay
+        lastEnemyFire.enabled = false;
         lastEnemyFire.canFire = false;
     }
 

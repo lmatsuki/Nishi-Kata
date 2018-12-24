@@ -41,47 +41,43 @@ public class ScreenFade : MonoBehaviour
 
     void FadeOut()
     {
-        if (isFadingOut)
+        if (!isFadingOut)
         {
-            if (!Mathf.Approximately(depthOfFieldSettings.aperture, 0.1f))
-            {
-                depthOfFieldSettings.aperture = Mathf.SmoothDamp(depthOfFieldSettings.aperture, 0.1f, ref smoothFadeVelocity, fadeOutTime);
-                postProcessingProfile.depthOfField.settings = depthOfFieldSettings;
-            }
-
-            if (!Mathf.Approximately(image.color.a, 0.42f))
-            {
-                Color newColor = image.color;
-                newColor.a = Mathf.SmoothDamp(newColor.a, 0.42f, ref smoothScreenFadeVelocity, fadeOutTime);
-                image.color = newColor;
-            }
+            return;
         }
-        else
+
+        if (!Mathf.Approximately(depthOfFieldSettings.aperture, 0.1f))
         {
-            isFadingOut = false;
+            depthOfFieldSettings.aperture = Mathf.SmoothDamp(depthOfFieldSettings.aperture, 0.1f, ref smoothFadeVelocity, fadeOutTime);
+            postProcessingProfile.depthOfField.settings = depthOfFieldSettings;
+        }
+
+        if (!Mathf.Approximately(image.color.a, 0.42f))
+        {
+            Color newColor = image.color;
+            newColor.a = Mathf.SmoothDamp(newColor.a, 0.42f, ref smoothScreenFadeVelocity, fadeOutTime);
+            image.color = newColor;
         }
     }
 
     void FadeIn()
     {
-        if (isFadingIn)
+        if (!isFadingIn)
         {
-            if (!Mathf.Approximately(depthOfFieldSettings.aperture, 32f))
-            {
-                depthOfFieldSettings.aperture = Mathf.SmoothDamp(depthOfFieldSettings.aperture, 32f, ref smoothFadeVelocity, fadeInTime);
-                postProcessingProfile.depthOfField.settings = depthOfFieldSettings;
-            }
-
-            if (!Mathf.Approximately(image.color.a, 0f))
-            {
-                Color newColor = image.color;
-                newColor.a = Mathf.SmoothDamp(newColor.a, 0f, ref smoothScreenFadeVelocity, fadeOutTime);
-                image.color = newColor;
-            }
+            return;
         }
-        else
+
+        if (!Mathf.Approximately(depthOfFieldSettings.aperture, 32f))
         {
-            isFadingIn = false;
+            depthOfFieldSettings.aperture = Mathf.SmoothDamp(depthOfFieldSettings.aperture, 32f, ref smoothFadeVelocity, fadeInTime);
+            postProcessingProfile.depthOfField.settings = depthOfFieldSettings;
+        }
+
+        if (!Mathf.Approximately(image.color.a, 0f))
+        {
+            Color newColor = image.color;
+            newColor.a = Mathf.SmoothDamp(newColor.a, 0f, ref smoothScreenFadeVelocity, fadeOutTime);
+            image.color = newColor;
         }
     }
 }

@@ -5,6 +5,7 @@ public class PlayerFire : BaseFire
     public Transform firePosition;
     public GameObject bullet;
     public float fireRate;
+    public AudioSource fireSound;
 
     private float nextFireTime;
 
@@ -21,7 +22,11 @@ public class PlayerFire : BaseFire
             canFire && 
             Time.time > nextFireTime)
         {
-            print("Fire!");
+            if (fireSound != null)
+            {
+                fireSound.Play();
+            }
+            
             GameObject bulletPrefab = Instantiate(bullet, firePosition.position, firePosition.rotation);
             nextFireTime = Time.time + fireRate;
         }
