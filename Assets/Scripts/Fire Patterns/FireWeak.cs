@@ -11,11 +11,13 @@ public class FireWeak : BaseFire
     private float nextBulletTime;
     private float nextFireTime;
     private int currentBulletIndex;
+    private AudioManager audioManager;
 
-	void Start ()
+    void Start ()
     {
         currentBulletIndex = 0;
-	}
+        audioManager = FindObjectOfType<AudioManager>();
+    }
 	
 	protected override void Update()
     {
@@ -34,6 +36,7 @@ public class FireWeak : BaseFire
         {
             GameObject bulletPrefab = Instantiate(bullets[currentBulletIndex], firePosition.position, firePosition.rotation);
             bulletPrefab.transform.LookAt(player);
+            audioManager.Play(Sounds.PlayerFire);
 
             // Keep track of current bullet
             currentBulletIndex = (currentBulletIndex + 1) % bullets.Length;
