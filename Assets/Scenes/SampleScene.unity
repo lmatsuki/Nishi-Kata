@@ -2446,6 +2446,7 @@ MonoBehaviour:
   - {fileID: 344621177}
   - {fileID: 700109400}
   - {fileID: 14091293}
+  deathSoundName: 
 --- !u!1 &700109400
 GameObject:
   m_ObjectHideFlags: 0
@@ -4095,6 +4096,11 @@ MonoBehaviour:
     volume: 0.15
     pitch: 1.8
     audioSource: {fileID: 0}
+  - name: EnemyDeath
+    audioClip: {fileID: 8300000, guid: 0038fbdd7d303d8499b6626a89ad92fe, type: 3}
+    volume: 1
+    pitch: 1
+    audioSource: {fileID: 0}
 --- !u!4 &1601595803
 Transform:
   m_ObjectHideFlags: 0
@@ -4465,6 +4471,7 @@ MonoBehaviour:
   renderer: {fileID: 819564888}
   healthParts:
   - {fileID: 2019093765}
+  deathSoundName: EnemyDeath
 --- !u!1 &1946465528
 GameObject:
   m_ObjectHideFlags: 0

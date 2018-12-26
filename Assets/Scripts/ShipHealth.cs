@@ -8,17 +8,20 @@ public class ShipHealth : MonoBehaviour
     public float smoothVelocity;
     public Renderer renderer;
     public GameObject[] healthParts;
+    public string deathSoundName;
 
     private Color initialColor;
     private bool takingDamage;
     private float currentSmoothTime;
     private bool alive;
+    private AudioManager audioManager;
 
-	void Start()
+    void Start()
     {
         alive = true;
         initialColor = renderer.material.color;
-	}
+        audioManager = FindObjectOfType<AudioManager>();
+    }
 
     void Update()
     {
@@ -96,6 +99,11 @@ public class ShipHealth : MonoBehaviour
 
     void Die()
     {
+        if (!string.IsNullOrEmpty(deathSoundName))
+        {
+            audioManager.Play(deathSoundName);
+        }
+
         alive = false;
         print(transform.parent.name + " has died!");
     }
