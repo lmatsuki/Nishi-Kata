@@ -10,6 +10,12 @@ public class ClearScreenScript : MonoBehaviour
 
     public void ClearScreen()
     {
+        ClearDepthOfFieldEffect();
+        ClearFadeScreen();
+    }
+
+    void ClearDepthOfFieldEffect()
+    {
         if (postProcessingProfile == null)
         {
             postProcessingProfile = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
@@ -19,7 +25,10 @@ public class ClearScreenScript : MonoBehaviour
         // Clear depth of field effect
         depthOfFieldSettings.aperture = 32f;
         postProcessingProfile.depthOfField.settings = depthOfFieldSettings;
+    }
 
+    void ClearFadeScreen()
+    {
         if (fadeImage == null)
         {
             fadeImage = Camera.main.GetComponentInChildren<Image>();
