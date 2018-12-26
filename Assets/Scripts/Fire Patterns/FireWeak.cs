@@ -36,7 +36,7 @@ public class FireWeak : BaseFire
         {
             GameObject bulletPrefab = Instantiate(bullets[currentBulletIndex], firePosition.position, firePosition.rotation);
             bulletPrefab.transform.LookAt(player);
-            audioManager.Play(Sounds.PlayerFire);
+            audioManager.Play(Sounds.EnemyFire);
 
             // Keep track of current bullet
             currentBulletIndex = (currentBulletIndex + 1) % bullets.Length;
