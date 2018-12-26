@@ -5,9 +5,14 @@ public class PlayerFire : BaseFire
     public Transform firePosition;
     public GameObject bullet;
     public float fireRate;
-    public AudioSource fireSound;
 
     private float nextFireTime;
+    private AudioManager audioManager;
+
+    void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
 
     protected override void Update()
     {
@@ -21,10 +26,7 @@ public class PlayerFire : BaseFire
         if (Input.GetKey(KeyCode.Space) &&
             canFire && Time.time > nextFireTime)
         {
-            if (fireSound != null)
-            {
-                fireSound.Play();
-            }
+            audioManager.Play("PlayerFire");
             
             GameObject bulletPrefab = Instantiate(bullet, firePosition.position, firePosition.rotation);
             nextFireTime = Time.time + fireRate;

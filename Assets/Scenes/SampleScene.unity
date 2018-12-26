@@ -1735,8 +1735,7 @@ MonoBehaviour:
   initialDelay: 0
   firePosition: {fileID: 142165891}
   bullet: {fileID: 1289616973724026, guid: d6657992113c0b84185ae2ba13f8cd37, type: 2}
-  fireRate: 0.135
-  fireSound: {fileID: 0}
+  fireRate: 0.08
 --- !u!1 &365050011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,7 +2097,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh13104
+  m_Name: pb_Mesh13118
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3640,7 +3639,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh12864
+  m_Name: pb_Mesh12878
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3795,7 +3794,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh13012
+  m_Name: pb_Mesh13026
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -4058,6 +4057,52 @@ Transform:
   m_Father: {fileID: 2019093766}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!1 &1601595801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1601595803}
+  - component: {fileID: 1601595802}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1601595802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601595801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8274aaecc9ee8749925f12964ca9550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: PlayerFire
+    audioClip: {fileID: 8300000, guid: 3397391f5d4018d4b9942306a8c8ce26, type: 3}
+    volume: 0.4
+    pitch: 2.8
+    audioSource: {fileID: 0}
+--- !u!4 &1601595803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601595801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.005447328, y: 0.75000006, z: -3.5709968}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1658685957
 GameObject:
   m_ObjectHideFlags: 0
@@ -5565,7 +5610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canFire: 0
-  initialDelay: 3
+  initialDelay: 30000
   player: {fileID: 344621178}
   bullets:
   - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 2}
