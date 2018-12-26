@@ -4087,7 +4087,7 @@ MonoBehaviour:
   sounds:
   - name: PlayerFire
     audioClip: {fileID: 8300000, guid: 3397391f5d4018d4b9942306a8c8ce26, type: 3}
-    volume: 0.4
+    volume: 0.3
     pitch: 2.8
     audioSource: {fileID: 0}
 --- !u!4 &1601595803

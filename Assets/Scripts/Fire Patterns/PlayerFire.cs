@@ -26,7 +26,7 @@ public class PlayerFire : BaseFire
         if (Input.GetKey(KeyCode.Space) &&
             canFire && Time.time > nextFireTime)
         {
-            audioManager.Play("PlayerFire");
+            audioManager.Play(Sounds.PlayerFire);
             
             GameObject bulletPrefab = Instantiate(bullet, firePosition.position, firePosition.rotation);
             nextFireTime = Time.time + fireRate;
