@@ -12,7 +12,7 @@ public class ClearScreenScript : MonoBehaviour
     {
         if (postProcessingProfile == null)
         {
-            postProcessingProfile = GameObject.Find("Main Camera").GetComponent<PostProcessingBehaviour>().profile;
+            postProcessingProfile = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
             depthOfFieldSettings = postProcessingProfile.depthOfField.settings;
         }
 
@@ -22,7 +22,7 @@ public class ClearScreenScript : MonoBehaviour
 
         if (fadeImage == null)
         {
-            fadeImage = GameObject.Find("Main Camera").GetComponentInChildren<Image>();
+            fadeImage = Camera.main.GetComponentInChildren<Image>();
         }
 
         Color newColor = fadeImage.color;

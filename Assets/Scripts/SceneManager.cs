@@ -20,7 +20,7 @@ public class SceneManager : MonoBehaviour
 
 	void Start()
     {
-        screenFade = GameObject.Find("Main Camera").GetComponent<ScreenFade>();
+        screenFade = Camera.main.GetComponent<ScreenFade>();
         screenFade.SetScreenFade(false);
 	}
 

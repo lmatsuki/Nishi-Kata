@@ -10,7 +10,7 @@ public abstract class BaseFire : MonoBehaviour
     {
         if (initialDelay > 0)
         {
-            StartCoroutine("WaitForInitialDelay");
+            StartCoroutine(WaitForInitialDelay());
         }
     }
 
