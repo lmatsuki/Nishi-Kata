@@ -80,4 +80,25 @@ public class ScreenFade : MonoBehaviour
             image.color = newColor;
         }
     }
+
+    public void InstantlyClearScreen()
+    {
+        if (postProcessingProfile == null)
+        {
+            // Clear depth of field effect
+            postProcessingProfile = GetComponent<PostProcessingBehaviour>().profile;
+            depthOfFieldSettings = postProcessingProfile.depthOfField.settings;
+            depthOfFieldSettings.aperture = 32f;
+            postProcessingProfile.depthOfField.settings = depthOfFieldSettings;
+        }
+
+        if (image == null)
+        {
+            image = GetComponentInChildren<Image>();
+        }
+
+        Color newColor = image.color;
+        newColor.a = 0f;
+        image.color = newColor;
+    }
 }

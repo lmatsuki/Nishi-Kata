@@ -23,7 +23,7 @@ public class SceneManager : MonoBehaviour
         screenFade = GameObject.Find("Main Camera").GetComponent<ScreenFade>();
         screenFade.SetScreenFade(false);
 	}
-	
+
 	void Update()
     {
 		if (!lastEnemyShip.IsAlive() || !playerShip.IsAlive())
