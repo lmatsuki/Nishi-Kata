@@ -4,10 +4,22 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour 
 {
     public Sound[] sounds;
+    public static AudioManager instance;
 
     private Dictionary<string, Sound> soundDict = new Dictionary<string, Sound>();
 
     void Awake()
+    {
+        if (instance != null)
+        {
+            return;
+        }
+
+        instance = this;
+        InitializeSounds();
+    }
+
+    void InitializeSounds()
     {
         for (int i = 0; i < sounds.Length; i++)
         {
