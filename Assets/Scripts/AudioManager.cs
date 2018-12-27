@@ -34,6 +34,7 @@ public class AudioManager : MonoBehaviour
     public void Play(string name)
     {
         Sound sound;
+
         if (!soundDict.TryGetValue(name, out sound))
         {
             Debug.LogWarning("Sound: " + name + " not found!");

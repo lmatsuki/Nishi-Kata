@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EZCameraShake;
+using System.Collections;
 using UnityEngine;
 
 public class ShipHealth : MonoBehaviour
@@ -9,18 +10,17 @@ public class ShipHealth : MonoBehaviour
     public Renderer renderer;
     public GameObject[] healthParts;
     public string deathSoundName;
+    public bool screenShakeOnDeath;
 
     private Color initialColor;
     private bool takingDamage;
     private float currentSmoothTime;
     private bool alive;
-    private AudioManager audioManager;
 
     void Start()
     {
         alive = true;
         initialColor = renderer.material.color;
-        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Update()
@@ -101,7 +101,12 @@ public class ShipHealth : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(deathSoundName))
         {
-            audioManager.Play(deathSoundName);
+            AudioManager.instance.Play(deathSoundName);
+        }
+
+        if (screenShakeOnDeath)
+        {
+            CameraShaker.Instance.ShakeOnce(3f, 5f, 0, 1.5f);
         }
 
         alive = false;
