@@ -3946,6 +3946,11 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     audioSource: {fileID: 0}
+  - name: BulletHit
+    audioClip: {fileID: 8300000, guid: 125ae548a6233b044929bfc2e29b8a64, type: 3}
+    volume: 0.182
+    pitch: 2.43
+    audioSource: {fileID: 0}
 --- !u!4 &1601595803
 Transform:
   m_ObjectHideFlags: 0
@@ -5622,7 +5627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canFire: 0
-  initialDelay: 3
+  initialDelay: 330303
   player: {fileID: 344621178}
   bullets:
   - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 2}
