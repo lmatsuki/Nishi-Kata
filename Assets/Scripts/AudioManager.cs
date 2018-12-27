@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour 
 {
-    public Sound[] sounds;
     public static AudioManager instance;
+    public Sound[] sounds;
 
     private Dictionary<string, Sound> soundDict = new Dictionary<string, Sound>();
 
@@ -16,10 +16,10 @@ public class AudioManager : MonoBehaviour
         }
 
         instance = this;
-        InitializeSounds();
+        CreateAudioSources();
     }
 
-    void InitializeSounds()
+    void CreateAudioSources()
     {
         for (int i = 0; i < sounds.Length; i++)
         {
