@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
             sounds[i].audioSource.clip = sounds[i].audioClip;
             sounds[i].audioSource.volume = sounds[i].volume;
             sounds[i].audioSource.pitch = sounds[i].pitch;
+            sounds[i].audioSource.loop = sounds[i].loop;
             soundDict[sounds[i].name] = sounds[i];
         }
     }

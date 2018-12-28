@@ -22,6 +22,7 @@ public class SceneManager : MonoBehaviour
     {
         screenFade = Camera.main.GetComponent<ScreenFade>();
         screenFade.SetScreenFade(false);
+        PlayThemeSong();
 	}
 
 	void Update()
@@ -87,5 +88,10 @@ public class SceneManager : MonoBehaviour
         {
             defeatText.SetActive(true);
         }
+    }
+
+    void PlayThemeSong()
+    {
+        AudioManager.instance.Play(Songs.PlayTheme);
     }
 }
