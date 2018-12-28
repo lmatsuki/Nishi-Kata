@@ -2448,10 +2448,6 @@ MonoBehaviour:
   - {fileID: 14091293}
   deathSoundName: 
   screenShakeOnDeath: 0
-  magnitude: 0
-  roughness: 0
-  fadeInTime: 0
-  fadeOutTime: 0
 --- !u!1 &700109400
 GameObject:
   m_ObjectHideFlags: 0
@@ -4526,10 +4522,6 @@ MonoBehaviour:
   - {fileID: 2019093765}
   deathSoundName: EnemyDeath
   screenShakeOnDeath: 1
-  magnitude: 3
-  roughness: 5
-  fadeInTime: 0
-  fadeOutTime: 1.5
 --- !u!1 &1946465528
 GameObject:
   m_ObjectHideFlags: 0
@@ -5680,7 +5672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canFire: 0
-  initialDelay: 330303
+  initialDelay: 3
   player: {fileID: 344621178}
   bullets:
   - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 2}
