@@ -9,7 +9,7 @@ public class ScreenFade : MonoBehaviour
     public float fadeOutTime;
     public float fadeInTime;
 
-    ////private DepthOfFieldModel.Settings depthOfFieldSettings;
+    private DepthOfField depthOfFieldSettings;
     private PostProcessProfile postProcessProfile;
     private Image image;
     private bool isFadingOut;
@@ -17,9 +17,16 @@ public class ScreenFade : MonoBehaviour
 
 	void Start()
     {
-        ////postProcessProfile = GetComponent<PostProcessingBehaviour>().profile;
-        ////depthOfFieldSettings = postProcessProfile.depthOfField.settings;
+        postProcessProfile = GetComponent<PostProcessVolume>().profile;
         image = GetComponentInChildren<Image>();
+        
+        if (!postProcessProfile.TryGetSettings(out depthOfFieldSettings))
+        {
+            Debug.LogErrorFormat("{0}.cs: Depth of field setting not found!", this.GetType());
+        }
+
+        // Set initial depth of field
+        depthOfFieldSettings.focalLength.value = 50;
 
         // Set initial gray screen alpha
         Color newColor = image.color;
@@ -29,8 +36,45 @@ public class ScreenFade : MonoBehaviour
 	
 	void Update()
     {
-        FadeOut();
-        FadeIn();
+        if (isFadingOut)
+        {
+            FadeOut();
+        }
+        
+        if (isFadingIn)
+        {
+            FadeIn();
+        }
+    }
+
+    void FadeOut()
+    {
+        TweenDepthOfFieldToValue(170f);
+        TweenScreenAlphaToValue(0.42f);
+    }
+
+    void FadeIn()
+    {
+        TweenDepthOfFieldToValue(1f);
+        TweenScreenAlphaToValue(0f);
+    }
+
+    void TweenDepthOfFieldToValue(float value)
+    {
+        if (!Mathf.Approximately(depthOfFieldSettings.focalLength, value))
+        {
+            depthOfFieldSettings.focalLength.value = Mathf.SmoothDamp(depthOfFieldSettings.focalLength, value, ref smoothFadeVelocity, fadeInTime);
+        }
+    }
+
+    void TweenScreenAlphaToValue(float value)
+    {
+        if (!Mathf.Approximately(image.color.a, value))
+        {
+            Color newColor = image.color;
+            newColor.a = Mathf.SmoothDamp(newColor.a, value, ref smoothScreenFadeVelocity, fadeOutTime);
+            image.color = newColor;
+        }
     }
 
     public void SetScreenFade(bool fadeOut)
@@ -39,57 +83,19 @@ public class ScreenFade : MonoBehaviour
         isFadingIn = !fadeOut;
     }
 
-    void FadeOut()
-    {
-        if (!isFadingOut)
-        {
-            return;
-        }
-
-        ////if (!Mathf.Approximately(depthOfFieldSettings.aperture, 0.1f))
-        ////{
-        ////    depthOfFieldSettings.aperture = Mathf.SmoothDamp(depthOfFieldSettings.aperture, 0.1f, ref smoothFadeVelocity, fadeOutTime);
-        ////    postProcessProfile.depthOfField.settings = depthOfFieldSettings;
-        ////}
-
-        if (!Mathf.Approximately(image.color.a, 0.42f))
-        {
-            Color newColor = image.color;
-            newColor.a = Mathf.SmoothDamp(newColor.a, 0.42f, ref smoothScreenFadeVelocity, fadeOutTime);
-            image.color = newColor;
-        }
-    }
-
-    void FadeIn()
-    {
-        if (!isFadingIn)
-        {
-            return;
-        }
-
-        ////if (!Mathf.Approximately(depthOfFieldSettings.aperture, 32f))
-        ////{
-        ////    depthOfFieldSettings.aperture = Mathf.SmoothDamp(depthOfFieldSettings.aperture, 32f, ref smoothFadeVelocity, fadeInTime);
-        ////    ////postProcessProfile.depthOfField.settings = depthOfFieldSettings;
-        ////}
-
-        if (!Mathf.Approximately(image.color.a, 0f))
-        {
-            Color newColor = image.color;
-            newColor.a = Mathf.SmoothDamp(newColor.a, 0f, ref smoothScreenFadeVelocity, fadeOutTime);
-            image.color = newColor;
-        }
-    }
-
     public void InstantlyClearScreen()
     {
         if (postProcessProfile == null)
         {
             // Clear depth of field effect
-            ////postProcessProfile = GetComponent<PostProcessingBehaviour>().profile;
-            ////depthOfFieldSettings = postProcessProfile.depthOfField.settings;
-            ////depthOfFieldSettings.aperture = 32f;
-            ////postProcessProfile.depthOfField.settings = depthOfFieldSettings;
+            postProcessProfile = GetComponent<PostProcessVolume>().profile;
+
+            if (!postProcessProfile.TryGetSettings(out depthOfFieldSettings))
+            {
+                Debug.LogError("ScreenFade.cs: Depth of field setting not found!");
+            }
+
+            depthOfFieldSettings.aperture.value = 32f;
         }
 
         if (image == null)

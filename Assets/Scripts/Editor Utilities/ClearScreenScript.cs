@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ClearScreenScript : MonoBehaviour
 {
     private Image fadeImage;
-    ////private DepthOfFieldModel.Settings depthOfFieldSettings;
+    private DepthOfField depthOfFieldSettings;
     private PostProcessProfile postProcessProfile;
 
     public void ClearScreen()
@@ -18,13 +18,16 @@ public class ClearScreenScript : MonoBehaviour
     {
         if (postProcessProfile == null)
         {
-            ////postProcessProfile = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
-            ////depthOfFieldSettings = postProcessProfile.depthOfField.settings;
+            postProcessProfile = Camera.main.GetComponent<PostProcessVolume>().profile;
+
+            if (!postProcessProfile.TryGetSettings(out depthOfFieldSettings))
+            {
+                Debug.LogError("ClearScreenScript.cs: Depth of field setting not found!");
+            }
         }
 
         // Clear depth of field effect
-        ////depthOfFieldSettings.aperture = 32f;
-        ////postProcessProfile.depthOfField.settings = depthOfFieldSettings;
+        depthOfFieldSettings.aperture.value = 32f;
     }
 
     void ClearFadeScreen()
