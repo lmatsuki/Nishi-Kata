@@ -19,10 +19,10 @@ public class ScreenFade : MonoBehaviour
     {
         postProcessProfile = GetComponent<PostProcessVolume>().profile;
         image = GetComponentInChildren<Image>();
-        
+
         if (!postProcessProfile.TryGetSettings(out depthOfFieldSettings))
         {
-            Debug.LogErrorFormat("{0}.cs: Depth of field setting not found!", this.GetType());
+            DebugExtensions.LogNotFound(this, "Depth of field setting");
         }
 
         // Set initial depth of field
@@ -92,7 +92,7 @@ public class ScreenFade : MonoBehaviour
 
             if (!postProcessProfile.TryGetSettings(out depthOfFieldSettings))
             {
-                Debug.LogError("ScreenFade.cs: Depth of field setting not found!");
+                DebugExtensions.LogNotFound(this, "Depth of field setting");
             }
 
             depthOfFieldSettings.aperture.value = 32f;

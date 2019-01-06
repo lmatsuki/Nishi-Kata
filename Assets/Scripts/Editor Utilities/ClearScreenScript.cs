@@ -22,7 +22,7 @@ public class ClearScreenScript : MonoBehaviour
 
             if (!postProcessProfile.TryGetSettings(out depthOfFieldSettings))
             {
-                Debug.LogError("ClearScreenScript.cs: Depth of field setting not found!");
+                DebugExtensions.LogNotFound(this, "Depth of field setting");
             }
         }
 
