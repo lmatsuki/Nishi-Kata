@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.PostProcessing;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 
 public class ScreenFade : MonoBehaviour
@@ -9,16 +9,16 @@ public class ScreenFade : MonoBehaviour
     public float fadeOutTime;
     public float fadeInTime;
 
-    private DepthOfFieldModel.Settings depthOfFieldSettings;
-    private PostProcessingProfile postProcessingProfile;
+    ////private DepthOfFieldModel.Settings depthOfFieldSettings;
+    private PostProcessProfile postProcessProfile;
     private Image image;
     private bool isFadingOut;
     private bool isFadingIn;
 
 	void Start()
     {
-        postProcessingProfile = GetComponent<PostProcessingBehaviour>().profile;
-        depthOfFieldSettings = postProcessingProfile.depthOfField.settings;
+        ////postProcessProfile = GetComponent<PostProcessingBehaviour>().profile;
+        ////depthOfFieldSettings = postProcessProfile.depthOfField.settings;
         image = GetComponentInChildren<Image>();
 
         // Set initial gray screen alpha
@@ -46,11 +46,11 @@ public class ScreenFade : MonoBehaviour
             return;
         }
 
-        if (!Mathf.Approximately(depthOfFieldSettings.aperture, 0.1f))
-        {
-            depthOfFieldSettings.aperture = Mathf.SmoothDamp(depthOfFieldSettings.aperture, 0.1f, ref smoothFadeVelocity, fadeOutTime);
-            postProcessingProfile.depthOfField.settings = depthOfFieldSettings;
-        }
+        ////if (!Mathf.Approximately(depthOfFieldSettings.aperture, 0.1f))
+        ////{
+        ////    depthOfFieldSettings.aperture = Mathf.SmoothDamp(depthOfFieldSettings.aperture, 0.1f, ref smoothFadeVelocity, fadeOutTime);
+        ////    postProcessProfile.depthOfField.settings = depthOfFieldSettings;
+        ////}
 
         if (!Mathf.Approximately(image.color.a, 0.42f))
         {
@@ -67,11 +67,11 @@ public class ScreenFade : MonoBehaviour
             return;
         }
 
-        if (!Mathf.Approximately(depthOfFieldSettings.aperture, 32f))
-        {
-            depthOfFieldSettings.aperture = Mathf.SmoothDamp(depthOfFieldSettings.aperture, 32f, ref smoothFadeVelocity, fadeInTime);
-            postProcessingProfile.depthOfField.settings = depthOfFieldSettings;
-        }
+        ////if (!Mathf.Approximately(depthOfFieldSettings.aperture, 32f))
+        ////{
+        ////    depthOfFieldSettings.aperture = Mathf.SmoothDamp(depthOfFieldSettings.aperture, 32f, ref smoothFadeVelocity, fadeInTime);
+        ////    ////postProcessProfile.depthOfField.settings = depthOfFieldSettings;
+        ////}
 
         if (!Mathf.Approximately(image.color.a, 0f))
         {
@@ -83,13 +83,13 @@ public class ScreenFade : MonoBehaviour
 
     public void InstantlyClearScreen()
     {
-        if (postProcessingProfile == null)
+        if (postProcessProfile == null)
         {
             // Clear depth of field effect
-            postProcessingProfile = GetComponent<PostProcessingBehaviour>().profile;
-            depthOfFieldSettings = postProcessingProfile.depthOfField.settings;
-            depthOfFieldSettings.aperture = 32f;
-            postProcessingProfile.depthOfField.settings = depthOfFieldSettings;
+            ////postProcessProfile = GetComponent<PostProcessingBehaviour>().profile;
+            ////depthOfFieldSettings = postProcessProfile.depthOfField.settings;
+            ////depthOfFieldSettings.aperture = 32f;
+            ////postProcessProfile.depthOfField.settings = depthOfFieldSettings;
         }
 
         if (image == null)

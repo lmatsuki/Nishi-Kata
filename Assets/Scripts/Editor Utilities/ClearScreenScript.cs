@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.PostProcessing;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 
 public class ClearScreenScript : MonoBehaviour
 {
     private Image fadeImage;
-    private DepthOfFieldModel.Settings depthOfFieldSettings;
-    private PostProcessingProfile postProcessingProfile;
+    ////private DepthOfFieldModel.Settings depthOfFieldSettings;
+    private PostProcessProfile postProcessProfile;
 
     public void ClearScreen()
     {
@@ -16,15 +16,15 @@ public class ClearScreenScript : MonoBehaviour
 
     void ClearDepthOfFieldEffect()
     {
-        if (postProcessingProfile == null)
+        if (postProcessProfile == null)
         {
-            postProcessingProfile = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
-            depthOfFieldSettings = postProcessingProfile.depthOfField.settings;
+            ////postProcessProfile = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
+            ////depthOfFieldSettings = postProcessProfile.depthOfField.settings;
         }
 
         // Clear depth of field effect
-        depthOfFieldSettings.aperture = 32f;
-        postProcessingProfile.depthOfField.settings = depthOfFieldSettings;
+        ////depthOfFieldSettings.aperture = 32f;
+        ////postProcessProfile.depthOfField.settings = depthOfFieldSettings;
     }
 
     void ClearFadeScreen()
