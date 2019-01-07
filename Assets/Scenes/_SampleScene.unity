@@ -5873,7 +5873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  speed: 1.25
+  speed: 1.75
   distance: 6
   deltaBufferSize: 0.3
 --- !u!54 &2019093768

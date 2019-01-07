@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PingPongHorizontal : BaseMovement
+public class PingPongVertical : BaseMovement
 {
     public float speed;
     public float distance;
@@ -18,12 +18,12 @@ public class PingPongHorizontal : BaseMovement
         if (canMove && inPositionToMove)
         {
             Vector3 newPosition = GetNewPosition();
-            newPosition.x += distance * currentStep;
+            newPosition.z += distance * currentStep;
             transform.position = newPosition;
         }
         else if (!inPositionToMove)
         {
-            float delta = Mathf.Abs((distance * currentStep) - transform.position.x + startingPosition.x);
+            float delta = Mathf.Abs((distance * currentStep) - transform.position.z + startingPosition.z);
 
             if (delta < deltaBufferSize)
             {
@@ -37,7 +37,7 @@ public class PingPongHorizontal : BaseMovement
     protected Vector3 GetNewPosition()
     {
         Vector3 newPosition = transform.position;
-        newPosition.x = startingPosition.x;
+        newPosition.z = startingPosition.z;
         return newPosition;
     }
 }
