@@ -109,7 +109,12 @@ public class LevelManager : MonoBehaviour
 
     void PlayThemeSong()
     {
-        AudioManager.instance.Play(Songs.PlayTheme);
+        AudioManager.instance.PlaySong(Songs.PlayTheme);
+    }
+
+    void StopThemeSong()
+    {
+        AudioManager.instance.StopSong(Songs.PlayTheme);
     }
 
     IEnumerator LoadNextLevel()
@@ -125,6 +130,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             // Load the menu
+            StopThemeSong();
             SceneManager.LoadScene(0);
         }
     }

@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
 
         instance = this;
         CreateAudioSources();
+        DontDestroyOnLoad(this);
     }
 
     void CreateAudioSources()
@@ -41,10 +42,42 @@ public class AudioManager : MonoBehaviour
 
         if (!soundDict.TryGetValue(name, out sound))
         {
-            Debug.LogWarning("Sound: " + name + " not found!");
+            DebugExtensions.LogNotFound(this, name);
             return;
         }
 
         sound.audioSource.Play();
+    }
+
+    public void PlaySong(string name)
+    {
+        Sound song;
+
+        if (!soundDict.TryGetValue(name, out song))
+        {
+            DebugExtensions.LogNotFound(this, name);
+            return;
+        }
+
+        if (!song.audioSource.isPlaying)
+        {
+            song.audioSource.Play();
+        }
+    }
+
+    public void StopSong(string name)
+    {
+        Sound song;
+
+        if (!soundDict.TryGetValue(name, out song))
+        {
+            DebugExtensions.LogNotFound(this, name);
+            return;
+        }
+
+        if (song.audioSource.isPlaying)
+        {
+            song.audioSource.Stop();
+        }
     }
 }
