@@ -1571,7 +1571,7 @@ MonoBehaviour:
   playerMovement: {fileID: 344621179}
   playerFire: {fileID: 344621181}
   lastEnemyShip: {fileID: 1911660771}
-  lastEnemyMovement: {fileID: 2019093767}
+  lastEnemy: {fileID: 2019093765}
   lastEnemyFire: {fileID: 2019093769}
 --- !u!4 &270965758
 Transform:

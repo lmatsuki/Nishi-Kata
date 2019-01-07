@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     public BaseFire playerFire;
 
     public ShipHealth lastEnemyShip;
-    public BaseMovement lastEnemyMovement;
+    public GameObject lastEnemy;
     public BaseFire lastEnemyFire;
 
     private ScreenFade screenFade;
@@ -69,7 +69,16 @@ public class LevelManager : MonoBehaviour
     void DisableMovement()
     {
         playerMovement.canMove = false;
-        lastEnemyMovement.canMove = false;
+
+        if (lastEnemy != null)
+        {
+            BaseMovement[] movements = lastEnemy.GetComponents<BaseMovement>();
+
+            for (int i = 0; i < movements.Length; i++)
+            {
+                movements[i].canMove = false;
+            }
+        }
     }
 
     void DisableAttacks()
