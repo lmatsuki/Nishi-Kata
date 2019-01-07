@@ -3,6 +3,7 @@
 public class BulletHealth : MonoBehaviour
 {
     public int health;
+    public bool indestructible;
 
 	void Start ()
     {
@@ -11,7 +12,7 @@ public class BulletHealth : MonoBehaviour
 	
 	void Update ()
     {
-		if (health <= 0)
+		if (!indestructible && health <= 0)
         {
             Destroy(transform.parent.gameObject);
         }
