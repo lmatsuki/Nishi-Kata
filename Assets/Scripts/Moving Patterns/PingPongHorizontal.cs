@@ -8,6 +8,7 @@ public class PingPongHorizontal : BaseMovement
 
 	void Start ()
     {
+        inPositionToMove = true;
         startingPosition = transform.position;
 	}
 	
