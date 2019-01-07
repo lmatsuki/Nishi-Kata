@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class LevelManager : MonoBehaviour
     public BaseFire lastEnemyFire;
 
     private ScreenFade screenFade;
+    private bool levelBeat;
 
 	void Start()
     {
@@ -36,7 +39,11 @@ public class LevelManager : MonoBehaviour
 
             screenFade.SetScreenFade(true);
             DisplayVictoryOrDefeatText();
-            gameObject.SetActive(false);
+        }
+
+        if (levelBeat)
+        {
+            StartCoroutine(LoadNextLevel());
         }
 	}
 
@@ -92,6 +99,7 @@ public class LevelManager : MonoBehaviour
         if (!lastEnemyShip.IsAlive())
         {
             victoryText.SetActive(true);
+            levelBeat = true;
         }
         else
         {
@@ -102,5 +110,22 @@ public class LevelManager : MonoBehaviour
     void PlayThemeSong()
     {
         AudioManager.instance.Play(Songs.PlayTheme);
+    }
+
+    IEnumerator LoadNextLevel()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            // Load the menu
+            SceneManager.LoadScene(0);
+        }
     }
 }
