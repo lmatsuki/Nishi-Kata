@@ -5944,7 +5944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 344621178}
-  angleBetweenBullets: 10
+  angleBetweenBullets: 30
 --- !u!1 &2121381011
 GameObject:
   m_ObjectHideFlags: 0
