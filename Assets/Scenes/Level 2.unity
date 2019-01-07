@@ -5940,10 +5940,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2019093765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3181456d5c46e7947b462abf789abed3, type: 3}
+  m_Script: {fileID: 11500000, guid: f43fc7f8e6e1694429eda4f7b503c2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 344621178}
+  angleBetweenBullets: 10
 --- !u!1 &2121381011
 GameObject:
   m_ObjectHideFlags: 0
