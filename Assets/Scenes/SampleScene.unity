@@ -4154,6 +4154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8274aaecc9ee8749925f12964ca9550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixerGroup: {fileID: 24300002, guid: 340b889cf19d0f34097a846d9a3c693c, type: 2}
   sounds:
   - name: PlayerFire
     audioClip: {fileID: 8300000, guid: 3397391f5d4018d4b9942306a8c8ce26, type: 3}
