@@ -2,7 +2,6 @@
 
 public class FireWeak : BaseFire
 {
-    public Transform player;
     public GameObject[] bullets;
     public Transform firePosition;
     public float fireRate;
@@ -11,10 +10,12 @@ public class FireWeak : BaseFire
     private float nextBulletTime;
     private float nextFireTime;
     private int currentBulletIndex;
+    private BaseBulletTargeter bulletTargeter;
 
     void Start ()
     {
         currentBulletIndex = 0;
+        bulletTargeter = GetComponent<BaseBulletTargeter>();
     }
 	
 	protected override void Update()
@@ -33,7 +34,8 @@ public class FireWeak : BaseFire
         if (Time.time > nextBulletTime)
         {
             GameObject bulletPrefab = Instantiate(bullets[currentBulletIndex], firePosition.position, firePosition.rotation);
-            bulletPrefab.transform.LookAt(player);
+            AimBullet(bulletPrefab.transform);
+            //bulletPrefab.transform.Rotate(0f, Random.Range(-30.0f, 30.0f), 0f);
             AudioManager.instance.Play(Sounds.EnemyFire);
 
             // Keep track of current bullet
@@ -45,6 +47,14 @@ public class FireWeak : BaseFire
         if (currentBulletIndex == 0)
         {
             nextFireTime = Time.time + timeBetweenFire;
+        }
+    }
+
+    void AimBullet(Transform bullet)
+    {
+        if (bulletTargeter != null)
+        {
+            bulletTargeter.TargetBullet(bullet);
         }
     }
 }

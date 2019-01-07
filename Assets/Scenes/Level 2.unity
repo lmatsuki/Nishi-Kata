@@ -5837,6 +5837,7 @@ GameObject:
   - component: {fileID: 2019093767}
   - component: {fileID: 2019093770}
   - component: {fileID: 2019093769}
+  - component: {fileID: 2019093771}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5907,7 +5908,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canFire: 0
   initialDelay: 0.1
-  player: {fileID: 344621178}
   bullets:
   - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
   - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
@@ -5931,6 +5931,19 @@ MonoBehaviour:
   speed: 4
   distance: 2
   deltaBufferSize: 0.3
+--- !u!114 &2019093771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019093765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3181456d5c46e7947b462abf789abed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 344621178}
 --- !u!1 &2121381011
 GameObject:
   m_ObjectHideFlags: 0

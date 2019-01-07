@@ -5836,6 +5836,7 @@ GameObject:
   - component: {fileID: 2019093768}
   - component: {fileID: 2019093767}
   - component: {fileID: 2019093769}
+  - component: {fileID: 2019093770}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5906,12 +5907,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canFire: 0
   initialDelay: 3
-  player: {fileID: 344621178}
   bullets:
   - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 3}
   firePosition: {fileID: 1441656992}
   fireRate: 0.17
   timeBetweenFire: 3
+--- !u!114 &2019093770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019093765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3181456d5c46e7947b462abf789abed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 344621178}
 --- !u!1001 &2108922049
 PrefabInstance:
   m_ObjectHideFlags: 0
