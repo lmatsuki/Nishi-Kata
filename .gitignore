@@ -32,5 +32,6 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
+.gradle
 *.apk
 *.unitypackage
