@@ -6,6 +6,7 @@ public class FireWeak : BaseFire
     public Transform firePosition;
     public float fireRate;
     public float timeBetweenFire;
+    public float[] individualDelay;
 
     private float nextBulletTime;
     private float nextFireTime;
@@ -39,7 +40,7 @@ public class FireWeak : BaseFire
 
             // Keep track of current bullet
             currentBulletIndex = (currentBulletIndex + 1) % bullets.Length;
-            nextBulletTime = Time.time + fireRate;
+            nextBulletTime = Time.time + fireRate + AddIndividualDelay();
         }
         
         // Indicates that all bullets have been fired
@@ -55,5 +56,16 @@ public class FireWeak : BaseFire
         {
             bulletTargeter.TargetBullet(bullet);
         }
+    }
+
+    float AddIndividualDelay()
+    {
+        if (individualDelay != null &&
+            individualDelay.Length > currentBulletIndex)
+        {
+            return individualDelay[currentBulletIndex];
+        }
+
+        return 0f;
     }
 }

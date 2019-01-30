@@ -5911,9 +5911,21 @@ MonoBehaviour:
   - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 3}
   - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 3}
   - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 3}
+  - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
+  - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
+  - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
+  - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
+  - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
   firePosition: {fileID: 1441656992}
   fireRate: 0.01
   timeBetweenFire: 1.5
+  individualDelay:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 1.5
 --- !u!114 &2019093770
 MonoBehaviour:
   m_ObjectHideFlags: 0
