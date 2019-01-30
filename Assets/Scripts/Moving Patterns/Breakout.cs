@@ -27,7 +27,7 @@ public class Breakout : BaseMovement
     {
         if (other.CompareTag(Tags.Wall))
         {
-            ChangeDirection();
+            ChangeDirection(other.name);
         }
     }
 
@@ -36,10 +36,18 @@ public class Breakout : BaseMovement
         transform.Rotate(0f, Random.Range(0, 360), 0f);
     }
 
-    private void ChangeDirection()
+    private void ChangeDirection(string wallName)
     {
-        // get the angle the enemy is facing
-        // 0 -> 90 && 180 -> 270 = turn right
-        // 90 -> 180 && 270 -> 360 = turn left
+        if (wallName == Names.LeftWall ||
+            wallName == Names.RightWall)
+        {
+            transform.rotation = Quaternion.Inverse(transform.rotation);
+        }
+        else if (wallName == Names.TopWall ||
+            wallName == Names.BottomWall)
+        {
+            transform.rotation *= Quaternion.Euler(0, 180f, 0);
+            transform.rotation = Quaternion.Inverse(transform.rotation);
+        }
     }
 }
