@@ -33,7 +33,7 @@ public class Breakout : BaseMovement
 
     private void RotateRandom()
     {
-        transform.Rotate(0f, Random.Range(0, 360), 0f);
+        transform.Rotate(0f, Random.Range(120f, 240f), 0f);
     }
 
     private void ChangeDirection(string wallName)
