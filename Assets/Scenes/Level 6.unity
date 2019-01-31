@@ -5836,7 +5836,6 @@ GameObject:
   - component: {fileID: 2019093768}
   - component: {fileID: 2019093769}
   - component: {fileID: 2019093770}
-  - component: {fileID: 2019093767}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5861,20 +5860,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2019093767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019093765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4094959559fde9478ed005a7dd93980, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 344621178}
-  angleBetweenBullets: 45
 --- !u!54 &2019093768
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5906,16 +5891,20 @@ MonoBehaviour:
   canFire: 0
   initialDelay: 0.1
   bullets:
+  - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 3}
   - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
   - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 3}
   - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
+  - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 3}
   - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
   - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 3}
+  - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
   - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 3}
+  - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
   - {fileID: 1649604710408788, guid: ade5785674f8cf449939747adabe0e42, type: 3}
   - {fileID: 1649604710408788, guid: fe06beb8e1e242c41ba452d14a923f86, type: 3}
   firePosition: {fileID: 1441656992}
-  fireRate: 0.01
+  fireRate: 0.1
   timeBetweenFire: 1.5
   individualDelay: []
 --- !u!114 &2019093770
