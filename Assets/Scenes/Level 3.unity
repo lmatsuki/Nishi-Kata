@@ -5874,8 +5874,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  RotateSpeed: 2.75
-  Radius: 6
+  rotateSpeed: 2.5
+  radius: 5
 --- !u!54 &2019093768
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5914,6 +5914,7 @@ MonoBehaviour:
   firePosition: {fileID: 1441656992}
   fireRate: 0.01
   timeBetweenFire: 1.5
+  individualDelay: []
 --- !u!114 &2019093771
 MonoBehaviour:
   m_ObjectHideFlags: 0
