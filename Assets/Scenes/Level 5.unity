@@ -5927,11 +5927,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2019093765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c3a8fe6787c304f82a92eec080e38f, type: 3}
+  m_Script: {fileID: 11500000, guid: b312998618a27004ba16169c97d2055e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  speed: 10
+  speed: 2
+  player: {fileID: 344621178}
 --- !u!1 &2121381011
 GameObject:
   m_ObjectHideFlags: 0
