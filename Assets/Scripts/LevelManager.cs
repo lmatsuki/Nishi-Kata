@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     public List<GameObject> itemsToEnable;
     public GameObject victoryText;
     public GameObject defeatText;
+    public float waittimeBeforeLoad;
 
     public ShipHealth playerShip;
     public BaseMovement playerMovement;
@@ -20,6 +21,7 @@ public class LevelManager : MonoBehaviour
 
     private ScreenFade screenFade;
     private bool levelBeat;
+    private bool levelLost;
 
 	void Start()
     {
@@ -46,6 +48,10 @@ public class LevelManager : MonoBehaviour
         if (levelBeat)
         {
             StartCoroutine(LoadNextLevel());
+        }
+        else if (levelLost)
+        {
+            StartCoroutine(ReturnToMenu());
         }
 	}
 
@@ -112,6 +118,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             defeatText.SetActive(true);
+            levelLost = true;
         }
     }
 
@@ -143,7 +150,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator LoadNextLevel()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(waittimeBeforeLoad);
 
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
@@ -158,5 +165,14 @@ public class LevelManager : MonoBehaviour
             StopThemeSong();
             StartCoroutine(LoadSceneAsync(0));
         }
+    }
+
+    IEnumerator ReturnToMenu()
+    {
+        yield return new WaitForSeconds(waittimeBeforeLoad);
+
+        // Load the menu
+        StopThemeSong();
+        StartCoroutine(LoadSceneAsync(0));
     }
 }
