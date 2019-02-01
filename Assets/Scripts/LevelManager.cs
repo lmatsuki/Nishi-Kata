@@ -7,8 +7,6 @@ public class LevelManager : MonoBehaviour
 {
     public List<GameObject> itemsToDisable;
     public List<GameObject> itemsToEnable;
-    public GameObject victoryText;
-    public GameObject defeatText;
     public float waittimeBeforeLoad;
 
     public ShipHealth playerShip;
@@ -19,12 +17,19 @@ public class LevelManager : MonoBehaviour
     public GameObject lastEnemy;
     public BaseFire lastEnemyFire;
 
+    private GameObject victoryText;
+    private GameObject defeatText;
     private ScreenFade screenFade;
     private bool levelBeat;
     private bool levelLost;
 
 	void Start()
     {
+        // Find inactive GameObjects
+        GameObject canvas = GameObject.Find(Names.Canvas);
+        victoryText = canvas.transform.Find(Names.VictoryText).gameObject;
+        defeatText = canvas.transform.Find(Names.DefeatText).gameObject;
+
         screenFade = Camera.main.GetComponent<ScreenFade>();
         screenFade.SetScreenFade(false);
         PlayThemeSong();
