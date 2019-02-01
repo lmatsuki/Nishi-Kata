@@ -1567,6 +1567,7 @@ MonoBehaviour:
   itemsToEnable: []
   victoryText: {fileID: 1705638435}
   defeatText: {fileID: 220695086}
+  waittimeBeforeLoad: 1.5
   playerShip: {fileID: 653783147}
   playerMovement: {fileID: 344621179}
   playerFire: {fileID: 344621181}
