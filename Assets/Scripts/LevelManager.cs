@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
         {
             DisableItems();
             DisableMovement();
+            StopVelocity();
             DisableAttacks();
             EnableItems();
 
@@ -86,6 +87,12 @@ public class LevelManager : MonoBehaviour
                 movements[i].canMove = false;
             }
         }
+    }
+
+    void StopVelocity()
+    {
+        playerMovement.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        lastEnemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     void DisableAttacks()
