@@ -129,7 +129,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator LoadNextLevel()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.5f);
 
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
