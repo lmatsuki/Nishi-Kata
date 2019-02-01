@@ -117,6 +117,16 @@ public class LevelManager : MonoBehaviour
         AudioManager.instance.StopSong(Songs.PlayTheme);
     }
 
+    IEnumerator LoadSceneAsync(int buildIndex)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(buildIndex);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+
     IEnumerator LoadNextLevel()
     {
         yield return new WaitForSeconds(2.0f);
@@ -125,13 +135,14 @@ public class LevelManager : MonoBehaviour
 
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            int nextBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            StartCoroutine(LoadSceneAsync(nextBuildIndex));
         }
         else
         {
             // Load the menu
             StopThemeSong();
-            SceneManager.LoadScene(0);
+            StartCoroutine(LoadSceneAsync(0));
         }
     }
 }
