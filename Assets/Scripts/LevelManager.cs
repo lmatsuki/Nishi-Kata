@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
             StopVelocity();
             DisableAttacks();
             EnableItems();
+            DestroyAllBullets();
 
             screenFade.SetScreenFade(true);
             DisplayVictoryOrDefeatText();
@@ -112,6 +113,12 @@ public class LevelManager : MonoBehaviour
         {
             defeatText.SetActive(true);
         }
+    }
+
+    void DestroyAllBullets()
+    {
+        UtilityExtensions.DestroyObjectsByTag(Tags.PlayerBullet);
+        UtilityExtensions.DestroyObjectsByTag(Tags.EnemyBullet);
     }
 
     void PlayThemeSong()
