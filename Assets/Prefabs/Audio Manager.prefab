@@ -87,3 +87,9 @@ MonoBehaviour:
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
+  - name: PlayerDeath
+    audioClip: {fileID: 8300000, guid: 0038fbdd7d303d8499b6626a89ad92fe, type: 3}
+    volume: 0.6
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
