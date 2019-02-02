@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
     public GameObject lastEnemy;
     public BaseFire lastEnemyFire;
 
+    public string[] levelThemeOverride;
+
     private GameObject victoryText;
     private GameObject defeatText;
     private ScreenFade screenFade;
@@ -135,12 +137,31 @@ public class LevelManager : MonoBehaviour
 
     void PlayThemeSong()
     {
-        AudioManager.instance.PlaySong(Songs.PlayTheme);
+        if (string.IsNullOrEmpty(AudioManager.instance.GetCurrentlyPlayingSongName()))
+        {
+            AudioManager.instance.PlaySong(Songs.PlayTheme);
+        }
     }
 
-    void StopThemeSong()
+    void StopCurrentlyPlayingSong()
     {
-        AudioManager.instance.StopSong(Songs.PlayTheme);
+        string currentSongName = AudioManager.instance.GetCurrentlyPlayingSongName();
+
+        if (!string.IsNullOrEmpty(currentSongName))
+        {
+            AudioManager.instance.StopSong(currentSongName);
+        }
+    }
+
+    void CheckLevelThemeOverride(int buildIndex)
+    {
+        if (levelThemeOverride != null &&
+            levelThemeOverride.Length > buildIndex &&
+            !string.IsNullOrEmpty(levelThemeOverride[buildIndex]))
+        {
+            AudioManager.instance.StopSong(AudioManager.instance.GetCurrentlyPlayingSongName());
+            AudioManager.instance.PlaySong(levelThemeOverride[buildIndex]);
+        }
     }
 
     IEnumerator LoadSceneAsync(int buildIndex)
@@ -162,12 +183,14 @@ public class LevelManager : MonoBehaviour
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             int nextBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            CheckLevelThemeOverride(nextBuildIndex);
+
             StartCoroutine(LoadSceneAsync(nextBuildIndex));
         }
         else
         {
             // Load the menu
-            StopThemeSong();
+            StopCurrentlyPlayingSong();
             StartCoroutine(LoadSceneAsync(0));
         }
     }
@@ -177,7 +200,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(waittimeBeforeLoad);
 
         // Load the menu
-        StopThemeSong();
+        StopCurrentlyPlayingSong();
         StartCoroutine(LoadSceneAsync(0));
     }
 }

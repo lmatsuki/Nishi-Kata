@@ -1419,6 +1419,7 @@ MonoBehaviour:
   lastEnemyShip: {fileID: 1911660771}
   lastEnemy: {fileID: 2019093765}
   lastEnemyFire: {fileID: 2019093769}
+  levelThemeOverride: []
 --- !u!4 &270965758
 Transform:
   m_ObjectHideFlags: 0
