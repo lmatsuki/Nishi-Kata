@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7375902825946996398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7375902825946996396}
+  - component: {fileID: 7375902825946996397}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7375902825946996396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375902825946996398}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.005447328, y: 0.75000006, z: -3.5709968}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7375902825946996397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375902825946996398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8274aaecc9ee8749925f12964ca9550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixerGroup: {fileID: 24300002, guid: 340b889cf19d0f34097a846d9a3c693c, type: 2}
+  sounds:
+  - name: PlayerFire
+    audioClip: {fileID: 8300000, guid: 3397391f5d4018d4b9942306a8c8ce26, type: 3}
+    volume: 0.15
+    pitch: 2.8
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: EnemyFire
+    audioClip: {fileID: 8300000, guid: 3397391f5d4018d4b9942306a8c8ce26, type: 3}
+    volume: 0.15
+    pitch: 1.9
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: EnemyDeath
+    audioClip: {fileID: 8300000, guid: 0038fbdd7d303d8499b6626a89ad92fe, type: 3}
+    volume: 0.5
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: BulletHit
+    audioClip: {fileID: 8300000, guid: 125ae548a6233b044929bfc2e29b8a64, type: 3}
+    volume: 0.15
+    pitch: 2.4
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: PlayTheme
+    audioClip: {fileID: 8300000, guid: 4b2610a7251eed943a8701fa061937fa, type: 3}
+    volume: 0.4
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 1
+  - name: BossTheme
+    audioClip: {fileID: 8300000, guid: 8ef461ed43034f041943cbfb0c0064a8, type: 3}
+    volume: 0.4
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 1
+  - name: MenuTheme
+    audioClip: {fileID: 8300000, guid: 4b2610a7251eed943a8701fa061937fa, type: 3}
+    volume: 0.4
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 1
