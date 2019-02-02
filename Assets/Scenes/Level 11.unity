@@ -5366,7 +5366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToDisable: []
   itemsToEnable: []
-  waittimeBeforeLoad: 1.5
+  waittimeBeforeLoad: 5
   playerShip: {fileID: 653783147}
   playerMovement: {fileID: 344621179}
   playerFire: {fileID: 344621181}
@@ -5459,5 +5459,10 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 1946465534}
+    - target: {fileID: 3804148278235908698, guid: ab22e1880f28c8942b7b2d1b47762678,
+        type: 3}
+      propertyPath: m_Text
+      value: CONGRATULATIONS, YOU WON!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab22e1880f28c8942b7b2d1b47762678, type: 3}

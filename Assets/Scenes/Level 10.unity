@@ -3691,6 +3691,18 @@ MonoBehaviour:
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
+  - name: BossTheme
+    audioClip: {fileID: 8300000, guid: 4b2610a7251eed943a8701fa061937fa, type: 3}
+    volume: 0.4
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 1
+  - name: MenuTheme
+    audioClip: {fileID: 8300000, guid: 4b2610a7251eed943a8701fa061937fa, type: 3}
+    volume: 0.4
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 1
 --- !u!4 &1601595803
 Transform:
   m_ObjectHideFlags: 0
@@ -4179,7 +4191,7 @@ PrefabInstance:
     - target: {fileID: 3804148278235908698, guid: ab22e1880f28c8942b7b2d1b47762678,
         type: 3}
       propertyPath: m_Text
-      value: CONGRATULATIONS, YOU WON!
+      value: HACKING COMPLETE.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab22e1880f28c8942b7b2d1b47762678, type: 3}
