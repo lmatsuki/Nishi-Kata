@@ -1412,8 +1412,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToDisable: []
   itemsToEnable: []
-  victoryText: {fileID: 0}
-  defeatText: {fileID: 0}
   waittimeBeforeLoad: 1.5
   playerShip: {fileID: 653783147}
   playerMovement: {fileID: 344621179}
@@ -4163,7 +4161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd073eda3294c7d4bacf1ea7cdd22e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 8
   blinkTime: 0.2
   smoothVelocity: 0
   renderer: {fileID: 819564888}

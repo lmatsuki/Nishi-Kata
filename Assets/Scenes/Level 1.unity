@@ -1381,12 +1381,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 107.910995, y: -0.000015258789, z: -0.000015258789}
---- !u!1 &220695086 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3804148278646553169, guid: ab22e1880f28c8942b7b2d1b47762678,
-    type: 3}
-  m_PrefabInstance: {fileID: 3804148278694752383}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &339386891
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,12 +3904,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658685957}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1705638435 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3804148278235908700, guid: ab22e1880f28c8942b7b2d1b47762678,
-    type: 3}
-  m_PrefabInstance: {fileID: 3804148278694752383}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1717681002
 GameObject:
   m_ObjectHideFlags: 0
@@ -4121,7 +4109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd073eda3294c7d4bacf1ea7cdd22e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 8
   blinkTime: 0.2
   smoothVelocity: 0
   renderer: {fileID: 819564888}
@@ -5375,8 +5363,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToDisable: []
   itemsToEnable: []
-  victoryText: {fileID: 1705638435}
-  defeatText: {fileID: 220695086}
   waittimeBeforeLoad: 1.5
   playerShip: {fileID: 653783147}
   playerMovement: {fileID: 344621179}
