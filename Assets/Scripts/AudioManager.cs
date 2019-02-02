@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
         {
             return;
         }
-
+        
         instance = this;
         CreateAudioSources();
         DontDestroyOnLoad(this);
@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
             DebugExtensions.LogNotFound(this, name);
             return;
         }
-
+        
         if (!song.audioSource.isPlaying)
         {
             song.audioSource.Play();
@@ -79,5 +79,19 @@ public class AudioManager : MonoBehaviour
         {
             song.audioSource.Stop();
         }
+    }
+
+    public string GetCurrentlyPlayingSongName()
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].audioSource.isPlaying &&
+                sounds[i].loop)
+            {
+                return sounds[i].name;
+            }
+        }
+
+        return string.Empty;
     }
 }

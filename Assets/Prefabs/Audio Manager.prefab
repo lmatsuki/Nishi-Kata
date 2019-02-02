@@ -76,13 +76,13 @@ MonoBehaviour:
     audioSource: {fileID: 0}
     loop: 1
   - name: BossTheme
-    audioClip: {fileID: 8300000, guid: 8ef461ed43034f041943cbfb0c0064a8, type: 3}
+    audioClip: {fileID: 8300000, guid: 4a084820f3aee0043a9ebc9c1ef8ffac, type: 3}
     volume: 0.4
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
   - name: MenuTheme
-    audioClip: {fileID: 8300000, guid: 4b2610a7251eed943a8701fa061937fa, type: 3}
+    audioClip: {fileID: 8300000, guid: 7553700a1b144d74d9d2cf9eaa996fc4, type: 3}
     volume: 0.4
     pitch: 1
     audioSource: {fileID: 0}
