@@ -2252,7 +2252,7 @@ MonoBehaviour:
   - {fileID: 344621177}
   - {fileID: 700109400}
   - {fileID: 14091293}
-  deathSoundName: 
+  deathSoundName: PlayerDeath
   screenShakeOnDeath: 0
 --- !u!1 &700109400
 GameObject:
@@ -5370,6 +5370,7 @@ MonoBehaviour:
   lastEnemyShip: {fileID: 1911660771}
   lastEnemy: {fileID: 2019093765}
   lastEnemyFire: {fileID: 2019093769}
+  levelThemeOverride: []
 --- !u!4 &1990395450696771498
 Transform:
   m_ObjectHideFlags: 0

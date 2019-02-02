@@ -137,7 +137,20 @@ public class LevelManager : MonoBehaviour
 
     void PlayThemeSong()
     {
-        if (string.IsNullOrEmpty(AudioManager.instance.GetCurrentlyPlayingSongName()))
+        if (!string.IsNullOrEmpty(AudioManager.instance.GetCurrentlyPlayingSongName()))
+        {
+            return;
+        }
+
+        int currentBuildIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (levelThemeOverride != null &&
+            levelThemeOverride.Length > currentBuildIndex &&
+            !string.IsNullOrEmpty(levelThemeOverride[currentBuildIndex]))
+        {
+            AudioManager.instance.PlaySong(levelThemeOverride[currentBuildIndex]);
+        }
+        else
         {
             AudioManager.instance.PlaySong(Songs.PlayTheme);
         }

@@ -2157,7 +2157,7 @@ MonoBehaviour:
   - {fileID: 344621177}
   - {fileID: 700109400}
   - {fileID: 14091293}
-  deathSoundName: 
+  deathSoundName: PlayerDeath
   screenShakeOnDeath: 0
 --- !u!1 &700109400
 GameObject:
