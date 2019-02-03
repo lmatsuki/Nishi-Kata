@@ -18,4 +18,6 @@ public class Sound
     public AudioSource audioSource;
 
     public bool loop;
+
+    public bool dontStackSounds;
 }

@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
             sounds[i].audioSource.pitch = sounds[i].pitch;
             sounds[i].audioSource.loop = sounds[i].loop;
             sounds[i].audioSource.outputAudioMixerGroup = audioMixerGroup;
+            sounds[i].dontStackSounds = sounds[i].dontStackSounds;
             soundDict[sounds[i].name] = sounds[i];
         }
     }
@@ -43,6 +44,11 @@ public class AudioManager : MonoBehaviour
         if (!soundDict.TryGetValue(name, out sound))
         {
             DebugExtensions.LogNotFound(this, name);
+            return;
+        }
+
+        if (sound.dontStackSounds && sound.audioSource.isPlaying)
+        {
             return;
         }
 

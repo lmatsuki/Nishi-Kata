@@ -51,45 +51,53 @@ MonoBehaviour:
     pitch: 2.8
     audioSource: {fileID: 0}
     loop: 0
+    dontStackSounds: 0
   - name: EnemyFire
     audioClip: {fileID: 8300000, guid: 3397391f5d4018d4b9942306a8c8ce26, type: 3}
     volume: 0.075
     pitch: 1.9
     audioSource: {fileID: 0}
     loop: 0
+    dontStackSounds: 1
   - name: EnemyDeath
     audioClip: {fileID: 8300000, guid: 0038fbdd7d303d8499b6626a89ad92fe, type: 3}
     volume: 0.5
     pitch: 1
     audioSource: {fileID: 0}
     loop: 0
+    dontStackSounds: 0
   - name: BulletHit
     audioClip: {fileID: 8300000, guid: 125ae548a6233b044929bfc2e29b8a64, type: 3}
     volume: 0.15
     pitch: 2.4
     audioSource: {fileID: 0}
     loop: 0
+    dontStackSounds: 0
   - name: PlayTheme
     audioClip: {fileID: 8300000, guid: 4b2610a7251eed943a8701fa061937fa, type: 3}
     volume: 0.4
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
+    dontStackSounds: 0
   - name: BossTheme
     audioClip: {fileID: 8300000, guid: 4a084820f3aee0043a9ebc9c1ef8ffac, type: 3}
     volume: 0.4
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
+    dontStackSounds: 0
   - name: MenuTheme
     audioClip: {fileID: 8300000, guid: 7553700a1b144d74d9d2cf9eaa996fc4, type: 3}
     volume: 0.4
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
+    dontStackSounds: 0
   - name: PlayerDeath
     audioClip: {fileID: 8300000, guid: 0038fbdd7d303d8499b6626a89ad92fe, type: 3}
     volume: 0.6
     pitch: 1
     audioSource: {fileID: 0}
     loop: 0
+    dontStackSounds: 0
