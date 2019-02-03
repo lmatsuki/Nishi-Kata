@@ -53,7 +53,7 @@ MonoBehaviour:
     loop: 0
   - name: EnemyFire
     audioClip: {fileID: 8300000, guid: 3397391f5d4018d4b9942306a8c8ce26, type: 3}
-    volume: 0.15
+    volume: 0.075
     pitch: 1.9
     audioSource: {fileID: 0}
     loop: 0
