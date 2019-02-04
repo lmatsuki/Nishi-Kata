@@ -12,6 +12,7 @@ public class ShipHealth : MonoBehaviour
     public string deathSoundName;
     public bool screenShakeOnDeath;
     public GameObject onHitParticleFX;
+    public GameObject onDeathParticleFX;
 
     private Color initialColor;
     private bool takingDamage;
@@ -107,13 +108,18 @@ public class ShipHealth : MonoBehaviour
             AudioManager.instance.Play(deathSoundName);
         }
 
+        ShakeScreenOnDeath();
+        PlayOnDeathParticleEffect();
+        alive = false;
+        print(transform.parent.name + " has died!");
+    }
+
+    void ShakeScreenOnDeath()
+    {
         if (screenShakeOnDeath)
         {
             CameraShaker.Instance.ShakeOnce(3f, 5f, 0, 1.5f);
         }
-
-        alive = false;
-        print(transform.parent.name + " has died!");
     }
 
     void PlayOnHitParticleEffect()
@@ -130,6 +136,16 @@ public class ShipHealth : MonoBehaviour
         }
 
         currentOnHitFX = Instantiate(onHitParticleFX, transform) as GameObject;
+    }
+
+    void PlayOnDeathParticleEffect()
+    {
+        if (onDeathParticleFX == null)
+        {
+            return;
+        }
+
+        Instantiate(onDeathParticleFX, transform.position, Quaternion.identity);
     }
 
     public bool IsAlive()
