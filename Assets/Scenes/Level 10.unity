@@ -2159,7 +2159,8 @@ MonoBehaviour:
   - {fileID: 14091293}
   deathSoundName: PlayerDeath
   screenShakeOnDeath: 0
-  onHitParticleFX: {fileID: 0}
+  onHitParticleFX: {fileID: 1967288118373157171, guid: 1b8eb299b5e56ea499f5ca6526f6332d,
+    type: 3}
 --- !u!1 &700109400
 GameObject:
   m_ObjectHideFlags: 0
