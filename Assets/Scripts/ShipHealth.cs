@@ -11,6 +11,7 @@ public class ShipHealth : MonoBehaviour
     public GameObject[] healthParts;
     public string deathSoundName;
     public bool screenShakeOnDeath;
+    public ParticleSystem onHitParticleFX;
 
     private Color initialColor;
     private bool takingDamage;
@@ -63,6 +64,7 @@ public class ShipHealth : MonoBehaviour
             takingDamage = true;
             currentSmoothTime = 0;
             HideHealthPart();
+            PlayOnHitParticleEffect();
 
             if (health == 0)
             {
@@ -111,6 +113,21 @@ public class ShipHealth : MonoBehaviour
 
         alive = false;
         print(transform.parent.name + " has died!");
+    }
+
+    void PlayOnHitParticleEffect()
+    {
+        if (onHitParticleFX == null)
+        {
+            return;
+        }
+
+        if (onHitParticleFX.isPlaying)
+        {
+            onHitParticleFX.Clear();
+        }
+
+        onHitParticleFX.Play();
     }
 
     public bool IsAlive()
