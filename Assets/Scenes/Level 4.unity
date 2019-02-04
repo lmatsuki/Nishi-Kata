@@ -2147,6 +2147,7 @@ MonoBehaviour:
   - {fileID: 14091293}
   deathSoundName: PlayerDeath
   screenShakeOnDeath: 0
+  onHitParticleFX: {fileID: 0}
 --- !u!1 &700109400
 GameObject:
   m_ObjectHideFlags: 0
@@ -3668,30 +3669,35 @@ MonoBehaviour:
     pitch: 2.8
     audioSource: {fileID: 0}
     loop: 0
+    dontStackSounds: 0
   - name: EnemyFire
     audioClip: {fileID: 8300000, guid: 3397391f5d4018d4b9942306a8c8ce26, type: 3}
     volume: 0.15
     pitch: 1.9
     audioSource: {fileID: 0}
     loop: 0
+    dontStackSounds: 0
   - name: EnemyDeath
     audioClip: {fileID: 8300000, guid: 0038fbdd7d303d8499b6626a89ad92fe, type: 3}
     volume: 0.5
     pitch: 1
     audioSource: {fileID: 0}
     loop: 0
+    dontStackSounds: 0
   - name: BulletHit
     audioClip: {fileID: 8300000, guid: 125ae548a6233b044929bfc2e29b8a64, type: 3}
     volume: 0.15
     pitch: 2.4
     audioSource: {fileID: 0}
     loop: 0
+    dontStackSounds: 0
   - name: PlayTheme
     audioClip: {fileID: 8300000, guid: 4b2610a7251eed943a8701fa061937fa, type: 3}
     volume: 0.4
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
+    dontStackSounds: 0
 --- !u!4 &1601595803
 Transform:
   m_ObjectHideFlags: 0
@@ -4244,6 +4250,8 @@ MonoBehaviour:
   - {fileID: 2019093765}
   deathSoundName: EnemyDeath
   screenShakeOnDeath: 1
+  onHitParticleFX: {fileID: 1967288118373157171, guid: a9a960e16fb77634fac76e501e70de80,
+    type: 3}
 --- !u!1 &1946465528
 GameObject:
   m_ObjectHideFlags: 0
