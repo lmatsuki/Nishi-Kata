@@ -11,12 +11,13 @@ public class ShipHealth : MonoBehaviour
     public GameObject[] healthParts;
     public string deathSoundName;
     public bool screenShakeOnDeath;
-    public ParticleSystem onHitParticleFX;
+    public GameObject onHitParticleFX;
 
     private Color initialColor;
     private bool takingDamage;
     private float currentSmoothTime;
     private bool alive;
+    private GameObject currentOnHitFX;
 
     void Start()
     {
@@ -122,12 +123,13 @@ public class ShipHealth : MonoBehaviour
             return;
         }
 
-        if (onHitParticleFX.isPlaying)
+        // Use currentOnHitFX to keep track of currently playing on hit particle system
+        if (currentOnHitFX != null)
         {
-            onHitParticleFX.Clear();
+            Destroy(currentOnHitFX);
         }
 
-        onHitParticleFX.Play();
+        currentOnHitFX = Instantiate(onHitParticleFX, transform) as GameObject;
     }
 
     public bool IsAlive()
