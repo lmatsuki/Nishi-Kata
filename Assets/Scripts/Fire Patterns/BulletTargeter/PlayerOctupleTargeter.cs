@@ -2,13 +2,13 @@
 
 public class PlayerOctupleTargeter : BaseBulletTargeter
 {
-    public Transform player;
     public float angleBetweenBullets;
 
     private int currentBulletIndex;
 
     public void Start()
     {
+        base.Start();
         currentBulletIndex = 0;
     }
 

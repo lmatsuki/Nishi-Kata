@@ -3,13 +3,14 @@
 public class TowardsPlayer : BaseMovement
 {
     public float speed;
-    public Transform player;
 
+    private Transform player;
     private new Rigidbody rigidbody;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag(Tags.Player).transform;
     }
 
     void FixedUpdate()

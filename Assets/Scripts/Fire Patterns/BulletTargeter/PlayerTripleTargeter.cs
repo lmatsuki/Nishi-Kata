@@ -2,13 +2,13 @@
 
 public class PlayerTripleTargeter : BaseBulletTargeter
 {
-    public Transform player;
     public float angleBetweenBullets;
 
     private int currentBulletIndex;
 
-    public void Start()
+    void Start()
     {
+        base.Start();
         currentBulletIndex = -1;
     }
 
