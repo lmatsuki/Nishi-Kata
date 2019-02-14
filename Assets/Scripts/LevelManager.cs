@@ -9,15 +9,15 @@ public class LevelManager : MonoBehaviour
     public List<GameObject> itemsToEnable;
     public float waittimeBeforeLoad;
 
-    public ShipHealth playerShip;
-    public BaseMovement playerMovement;
-    public BaseFire playerFire;
-
-    public ShipHealth lastEnemyShip;
-    public GameObject lastEnemy;
-    public BaseFire lastEnemyFire;
-
     public string[] levelThemeOverride;
+
+    private ShipHealth playerShip;
+    private BaseMovement playerMovement;
+    private BaseFire playerFire;
+
+    private ShipHealth lastEnemyShip;
+    private GameObject lastEnemy;
+    private BaseFire lastEnemyFire;
 
     private GameObject victoryText;
     private GameObject defeatText;
@@ -27,6 +27,9 @@ public class LevelManager : MonoBehaviour
 
 	void Start()
     {
+        AssignPlayerComponents();
+        AssignLastEnemyComponents();
+
         // Find inactive GameObjects
         GameObject canvas = GameObject.Find(Names.Canvas);
         victoryText = canvas.transform.Find(Names.VictoryText).gameObject;
@@ -36,6 +39,35 @@ public class LevelManager : MonoBehaviour
         screenFade.SetScreenFade(false);
         PlayThemeSong();
 	}
+
+    void AssignPlayerComponents()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag(Tags.Player);
+        
+        if (player == null)
+        {
+            Debug.LogError("GameObject with Tag Player not found in LevelManager.cs!");
+            return;
+        }
+
+        playerShip = player.GetComponentInChildren<ShipHealth>();
+        playerMovement = player.GetComponent<PlayerMovement>();
+        playerFire = player.GetComponent<PlayerFire>();
+    }
+
+    void AssignLastEnemyComponents()
+    {
+        lastEnemy = GameObject.FindGameObjectWithTag(Tags.LastEnemy);
+
+        if (lastEnemy == null)
+        {
+            Debug.LogError("GameObject with Tag LastEnemy not found in LevelManager.cs!");
+            return;
+        }
+
+        lastEnemyShip = lastEnemy.GetComponentInChildren<ShipHealth>();
+        lastEnemyFire = lastEnemy.GetComponent<BaseFire>();
+    }
 
 	void Update()
     {
