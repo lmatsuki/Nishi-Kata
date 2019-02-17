@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
     private ShipHealth playerShip;
-    private BaseMovement playerMovement;
+    private IPlayerMovement playerMovement;
     private BaseFire playerFire;
 
     private ShipHealth lastEnemyShip;
@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
         }
 
         playerShip = player.GetComponentInChildren<ShipHealth>();
-        playerMovement = player.GetComponent<PlayerMovement>();
+        playerMovement = player.GetComponent<IPlayerMovement>();
         playerFire = player.GetComponent<PlayerFire>();
     }
 
@@ -147,7 +147,7 @@ public class LevelManager : MonoBehaviour
 
     void DisableMovement()
     {
-        playerMovement.canMove = false;
+        playerMovement.SetCanMove(false);
 
         if (lastEnemy != null)
         {
@@ -164,7 +164,7 @@ public class LevelManager : MonoBehaviour
     {
         if (playerMovement != null)
         {
-            playerMovement.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            playerMovement.GetRigidbody().velocity = Vector3.zero;
         }
         
         if (lastEnemy != null)

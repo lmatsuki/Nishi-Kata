@@ -3441,6 +3441,7 @@ GameObject:
   - component: {fileID: 5851505704399936073}
   - component: {fileID: 5851505704399936078}
   - component: {fileID: 5851505704399936072}
+  - component: {fileID: 6073225171950636425}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3493,10 +3494,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70593bcc3ea2856478871cd09430b110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMove: 1
-  movementSpeed: 22
-  rotationSpeed: 180
-  characterTransform: {fileID: 5851505702780022475}
 --- !u!114 &5851505704399936072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3514,3 +3511,19 @@ MonoBehaviour:
   firePosition: {fileID: 5851505703916527030}
   bullet: {fileID: 1289616973724026, guid: d6657992113c0b84185ae2ba13f8cd37, type: 3}
   fireRate: 0.1
+--- !u!114 &6073225171950636425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5851505704399936076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33034ed517d3aac4f81268e3893a53c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 1
+  movementSpeed: 22
+  rotationSpeed: 180
+  characterTransform: {fileID: 0}
