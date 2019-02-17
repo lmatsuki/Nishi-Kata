@@ -42,7 +42,7 @@ public class ShipHealth : MonoBehaviour
             return;
         }
 
-        Debug.Log(other.name + " entered " + transform.parent.name);
+        //Debug.Log(other.name + " entered " + transform.parent.name);
         // Enemy bullet
         if (other.tag.Contains(Tags.Bullet) && !other.tag.Contains(tag))
         {
