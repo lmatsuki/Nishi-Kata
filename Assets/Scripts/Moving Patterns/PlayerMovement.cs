@@ -2,7 +2,8 @@
 
 public class PlayerMovement : BaseMovement
 {
-	public float speed;
+	public float movementSpeed;
+    public float rotationSpeed;
     public Transform characterTransform;
 
     private new Rigidbody rigidbody;
@@ -12,48 +13,61 @@ public class PlayerMovement : BaseMovement
         rigidbody = GetComponent<Rigidbody>();
     }
 
-	void FixedUpdate () 
+	void FixedUpdate() 
 	{
         if (!canMove)
         {
             return;
         }
 
-        float horizontalMovement = handleHorizontalInput();
-        float verticalMovement = handleVerticalInput();
+        float horizontalMovement = HandleHorizontalInput();
+        float verticalMovement = HandleVerticalInput();
         Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
-        rigidbody.velocity = movement * speed;
+        rigidbody.velocity = movement * movementSpeed;
+        HandleRotationInput();
     }
 
-    float handleHorizontalInput()
+    float HandleHorizontalInput()
     {
         float horizontalMovement = 0.0f;
 
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            horizontalMovement = -speed * Time.deltaTime;
+            horizontalMovement = -movementSpeed * Time.deltaTime;
         }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
-            horizontalMovement = speed * Time.deltaTime;
+            horizontalMovement = movementSpeed * Time.deltaTime;
         }
 
         return horizontalMovement;
     }
 
-    float handleVerticalInput()
+    float HandleVerticalInput()
     {
         float verticalMovement = 0.0f;
 
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
-            verticalMovement = speed * Time.deltaTime;
+            verticalMovement = movementSpeed * Time.deltaTime;
         }
-        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
         {
-            verticalMovement = -speed * Time.deltaTime;
+            verticalMovement = -movementSpeed * Time.deltaTime;
         }
 
         return verticalMovement;
+    }
+
+    void HandleRotationInput()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate(new Vector3(0, -rotationSpeed * Time.deltaTime, 0));
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime, 0));
+        }
     }
 }

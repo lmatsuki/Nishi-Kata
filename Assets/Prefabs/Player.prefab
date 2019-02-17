@@ -3494,7 +3494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  speed: 22
+  movementSpeed: 22
+  rotationSpeed: 180
   characterTransform: {fileID: 5851505702780022475}
 --- !u!114 &5851505704399936072
 MonoBehaviour:
