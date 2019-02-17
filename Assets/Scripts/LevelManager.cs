@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
 
     public string[] levelThemeOverride;
 
+    public static LevelManager instance;
     private ShipHealth playerShip;
     private BaseMovement playerMovement;
     private BaseFire playerFire;
@@ -24,21 +25,34 @@ public class LevelManager : MonoBehaviour
     private ScreenFade screenFade;
     private bool levelBeat;
     private bool levelLost;
+    private bool loadNextLevel;
 
-	void Start()
+    void Awake()
     {
-        AssignPlayerComponents();
-        AssignLastEnemyComponents();
+        if (!IsMenuScene())
+        {
+            AssignPlayerComponents();
+            AssignLastEnemyComponents();
 
-        // Find inactive GameObjects
-        GameObject canvas = GameObject.Find(Names.Canvas);
-        victoryText = canvas.transform.Find(Names.VictoryText).gameObject;
-        defeatText = canvas.transform.Find(Names.DefeatText).gameObject;
+            // Find inactive GameObjects
+            GameObject canvas = GameObject.Find(Names.Canvas);
+            victoryText = canvas.transform.Find(Names.VictoryText).gameObject;
+            defeatText = canvas.transform.Find(Names.DefeatText).gameObject;
 
-        screenFade = Camera.main.GetComponent<ScreenFade>();
-        screenFade.SetScreenFade(false);
+            screenFade = Camera.main.GetComponent<ScreenFade>();
+            screenFade.SetScreenFade(false);
+        }
+
         PlayThemeSong();
-	}
+        
+        if (instance != null)
+        {
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(this);
+    }
 
     void AssignPlayerComponents()
     {
@@ -71,6 +85,11 @@ public class LevelManager : MonoBehaviour
 
 	void Update()
     {
+        if (lastEnemyShip == null || playerShip == null)
+        {
+            return;
+        }
+
 		if (!lastEnemyShip.IsAlive() || !playerShip.IsAlive())
         {
             DisableItems();
@@ -86,11 +105,17 @@ public class LevelManager : MonoBehaviour
 
         if (levelBeat)
         {
-            StartCoroutine(LoadNextLevel());
+            StartCoroutine(WaitBeforeNextLevel());
         }
         else if (levelLost)
         {
             StartCoroutine(ReturnToMenu());
+        }
+
+        if (loadNextLevel)
+        {
+            loadNextLevel = false;
+            LoadNextLevel();
         }
 	}
 
@@ -137,8 +162,15 @@ public class LevelManager : MonoBehaviour
 
     void StopVelocity()
     {
-        playerMovement.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        lastEnemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        if (playerMovement != null)
+        {
+            playerMovement.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+        
+        if (lastEnemy != null)
+        {
+            lastEnemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
     }
 
     void DisableAttacks()
@@ -209,20 +241,8 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    IEnumerator LoadSceneAsync(int buildIndex)
+    private void LoadNextLevel()
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(buildIndex);
-
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
-    }
-
-    IEnumerator LoadNextLevel()
-    {
-        yield return new WaitForSeconds(waittimeBeforeLoad);
-
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
@@ -238,6 +258,27 @@ public class LevelManager : MonoBehaviour
             StopCurrentlyPlayingSong();
             StartCoroutine(LoadSceneAsync(0));
         }
+    }
+
+    private bool IsMenuScene()
+    {
+        return SceneManager.GetActiveScene().buildIndex == 0;
+    }
+
+    IEnumerator LoadSceneAsync(int buildIndex)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(buildIndex);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+
+    IEnumerator WaitBeforeNextLevel()
+    {       
+        yield return new WaitForSeconds(waittimeBeforeLoad);
+        loadNextLevel = true;
     }
 
     IEnumerator ReturnToMenu()
