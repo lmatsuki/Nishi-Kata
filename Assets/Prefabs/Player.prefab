@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5851505702780022479}
   - component: {fileID: 5851505702780022476}
   m_Layer: 0
-  m_Name: Prism
+  m_Name: Player Prism
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3526,4 +3526,3 @@ MonoBehaviour:
   canMove: 1
   movementSpeed: 22
   rotationSpeed: 180
-  characterTransform: {fileID: 0}

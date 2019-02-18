@@ -10,4 +10,7 @@
     public const string Canvas = "Canvas";
     public const string VictoryText = "Victory Text";
     public const string DefeatText = "Defeat Text";
+
+    // Objects
+    public const string PlayerPrism = "Player Prism";
 }

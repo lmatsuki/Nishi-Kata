@@ -10,7 +10,7 @@ public class FollowCamera : MonoBehaviour
         // Follow the player by default
         if (follow == null)
         {
-            follow = GameObject.FindGameObjectWithTag(Tags.Player).transform;
+            follow = GameObject.Find(Names.PlayerPrism).transform;
         }
     }
 
