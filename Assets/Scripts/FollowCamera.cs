@@ -2,9 +2,10 @@
 
 public class FollowCamera : MonoBehaviour
 {
-    public Transform follow;
     public float speed;
-	
+
+    private Transform follow;
+
     void Start()
     {
         // Follow the player by default
