@@ -7,6 +7,13 @@ public class PlayerFire : BaseFire
     public float fireRate;
 
     private float nextFireTime;
+    public IObjectPool bulletObjectPool;
+
+    void Start()
+    {
+        bulletObjectPool = gameObject.GetComponentInChildren<IObjectPool>();
+        bulletObjectPool.Initialize(bullet);
+    }
 
     protected override void Update()
     {
@@ -21,8 +28,11 @@ public class PlayerFire : BaseFire
             canFire && Time.time > nextFireTime)
         {
             AudioManager.instance.Play(Sounds.PlayerFire);
-            
-            GameObject bulletPrefab = Instantiate(bullet, firePosition.position, firePosition.rotation);
+
+            //GameObject bulletPrefab = Instantiate(bullet, firePosition.position, firePosition.rotation);
+            print("firePos: " + firePosition.position.ToString());
+            print("localfirePos: " + firePosition.localPosition.ToString());
+            bulletObjectPool.Spawn(firePosition.position, firePosition.rotation);
             nextFireTime = Time.time + fireRate;
         }
     }
