@@ -21,7 +21,6 @@ public class PlayerFire : BaseFire
         {
             AudioManager.instance.Play(Sounds.PlayerFire);
 
-            //GameObject bulletPrefab = Instantiate(bullet, firePosition.position, firePosition.rotation);
             print("fireRot: " + firePosition.rotation.ToString());
             print("localfireRot: " + firePosition.localRotation.ToString());
 
