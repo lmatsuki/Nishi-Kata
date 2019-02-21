@@ -14,4 +14,6 @@
     // Objects
     public const string Player = "Player";
     public const string PlayerPrism = "Player Prism";
+    public const string WeakBullet = "WeakBullet";
+    public const string StrongBullet = "StrongBullet";
 }

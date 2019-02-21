@@ -22,7 +22,7 @@ public abstract class ObjectPooler : MonoBehaviour
         }
     }
 
-    public void Spawn(Vector3 localPosition, Quaternion localRotation)
+    public GameObject Spawn(Vector3 localPosition, Quaternion localRotation)
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
@@ -39,8 +39,10 @@ public abstract class ObjectPooler : MonoBehaviour
                 }
 
                 pooledObjects[i].SetActive(true);
-                break;
+                return pooledObjects[i];
             }
         }
+
+        return null;
     }
 }
