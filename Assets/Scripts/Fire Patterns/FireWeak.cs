@@ -34,6 +34,7 @@ public class FireWeak : BaseFire
     {        
         if (Time.time > nextBulletTime)
         {
+            print("Bullet name: " + bullets[currentBulletIndex].name);
             GameObject bulletPrefab = Instantiate(bullets[currentBulletIndex], firePosition.position, firePosition.rotation);
             AimBullet(bulletPrefab.transform);
             AudioManager.instance.Play(Sounds.EnemyFire);

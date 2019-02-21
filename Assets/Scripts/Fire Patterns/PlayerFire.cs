@@ -20,10 +20,6 @@ public class PlayerFire : BaseFire
             canFire && Time.time > nextFireTime)
         {
             AudioManager.instance.Play(Sounds.PlayerFire);
-
-            print("fireRot: " + firePosition.rotation.ToString());
-            print("localfireRot: " + firePosition.localRotation.ToString());
-
             PlayerBulletPooler.current.Spawn(firePosition.position, firePosition.rotation);
             nextFireTime = Time.time + fireRate;
         }
