@@ -3,13 +3,15 @@ using UnityEngine;
 
 public abstract class ObjectPooler : MonoBehaviour
 {
+    public static ObjectPooler current;
     public int pooledAmount = 0;
     public GameObject pooledPrefab;
 
-    public IList<GameObject> pooledObjects;
+    private IList<GameObject> pooledObjects;
 
-    protected virtual void Start()
+    void Start()
     {
+        current = this;
         pooledObjects = new List<GameObject>();
 
         for (int i = 0; i < pooledAmount; i++)

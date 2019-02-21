@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4228446040136278259}
-  - component: {fileID: 3430416277081626651}
+  - component: {fileID: 6741945345868688172}
   m_Layer: 0
   m_Name: Player Bullet Pooler
   m_TagString: Untagged
@@ -62,7 +62,7 @@ Transform:
   m_Father: {fileID: 4228446040034146751}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3430416277081626651
+--- !u!114 &6741945345868688172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
