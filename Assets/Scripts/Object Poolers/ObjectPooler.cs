@@ -32,8 +32,11 @@ public abstract class ObjectPooler : MonoBehaviour
                 pooledObjects[i].transform.rotation = localRotation;
 
                 // Also need to set child's local position and rotation
-                pooledObjects[i].transform.GetChild(0).localPosition = Vector3.zero;
-                //bullets[i].transform.GetChild(0).localRotation = Quaternion.identity;
+                if (pooledObjects[i].transform.childCount > 0)
+                {
+                    pooledObjects[i].transform.GetChild(0).localPosition = Vector3.zero;
+                    pooledObjects[i].transform.GetChild(0).rotation = localRotation;
+                }
 
                 pooledObjects[i].SetActive(true);
                 break;
