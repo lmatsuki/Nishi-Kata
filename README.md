@@ -1,4 +1,4 @@
-# Nishikata
+# Nishi:Kata
 
 Top down shooter mobile game in 3D made in Unity.
 
