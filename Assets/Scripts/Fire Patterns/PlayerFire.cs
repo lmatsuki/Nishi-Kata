@@ -25,14 +25,4 @@ public class PlayerFire : BaseFire
             nextFireTime = Time.time + fireRate;
         }
     }
-
-    void MoveBullet(GameObject bulletPrefab)
-    {
-        BulletMover bulletMover = bulletPrefab.GetComponent<BulletMover>();
-
-        if (bulletMover != null)
-        {
-            bulletMover.MoveForward();
-        }
-    }
 }

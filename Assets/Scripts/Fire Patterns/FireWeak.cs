@@ -74,16 +74,6 @@ public class FireWeak : BaseFire
         }
     }
 
-    void MoveBullet(GameObject bulletPrefab)
-    {
-        BulletMover bulletMover = bulletPrefab.GetComponent<BulletMover>();
-        
-        if (bulletMover != null)
-        {
-            bulletMover.MoveForward();
-        }
-    }
-
     float AddIndividualDelay()
     {
         if (individualDelay != null &&

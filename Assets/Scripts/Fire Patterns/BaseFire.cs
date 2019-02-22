@@ -26,4 +26,14 @@ public abstract class BaseFire : MonoBehaviour
     {
         return (initialDelay == 0);
     }
+
+    protected void MoveBullet(GameObject bulletPrefab)
+    {
+        BulletMover bulletMover = bulletPrefab.GetComponent<BulletMover>();
+
+        if (bulletMover != null)
+        {
+            bulletMover.MoveForward();
+        }
+    }
 }
