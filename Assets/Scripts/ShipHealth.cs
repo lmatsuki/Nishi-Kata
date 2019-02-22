@@ -47,7 +47,7 @@ public class ShipHealth : MonoBehaviour
         if (other.tag.Contains(Tags.Bullet) && !other.tag.Contains(tag))
         {
             TakeDamage();
-            Destroy(other.transform.parent.gameObject);
+            other.transform.parent.gameObject.SetActive(false);
         }
 
         // Physical collision with ship

@@ -20,8 +20,19 @@ public class PlayerFire : BaseFire
             canFire && Time.time > nextFireTime)
         {
             AudioManager.instance.Play(Sounds.PlayerFire);
-            PlayerBulletPooler.current.Spawn(firePosition.position, firePosition.rotation);
+            GameObject bulletPrefab = PlayerBulletPooler.current.Spawn(firePosition.position, firePosition.rotation);
+            MoveBullet(bulletPrefab);
             nextFireTime = Time.time + fireRate;
+        }
+    }
+
+    void MoveBullet(GameObject bulletPrefab)
+    {
+        BulletMover bulletMover = bulletPrefab.GetComponent<BulletMover>();
+
+        if (bulletMover != null)
+        {
+            bulletMover.MoveForward();
         }
     }
 }

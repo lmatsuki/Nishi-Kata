@@ -4,19 +4,20 @@ public class BulletMover : MonoBehaviour
 {
     public float speed;
 
-	void OnEnable()
-    {
-        MoveForward();
-    }
+    private Rigidbody bulletRigidbody;
 
     void Start()
     {
         MoveForward();
     }
 
-    private void MoveForward()
+    public void MoveForward()
     {
-        Rigidbody rigidbody = GetComponentInChildren<Rigidbody>();
-        rigidbody.velocity = transform.forward * speed;
+        if (bulletRigidbody == null)
+        {
+            bulletRigidbody = GetComponentInChildren<Rigidbody>();
+        }
+
+        bulletRigidbody.velocity = transform.forward * speed;
     }
 }

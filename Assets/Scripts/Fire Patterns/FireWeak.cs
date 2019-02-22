@@ -36,6 +36,9 @@ public class FireWeak : BaseFire
         {
             GameObject bulletPrefab = FirePooledBulletByName(bullets[currentBulletIndex].name, firePosition.position, firePosition.rotation);
             AimBullet(bulletPrefab.transform);
+
+            // Need to move the bullet AFTER the change in direction/forward
+            MoveBullet(bulletPrefab);
             AudioManager.instance.Play(Sounds.EnemyFire);
 
             // Keep track of current bullet
@@ -68,6 +71,16 @@ public class FireWeak : BaseFire
         if (bulletTargeter != null)
         {
             bulletTargeter.TargetBullet(bullet);
+        }
+    }
+
+    void MoveBullet(GameObject bulletPrefab)
+    {
+        BulletMover bulletMover = bulletPrefab.GetComponent<BulletMover>();
+        
+        if (bulletMover != null)
+        {
+            bulletMover.MoveForward();
         }
     }
 
