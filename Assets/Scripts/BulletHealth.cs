@@ -5,16 +5,19 @@ public class BulletHealth : MonoBehaviour
     public int health;
     public bool indestructible;
 
+    private int initialHealth;
+
 	void Start ()
     {
-		
-	}
+        initialHealth = health;
+    }
 	
 	void Update ()
     {
 		if (!indestructible && health <= 0)
         {
-            Destroy(transform.parent.gameObject);
+            ResetHealth();
+            transform.parent.gameObject.SetActive(false);
         }
 	}
 
@@ -23,7 +26,12 @@ public class BulletHealth : MonoBehaviour
         if (other.CompareTag(Tags.PlayerBullet))
         {
             health--;
-            Destroy(other.transform.parent.gameObject);
+            other.transform.parent.gameObject.SetActive(false);
         }
+    }
+
+    void ResetHealth()
+    {
+        health = initialHealth;
     }
 }

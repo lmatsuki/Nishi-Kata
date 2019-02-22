@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
     private bool levelBeat;
     private bool levelLost;
     private bool loadNextLevel;
+    private bool returnToMenu;
 
     void Awake()
     {
@@ -109,13 +110,18 @@ public class LevelManager : MonoBehaviour
         }
         else if (levelLost)
         {
-            StartCoroutine(ReturnToMenu());
+            StartCoroutine(WaitBeforeReturnToMenu());
         }
 
         if (loadNextLevel)
         {
             loadNextLevel = false;
             LoadNextLevel();
+        }
+        else if (returnToMenu)
+        {
+            returnToMenu = false;
+            ReturnToMenu();
         }
 	}
 
@@ -281,10 +287,14 @@ public class LevelManager : MonoBehaviour
         loadNextLevel = true;
     }
 
-    IEnumerator ReturnToMenu()
+    IEnumerator WaitBeforeReturnToMenu()
     {
         yield return new WaitForSeconds(waittimeBeforeLoad);
+        returnToMenu = true;
+    }
 
+    private void ReturnToMenu()
+    {
         // Load the menu
         StopCurrentlyPlayingSong();
         StartCoroutine(LoadSceneAsync(0));

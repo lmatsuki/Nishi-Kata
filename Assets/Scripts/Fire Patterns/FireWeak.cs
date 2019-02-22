@@ -34,8 +34,11 @@ public class FireWeak : BaseFire
     {        
         if (Time.time > nextBulletTime)
         {
-            GameObject bulletPrefab = Instantiate(bullets[currentBulletIndex], firePosition.position, firePosition.rotation);
+            GameObject bulletPrefab = FirePooledBulletByName(bullets[currentBulletIndex].name, firePosition.position, firePosition.rotation);
             AimBullet(bulletPrefab.transform);
+
+            // Need to move the bullet AFTER the change in direction/forward
+            MoveBullet(bulletPrefab);
             AudioManager.instance.Play(Sounds.EnemyFire);
 
             // Keep track of current bullet
@@ -47,6 +50,19 @@ public class FireWeak : BaseFire
         if (currentBulletIndex == 0)
         {
             nextFireTime = Time.time + timeBetweenFire;
+        }
+    }
+
+    GameObject FirePooledBulletByName(string bulletName, Vector3 position, Quaternion rotation)
+    {
+        switch (bulletName)
+        {
+            case Names.WeakBullet:
+                return WeakBulletPooler.current.Spawn(position, rotation);
+            case Names.StrongBullet:
+                return StrongBulletPooler.current.Spawn(position, rotation);
+            default:
+                return null;
         }
     }
 
