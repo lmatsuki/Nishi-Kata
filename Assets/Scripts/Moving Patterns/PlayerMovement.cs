@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         playerMovement.UpdateMovement();
     }
 
+    #if UNITY_EDITOR
     void AssignMovementForEditor()
     {
         if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneWindows)
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
             playerMovement = GetComponent<AndroidPlayerMovement>();
         }
     }
+    #endif
 
     void AssignMovementForPlayer()
     {

@@ -3,7 +3,9 @@
 public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
 {
     public float movementSpeed;
-    public float rotationSpeed;
+    //public float rotationSpeed;
+    public float verticalOffset;
+    public float movementBuffer;
 
     private Transform characterTransform;
     private new Rigidbody rigidbody;
@@ -21,11 +23,14 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
             return;
         }
 
-        //float horizontalMovement = HandleHorizontalInput();
-        //float verticalMovement = HandleVerticalInput();
-        //Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
-        //rigidbody.velocity = movement * movementSpeed;
-        //HandleRotationInput();
+        if (Input.touchCount > 0)
+        {
+            float horizontalMovement = HandleHorizontalInput();
+            float verticalMovement = HandleVerticalInput();
+            Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
+            rigidbody.velocity = movement * movementSpeed;
+            //HandleRotationInput();
+        }
     }
 
     public Rigidbody GetRigidbody()
@@ -41,14 +46,20 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
     float HandleHorizontalInput()
     {
         float horizontalMovement = 0.0f;
+        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
-        if (Input.GetKey(KeyCode.A))
+        if (LessThanBuffer(touchPosition.x, transform.position.x))
         {
-            horizontalMovement = -movementSpeed * Time.deltaTime;
+            return horizontalMovement;
         }
-        else if (Input.GetKey(KeyCode.D))
+
+        if (touchPosition.x > transform.position.x)
         {
             horizontalMovement = movementSpeed * Time.deltaTime;
+        }
+        else if (touchPosition.x < transform.position.x)
+        {
+            horizontalMovement = -movementSpeed * Time.deltaTime;
         }
 
         return horizontalMovement;
@@ -57,12 +68,18 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
     float HandleVerticalInput()
     {
         float verticalMovement = 0.0f;
+        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
-        if (Input.GetKey(KeyCode.W))
+        if (LessThanBuffer(touchPosition.z, transform.position.z))
+        {
+            return verticalMovement;
+        }
+
+        if (touchPosition.z + verticalOffset > transform.position.z)
         {
             verticalMovement = movementSpeed * Time.deltaTime;
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (touchPosition.z + verticalOffset < transform.position.z)
         {
             verticalMovement = -movementSpeed * Time.deltaTime;
         }
@@ -70,15 +87,20 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
         return verticalMovement;
     }
 
-    void HandleRotationInput()
+    bool LessThanBuffer(float touchValue, float transformValue)
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Rotate(new Vector3(0, -rotationSpeed * Time.deltaTime, 0));
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime, 0));
-        }
+        return Mathf.Abs(touchValue - transformValue) <= movementBuffer;
     }
+
+    //void HandleRotationInput()
+    //{
+    //    if (Input.GetKey(KeyCode.LeftArrow))
+    //    {
+    //        transform.Rotate(new Vector3(0, -rotationSpeed * Time.deltaTime, 0));
+    //    }
+    //    else if (Input.GetKey(KeyCode.RightArrow))
+    //    {
+    //        transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime, 0));
+    //    }
+    //}
 }
