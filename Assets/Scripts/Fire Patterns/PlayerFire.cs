@@ -16,7 +16,7 @@ public class PlayerFire : BaseFire
 
     void handleFireInput()
     {
-        if (Input.GetKey(KeyCode.Space) &&
+        if (IsPressingFire() &&
             canFire && Time.time > nextFireTime)
         {
             AudioManager.instance.Play(Sounds.PlayerFire);
@@ -24,5 +24,10 @@ public class PlayerFire : BaseFire
             MoveBullet(bulletPrefab);
             nextFireTime = Time.time + fireRate;
         }
+    }
+
+    bool IsPressingFire()
+    {
+        return Input.GetKey(KeyCode.Space) || (Input.touchCount > 0);
     }
 }
