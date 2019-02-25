@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DesktopPlayerMovement : BaseMovement, IPlayerMovement
+public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
 {
     public float movementSpeed;
     public float rotationSpeed;
@@ -21,11 +21,11 @@ public class DesktopPlayerMovement : BaseMovement, IPlayerMovement
             return;
         }
 
-        float horizontalMovement = HandleHorizontalInput();
-        float verticalMovement = HandleVerticalInput();
-        Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
-        rigidbody.velocity = movement * movementSpeed;
-        HandleRotationInput();
+        //float horizontalMovement = HandleHorizontalInput();
+        //float verticalMovement = HandleVerticalInput();
+        //Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
+        //rigidbody.velocity = movement * movementSpeed;
+        //HandleRotationInput();
     }
 
     public Rigidbody GetRigidbody()
