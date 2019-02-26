@@ -3,17 +3,16 @@
 public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
 {
     public float movementSpeed;
-    //public float rotationSpeed;
-    public float verticalOffset;
     public float movementBuffer;
+    //public float rotationSpeed;
 
-    private Transform characterTransform;
     private new Rigidbody rigidbody;
+    private Joystick joystick;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        characterTransform = transform.Find(Names.PlayerPrism);
+        joystick = Camera.main.gameObject.GetComponentInChildren<FixedJoystick>();
     }
 
     public void UpdateMovement()
@@ -23,14 +22,11 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
             return;
         }
 
-        if (Input.touchCount > 0)
-        {
-            float horizontalMovement = HandleHorizontalInput();
-            float verticalMovement = HandleVerticalInput();
-            Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
-            rigidbody.velocity = movement * movementSpeed;
-            //HandleRotationInput();
-        }
+        float horizontalMovement = HandleHorizontalInput();
+        float verticalMovement = HandleVerticalInput();
+        Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
+        rigidbody.velocity = movement * movementSpeed;
+        //HandleRotationInput();
     }
 
     public Rigidbody GetRigidbody()
@@ -46,18 +42,12 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
     float HandleHorizontalInput()
     {
         float horizontalMovement = 0.0f;
-        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
-        if (LessThanBuffer(touchPosition.x, transform.position.x))
-        {
-            return horizontalMovement;
-        }
-
-        if (touchPosition.x > transform.position.x)
+        if (joystick.Horizontal - movementBuffer > 0)
         {
             horizontalMovement = movementSpeed * Time.deltaTime;
         }
-        else if (touchPosition.x < transform.position.x)
+        else if (joystick.Horizontal + movementBuffer < 0)
         {
             horizontalMovement = -movementSpeed * Time.deltaTime;
         }
@@ -68,28 +58,17 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
     float HandleVerticalInput()
     {
         float verticalMovement = 0.0f;
-        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
-        if (LessThanBuffer(touchPosition.z, transform.position.z))
-        {
-            return verticalMovement;
-        }
-
-        if (touchPosition.z + verticalOffset > transform.position.z)
+        if (joystick.Vertical - movementBuffer > 0)
         {
             verticalMovement = movementSpeed * Time.deltaTime;
         }
-        else if (touchPosition.z + verticalOffset < transform.position.z)
+        else if (joystick.Vertical + movementBuffer < 0)
         {
             verticalMovement = -movementSpeed * Time.deltaTime;
         }
 
         return verticalMovement;
-    }
-
-    bool LessThanBuffer(float touchValue, float transformValue)
-    {
-        return Mathf.Abs(touchValue - transformValue) <= movementBuffer;
     }
 
     //void HandleRotationInput()

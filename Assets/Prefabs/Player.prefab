@@ -3708,9 +3708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  movementSpeed: 22
-  rotationSpeed: 0
-  verticalOffset: 8
+  movementSpeed: 20
+  movementBuffer: 0.09
 --- !u!114 &6073225171950636425
 MonoBehaviour:
   m_ObjectHideFlags: 0
