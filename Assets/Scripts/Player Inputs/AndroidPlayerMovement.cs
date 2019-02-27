@@ -4,15 +4,15 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
 {
     public float movementSpeed;
     public float movementBuffer;
-    //public float rotationSpeed;
 
     private new Rigidbody rigidbody;
     private Joystick movementJoystick;
+    public Joystick rotationJoystick;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        movementJoystick = Camera.main.gameObject.GetComponentInChildren<FixedJoystick>();
+        AssignJoysticks();
     }
 
     public void UpdateMovement()
@@ -26,7 +26,7 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
         float verticalMovement = HandleVerticalInput();
         Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
         rigidbody.velocity = movement * movementSpeed;
-        //HandleRotationInput();
+        HandleRotationInput();
     }
 
     public Rigidbody GetRigidbody()
@@ -71,15 +71,26 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
         return verticalMovement;
     }
 
-    //void HandleRotationInput()
-    //{
-    //    if (Input.GetKey(KeyCode.LeftArrow))
-    //    {
-    //        transform.Rotate(new Vector3(0, -rotationSpeed * Time.deltaTime, 0));
-    //    }
-    //    else if (Input.GetKey(KeyCode.RightArrow))
-    //    {
-    //        transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime, 0));
-    //    }
-    //}
+    void HandleRotationInput()
+    {
+        float heading = Mathf.Atan2(rotationJoystick.Horizontal, rotationJoystick.Vertical);
+        transform.rotation = Quaternion.Euler(0f, heading * Mathf.Rad2Deg, 0f);
+    }
+
+    void AssignJoysticks()
+    {
+        FixedJoystick[] joysticks = Camera.main.gameObject.GetComponentsInChildren<FixedJoystick>();
+
+        for (int i = 0; i < joysticks.Length; i++)
+        {
+            if (joysticks[i].gameObject.name == Names.MovementJoystick)
+            {
+                movementJoystick = joysticks[i];
+            }
+            else if (joysticks[i].gameObject.name == Names.RotationJoystick)
+            {
+                rotationJoystick = joysticks[i];
+            }
+        }
+    }
 }
