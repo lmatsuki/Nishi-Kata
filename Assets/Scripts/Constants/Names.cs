@@ -16,4 +16,6 @@
     public const string PlayerPrism = "Player Prism";
     public const string WeakBullet = "WeakBullet";
     public const string StrongBullet = "StrongBullet";
+    public const string MovementJoystick = "Movement Joystick";
+    public const string RotationJoystick = "Rotation Joystick";
 }
