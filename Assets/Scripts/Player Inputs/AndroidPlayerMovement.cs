@@ -7,12 +7,12 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
     //public float rotationSpeed;
 
     private new Rigidbody rigidbody;
-    private Joystick joystick;
+    private Joystick movementJoystick;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        joystick = Camera.main.gameObject.GetComponentInChildren<FixedJoystick>();
+        movementJoystick = Camera.main.gameObject.GetComponentInChildren<FixedJoystick>();
     }
 
     public void UpdateMovement()
@@ -43,11 +43,11 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
     {
         float horizontalMovement = 0.0f;
 
-        if (joystick.Horizontal - movementBuffer > 0)
+        if (movementJoystick.Horizontal - movementBuffer > 0)
         {
             horizontalMovement = movementSpeed * Time.deltaTime;
         }
-        else if (joystick.Horizontal + movementBuffer < 0)
+        else if (movementJoystick.Horizontal + movementBuffer < 0)
         {
             horizontalMovement = -movementSpeed * Time.deltaTime;
         }
@@ -59,11 +59,11 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
     {
         float verticalMovement = 0.0f;
 
-        if (joystick.Vertical - movementBuffer > 0)
+        if (movementJoystick.Vertical - movementBuffer > 0)
         {
             verticalMovement = movementSpeed * Time.deltaTime;
         }
-        else if (joystick.Vertical + movementBuffer < 0)
+        else if (movementJoystick.Vertical + movementBuffer < 0)
         {
             verticalMovement = -movementSpeed * Time.deltaTime;
         }
