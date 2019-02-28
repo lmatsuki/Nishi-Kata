@@ -7,7 +7,7 @@ public class AndroidPlayerMovement : BaseMovement, IPlayerMovement
 
     private new Rigidbody rigidbody;
     private Joystick movementJoystick;
-    public Joystick rotationJoystick;
+    private Joystick rotationJoystick;
 
     void Start()
     {
