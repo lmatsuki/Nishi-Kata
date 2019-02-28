@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
 
     void AssignPlayerComponents()
     {
-        GameObject player = GameObject.FindGameObjectWithTag(Tags.Player);
+        GameObject player = GameObject.Find(Names.Player);
         
         if (player == null)
         {
@@ -72,7 +72,7 @@ public class LevelManager : MonoBehaviour
 
     void AssignLastEnemyComponents()
     {
-        lastEnemy = GameObject.FindGameObjectWithTag(Tags.LastEnemy);
+        lastEnemy = GameObject.Find(Names.Enemy);
 
         if (lastEnemy == null)
         {
