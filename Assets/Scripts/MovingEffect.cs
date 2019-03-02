@@ -4,31 +4,31 @@ public class MovingEffect : MonoBehaviour
 {
     public GameObject movingParticleFX;
 
-    private GameObject currentMovingFX;
+    private ParticleSystem currentMovingFX;
     private Rigidbody rigidbody;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        currentMovingFX = Instantiate(movingParticleFX, transform);
-        currentMovingFX.SetActive(false);
+        GameObject movingParticle = Instantiate(movingParticleFX, transform);
+        currentMovingFX = movingParticle.GetComponent<ParticleSystem>();
     }
 
     void Update()
     {
         if (IsMoving())
         {
-            print("Moving!");
-            if (!currentMovingFX.activeSelf)
+            if (!currentMovingFX.isPlaying)
             {
-                print("Active particles!");
-                currentMovingFX.SetActive(true);
+                currentMovingFX.Play();
             }
         }
         else
         {
-            print("Stopped!");
-            currentMovingFX.SetActive(false);
+            if (currentMovingFX.isPlaying)
+            {
+                currentMovingFX.Stop();
+            }
         }
     }
 
