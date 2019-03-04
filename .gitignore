@@ -36,3 +36,8 @@ sysinfo.txt
 *.apk
 *.unitypackage
 bin/
+Assets/StreamingAssets/build_info.txt
+
+# Unity-Logs-Viewer
+Assets/Unity-Logs-Viewer/Reporter/Images/reporterScrollerSkin.guiskin
+Assets/Unity-Logs-Viewer/Reporter/Test/*.unity
