@@ -23,7 +23,11 @@ public class ShipHealth : MonoBehaviour
     void Start()
     {
         alive = true;
-        initialColor = renderer.material.color;
+
+        if (renderer.material.HasProperty("_Color"))
+        {
+            initialColor = renderer.material.color;
+        }
     }
 
     void Update()
