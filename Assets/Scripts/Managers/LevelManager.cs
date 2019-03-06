@@ -201,7 +201,6 @@ public class LevelManager : PersistentSingleton<LevelManager>
 
     void PlayThemeSong()
     {
-        print("play theme song");
         if (!string.IsNullOrEmpty(AudioManager.instance.GetCurrentlyPlayingSongName()))
         {
             return;
