@@ -74,22 +74,22 @@ MonoBehaviour:
     loop: 0
     dontStackSounds: 0
   - name: PlayTheme
-    audioClip: {fileID: 8300000, guid: 4b2610a7251eed943a8701fa061937fa, type: 3}
-    volume: 0.4
+    audioClip: {fileID: 8300000, guid: 2d21a4e174657324babc3c0b84074441, type: 3}
+    volume: 0.7
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
     dontStackSounds: 0
   - name: BossTheme
-    audioClip: {fileID: 8300000, guid: 4a084820f3aee0043a9ebc9c1ef8ffac, type: 3}
-    volume: 0.4
+    audioClip: {fileID: 8300000, guid: 8a20edcee5576954a839596c3a93146d, type: 3}
+    volume: 0.7
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
     dontStackSounds: 0
   - name: MenuTheme
-    audioClip: {fileID: 8300000, guid: 7553700a1b144d74d9d2cf9eaa996fc4, type: 3}
-    volume: 0.4
+    audioClip: {fileID: 8300000, guid: 59446e184df5c1e40947f326dd7180e6, type: 3}
+    volume: 0.7
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
