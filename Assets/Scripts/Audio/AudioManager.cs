@@ -1,25 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using NishiKata.Utilities;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour 
+public class AudioManager : PersistentSingleton<AudioManager> 
 {
-    public static AudioManager instance;
     public AudioMixerGroup audioMixerGroup;
     public Sound[] sounds;
 
     private Dictionary<string, Sound> soundDict = new Dictionary<string, Sound>();
 
-    void Awake()
+    protected override void Awake()
     {
-        if (instance != null)
-        {
-            return;
-        }
-        
-        instance = this;
+        base.Awake();
         CreateAudioSources();
-        DontDestroyOnLoad(this);
     }
 
     void CreateAudioSources()

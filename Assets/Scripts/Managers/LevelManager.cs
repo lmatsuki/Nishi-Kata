@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using NishiKata.Utilities;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : PersistentSingleton<LevelManager>
 {
     public List<GameObject> itemsToDisable;
     public List<GameObject> itemsToEnable;
@@ -11,7 +12,6 @@ public class LevelManager : MonoBehaviour
 
     public string[] levelThemeOverride;
 
-    public static LevelManager instance;
     private ShipHealth playerShip;
     private IPlayerMovement playerMovement;
     private BaseFire playerFire;
@@ -28,8 +28,10 @@ public class LevelManager : MonoBehaviour
     private bool loadNextLevel;
     private bool returnToMenu;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         if (!IsMenuScene())
         {
             AssignPlayerComponents();
@@ -45,14 +47,6 @@ public class LevelManager : MonoBehaviour
         }
 
         PlayThemeSong();
-        
-        if (instance != null)
-        {
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(this);
     }
 
     void AssignPlayerComponents()
@@ -207,6 +201,7 @@ public class LevelManager : MonoBehaviour
 
     void PlayThemeSong()
     {
+        print("play theme song");
         if (!string.IsNullOrEmpty(AudioManager.instance.GetCurrentlyPlayingSongName()))
         {
             return;
