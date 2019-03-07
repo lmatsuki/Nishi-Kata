@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NishiKata.Utilities;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour

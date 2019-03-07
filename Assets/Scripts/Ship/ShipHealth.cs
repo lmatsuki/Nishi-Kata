@@ -1,4 +1,5 @@
 ﻿using EZCameraShake;
+using NishiKata.Utilities;
 using System.Collections;
 using UnityEngine;
 
