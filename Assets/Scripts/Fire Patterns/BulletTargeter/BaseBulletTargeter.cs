@@ -1,13 +1,18 @@
-﻿using UnityEngine;
+﻿using NishiKata.Utilities;
+using UnityEngine;
 
-public abstract class BaseBulletTargeter : MonoBehaviour
+namespace NishiKata.FirePatterns
 {
-    protected Transform player;
-
-    public void Start()
+    public abstract class BaseBulletTargeter : MonoBehaviour
     {
-        player = GameObject.FindGameObjectWithTag(Tags.Player).transform;
+        protected Transform player;
+
+        public void Start()
+        {
+            player = GameObject.FindGameObjectWithTag(Tags.Player).transform;
+        }
+
+        public abstract void TargetBullet(Transform bullet);
     }
 
-    public abstract void TargetBullet(Transform bullet);
 }

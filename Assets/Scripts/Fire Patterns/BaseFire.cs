@@ -1,39 +1,43 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public abstract class BaseFire : MonoBehaviour
+namespace NishiKata.FirePatterns
 {
-    public bool canFire;  
-    public float initialDelay;
-
-    protected virtual void Update()
+    public abstract class BaseFire : MonoBehaviour
     {
-        if (initialDelay > 0)
+        public bool canFire;
+        public float initialDelay;
+
+        protected virtual void Update()
         {
-            StartCoroutine(WaitForInitialDelay());
+            if (initialDelay > 0)
+            {
+                StartCoroutine(WaitForInitialDelay());
+            }
+        }
+
+        IEnumerator WaitForInitialDelay()
+        {
+            yield return new WaitForSeconds(initialDelay);
+
+            initialDelay = 0;
+            canFire = true;
+        }
+
+        public bool IsInitialDelayOver()
+        {
+            return (initialDelay == 0);
+        }
+
+        protected void MoveBullet(GameObject bulletPrefab)
+        {
+            BulletMover bulletMover = bulletPrefab.GetComponent<BulletMover>();
+
+            if (bulletMover != null)
+            {
+                bulletMover.MoveForward();
+            }
         }
     }
 
-    IEnumerator WaitForInitialDelay()
-    {
-        yield return new WaitForSeconds(initialDelay);
-
-        initialDelay = 0;
-        canFire = true;
-    }
-
-    public bool IsInitialDelayOver()
-    {
-        return (initialDelay == 0);
-    }
-
-    protected void MoveBullet(GameObject bulletPrefab)
-    {
-        BulletMover bulletMover = bulletPrefab.GetComponent<BulletMover>();
-
-        if (bulletMover != null)
-        {
-            bulletMover.MoveForward();
-        }
-    }
 }
