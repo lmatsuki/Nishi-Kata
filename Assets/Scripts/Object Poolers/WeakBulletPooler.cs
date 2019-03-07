@@ -1,10 +1,14 @@
-﻿public class WeakBulletPooler : ObjectPooler
+﻿namespace NishiKata.ObjectPoolers
 {
-    public static WeakBulletPooler current;
-
-    new void Start()
+    public class WeakBulletPooler : ObjectPooler
     {
-        current = this;
-        base.Start();
+        public static WeakBulletPooler current;
+
+        new void Start()
+        {
+            current = this;
+            base.Start();
+        }
     }
+
 }
