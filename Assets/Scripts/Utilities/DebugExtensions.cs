@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-public class DebugExtensions
+namespace NishiKata.Utilities
 {
-    public static void LogNotFound(object script, string value)
+    public class DebugExtensions
     {
-        Debug.LogErrorFormat("{0}.cs: {1} not found!", script.GetType(), value);
+        public static void LogNotFound(object script, string value)
+        {
+            Debug.LogErrorFormat("{0}.cs: {1} not found!", script.GetType(), value);
+        }
     }
 }

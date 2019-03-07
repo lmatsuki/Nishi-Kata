@@ -1,6 +1,9 @@
-﻿public class Sounds 
+﻿namespace NishiKata.Utilities
 {
-    public const string PlayerFire = "PlayerFire";
-    public const string EnemyFire = "EnemyFire";
-    public const string BulletHit = "BulletHit";
+    public class Sounds
+    {
+        public const string PlayerFire = "PlayerFire";
+        public const string EnemyFire = "EnemyFire";
+        public const string BulletHit = "BulletHit";
+    }
 }

@@ -1,6 +1,9 @@
-﻿public class Songs 
+﻿namespace NishiKata.Utilities
 {
-    public const string PlayTheme = "PlayTheme";
-    public const string BossTheme = "BossTheme";
-    public const string MenuTheme = "MenuTheme";
+    public class Songs
+    {
+        public const string PlayTheme = "PlayTheme";
+        public const string BossTheme = "BossTheme";
+        public const string MenuTheme = "MenuTheme";
+    }
 }

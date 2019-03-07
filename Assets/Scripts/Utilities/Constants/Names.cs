@@ -1,22 +1,26 @@
-﻿public class Names
+﻿namespace NishiKata.Utilities
 {
-    // Walls
-    public const string LeftWall         = "Left Wall";
-    public const string RightWall        = "Right Wall";
-    public const string TopWall          = "Top Wall";
-    public const string BottomWall       = "Bottom Wall";
+    public class Names
+    {
+        // Walls
+        public const string LeftWall = "Left Wall";
+        public const string RightWall = "Right Wall";
+        public const string TopWall = "Top Wall";
+        public const string BottomWall = "Bottom Wall";
 
-    // UI
-    public const string Canvas           = "Canvas";
-    public const string VictoryText      = "Victory Text";
-    public const string DefeatText       = "Defeat Text";
+        // UI
+        public const string Canvas = "Canvas";
+        public const string VictoryText = "Victory Text";
+        public const string DefeatText = "Defeat Text";
 
-    // Objects
-    public const string Player           = "Player";
-    public const string Enemy            = "Enemy";
-    public const string PlayerPrism      = "Player Prism";
-    public const string WeakBullet       = "WeakBullet";
-    public const string StrongBullet     = "StrongBullet";
-    public const string MovementJoystick = "Movement Joystick";
-    public const string RotationJoystick = "Rotation Joystick";
+        // Objects
+        public const string Player = "Player";
+        public const string Enemy = "Enemy";
+        public const string PlayerPrism = "Player Prism";
+        public const string WeakBullet = "WeakBullet";
+        public const string StrongBullet = "StrongBullet";
+        public const string MovementJoystick = "Movement Joystick";
+        public const string RotationJoystick = "Rotation Joystick";
+    }
+
 }

@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 
-public class UtilityExtensions
+namespace NishiKata.Utilities
 {
-    public static void DestroyObjectsByTag(string tag)
+    public class UtilityExtensions
     {
-        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(tag);
-
-        for (int i = 0; i < gameObjects.Length; i++)
+        public static void DestroyObjectsByTag(string tag)
         {
-            Object.Destroy(gameObjects[i]);
+            GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(tag);
+
+            for (int i = 0; i < gameObjects.Length; i++)
+            {
+                Object.Destroy(gameObjects[i]);
+            }
         }
     }
 }
