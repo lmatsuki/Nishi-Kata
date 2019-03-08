@@ -31,9 +31,23 @@ namespace NishiKata.Managers
         private bool loadNextLevel;
         private bool returnToMenu;
 
-        protected override void Awake()
+        protected void Start()
         {
-            base.Awake();
+            // Subscribe to scene load
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
+            // Initial setup so you could load from any level
+            Initialize();
+        }
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            ResetLevelManager();
 
             if (!IsMenuScene())
             {
@@ -295,6 +309,22 @@ namespace NishiKata.Managers
             // Load the menu
             StopCurrentlyPlayingSong();
             StartCoroutine(LoadSceneAsync(0));
+        }
+
+        private void ResetLevelManager()
+        {
+            levelBeat = false;
+            levelLost = false;
+            loadNextLevel = false;
+            returnToMenu = false;
+        }
+
+        protected override void OnDestroy()
+        {
+            // Unsubscribe from sceneLoad
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+
+            base.OnDestroy();
         }
     }
 }
