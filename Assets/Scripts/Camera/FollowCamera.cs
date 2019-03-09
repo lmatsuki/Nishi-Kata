@@ -1,26 +1,29 @@
 ﻿using NishiKata.Utilities;
 using UnityEngine;
 
-public class FollowCamera : MonoBehaviour
+namespace NishiKata.Camera
 {
-    public float speed;
-
-    private Transform follow;
-
-    void Start()
+    public class FollowCamera : MonoBehaviour
     {
-        // Follow the player by default
-        if (follow == null)
+        public float speed;
+
+        private Transform follow;
+
+        void Start()
         {
-            follow = GameObject.Find(Names.Player).transform;
+            // Follow the player by default
+            if (follow == null)
+            {
+                follow = GameObject.Find(Names.Player).transform;
+            }
         }
-    }
 
-	void Update ()
-    {
-        float step = speed * Time.deltaTime;
+        void Update()
+        {
+            float step = speed * Time.deltaTime;
 
-        Vector3 newPosition = Vector3.MoveTowards(transform.position, follow.transform.position, step);
-        transform.position = new Vector3(newPosition.x, 10, newPosition.z);
+            Vector3 newPosition = Vector3.MoveTowards(transform.position, follow.transform.position, step);
+            transform.position = new Vector3(newPosition.x, 10, newPosition.z);
+        }
     }
 }
