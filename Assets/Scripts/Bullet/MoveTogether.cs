@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
-public class MoveTogether : MonoBehaviour
+namespace NishiKata.Bullet
 {
-    public Transform follow;
-
-	void Update ()
+    public class MoveTogether : MonoBehaviour
     {
-        transform.position = follow.position;
-	}
+        public Transform follow;
+
+        void Update()
+        {
+            transform.position = follow.position;
+        }
+    }
 }

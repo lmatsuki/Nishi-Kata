@@ -1,23 +1,26 @@
 ﻿using UnityEngine;
 
-public class BulletMover : MonoBehaviour
+namespace NishiKata.Bullet
 {
-    public float speed;
-
-    private Rigidbody bulletRigidbody;
-
-    void Start()
+    public class BulletMover : MonoBehaviour
     {
-        MoveForward();
-    }
+        public float speed;
 
-    public void MoveForward()
-    {
-        if (bulletRigidbody == null)
+        private Rigidbody bulletRigidbody;
+
+        void Start()
         {
-            bulletRigidbody = GetComponentInChildren<Rigidbody>();
+            MoveForward();
         }
 
-        bulletRigidbody.velocity = transform.forward * speed;
+        public void MoveForward()
+        {
+            if (bulletRigidbody == null)
+            {
+                bulletRigidbody = GetComponentInChildren<Rigidbody>();
+            }
+
+            bulletRigidbody.velocity = transform.forward * speed;
+        }
     }
 }
