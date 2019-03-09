@@ -62,6 +62,7 @@ namespace NishiKata.Managers
 
                 screenFade = Camera.main.GetComponent<ScreenFade>();
                 screenFade.SetScreenFade(false);
+                screenFade = UnityEngine.Camera.main.GetComponent<ScreenFade>();
             }
 
             PlayThemeSong();

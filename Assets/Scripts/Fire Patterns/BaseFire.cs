@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NishiKata.Bullet;
+using System.Collections;
 using UnityEngine;
 
 namespace NishiKata.FirePatterns
