@@ -1,39 +1,42 @@
 ﻿using UnityEngine;
 
-public class MovingEffect : MonoBehaviour
+namespace NishiKata.Effects
 {
-    public GameObject movingParticleFX;
-
-    private ParticleSystem currentMovingFX;
-    private Rigidbody rigidbody;
-
-    void Start()
+    public class MovingEffect : MonoBehaviour
     {
-        rigidbody = GetComponent<Rigidbody>();
-        GameObject movingParticle = Instantiate(movingParticleFX, transform);
-        currentMovingFX = movingParticle.GetComponent<ParticleSystem>();
-    }
+        public GameObject movingParticleFX;
 
-    void Update()
-    {
-        if (IsMoving())
+        private ParticleSystem currentMovingFX;
+        private Rigidbody rigidbody;
+
+        void Start()
         {
-            if (!currentMovingFX.isPlaying)
+            rigidbody = GetComponent<Rigidbody>();
+            GameObject movingParticle = Instantiate(movingParticleFX, transform);
+            currentMovingFX = movingParticle.GetComponent<ParticleSystem>();
+        }
+
+        void Update()
+        {
+            if (IsMoving())
             {
-                currentMovingFX.Play();
+                if (!currentMovingFX.isPlaying)
+                {
+                    currentMovingFX.Play();
+                }
+            }
+            else
+            {
+                if (currentMovingFX.isPlaying)
+                {
+                    currentMovingFX.Stop();
+                }
             }
         }
-        else
-        {
-            if (currentMovingFX.isPlaying)
-            {
-                currentMovingFX.Stop();
-            }
-        }
-    }
 
-    private bool IsMoving()
-    {
-        return (rigidbody.velocity != Vector3.zero);
+        private bool IsMoving()
+        {
+            return (rigidbody.velocity != Vector3.zero);
+        }
     }
 }
