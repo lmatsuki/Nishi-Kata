@@ -1,5 +1,6 @@
 ﻿using NishiKata.FirePatterns;
 ﻿using NishiKata.Audio;
+using NishiKata.Effects;
 using NishiKata.Utilities;
 using System.Collections;
 using System.Collections.Generic;
