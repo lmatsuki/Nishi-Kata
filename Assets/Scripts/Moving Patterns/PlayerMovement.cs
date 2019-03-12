@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using NishiKata.Inputs;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
