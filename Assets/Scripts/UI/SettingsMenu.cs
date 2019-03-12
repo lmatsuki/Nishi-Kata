@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
-public class SettingsMenu : MonoBehaviour
+namespace NishiKata.UI
 {
-    public AudioMixer audioMixer;
-
-    public void SetVolume(float volume)
+    public class SettingsMenu : MonoBehaviour
     {
-        audioMixer.SetFloat("volume", volume);
+        public AudioMixer audioMixer;
+
+        public void SetVolume(float volume)
+        {
+            audioMixer.SetFloat("volume", volume);
+        }
     }
 }

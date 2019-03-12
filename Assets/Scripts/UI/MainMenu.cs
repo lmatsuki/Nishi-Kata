@@ -3,25 +3,28 @@ using NishiKata.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+namespace NishiKata.UI
 {
-    void Start()
+    public class MainMenu : MonoBehaviour
     {
-        AudioManager.instance.PlaySong(Songs.MenuTheme);
-    }
+        void Start()
+        {
+            AudioManager.instance.PlaySong(Songs.MenuTheme);
+        }
 
-    public void PlayGame()
-    {
-        AudioManager.instance.StopSong(Songs.MenuTheme);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+        public void PlayGame()
+        {
+            AudioManager.instance.StopSong(Songs.MenuTheme);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
 
-    public void QuitGame()
-    {
+        public void QuitGame()
+        {
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else
             Application.Quit();
         #endif
+        }
     }
 }
