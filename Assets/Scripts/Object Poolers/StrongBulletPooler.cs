@@ -1,10 +1,14 @@
-﻿public class StrongBulletPooler : ObjectPooler
+﻿namespace NishiKata.ObjectPoolers
 {
-    public static StrongBulletPooler current;
-
-    new void Start()
+    public class StrongBulletPooler : ObjectPooler
     {
-        current = this;
-        base.Start();
+        public static StrongBulletPooler current;
+
+        new void Start()
+        {
+            current = this;
+            base.Start();
+        }
     }
+
 }

@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 
-public class PlayerSingleTargeter : BaseBulletTargeter
+namespace NishiKata.FirePatterns
 {
-    public override void TargetBullet(Transform bullet)
+    public class PlayerSingleTargeter : BaseBulletTargeter
     {
-        bullet.LookAt(player);
+        public override void TargetBullet(Transform bullet)
+        {
+            bullet.LookAt(player);
+        }
     }
+
 }

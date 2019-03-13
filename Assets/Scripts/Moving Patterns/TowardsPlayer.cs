@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NishiKata.Utilities;
+using UnityEngine;
 
 public class TowardsPlayer : BaseMovement
 {

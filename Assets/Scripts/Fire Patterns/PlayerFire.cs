@@ -1,33 +1,39 @@
-﻿using UnityEngine;
+﻿using NishiKata.Audio;
+using NishiKata.ObjectPoolers;
+using NishiKata.Utilities;
+using UnityEngine;
 
-public class PlayerFire : BaseFire
+namespace NishiKata.FirePatterns
 {
-    public Transform firePosition;
-    public float fireRate;
-
-    private float nextFireTime;
-
-    protected override void Update()
+    public class PlayerFire : BaseFire
     {
-        base.Update();
+        public Transform firePosition;
+        public float fireRate;
 
-        handleFireInput();
-    }
+        private float nextFireTime;
 
-    void handleFireInput()
-    {
-        if (IsPressingFire() &&
-            canFire && Time.time > nextFireTime)
+        protected override void Update()
         {
-            AudioManager.instance.Play(Sounds.PlayerFire);
-            GameObject bulletPrefab = PlayerBulletPooler.current.Spawn(firePosition.position, firePosition.rotation);
-            MoveBullet(bulletPrefab);
-            nextFireTime = Time.time + fireRate;
-        }
-    }
+            base.Update();
 
-    bool IsPressingFire()
-    {
-        return Input.GetKey(KeyCode.Space) || (Input.touchCount > 0);
+            handleFireInput();
+        }
+
+        void handleFireInput()
+        {
+            if (IsPressingFire() &&
+                canFire && Time.time > nextFireTime)
+            {
+                AudioManager.instance.Play(Sounds.PlayerFire);
+                GameObject bulletPrefab = PlayerBulletPooler.current.Spawn(firePosition.position, firePosition.rotation);
+                MoveBullet(bulletPrefab);
+                nextFireTime = Time.time + fireRate;
+            }
+        }
+
+        bool IsPressingFire()
+        {
+            return Input.GetKey(KeyCode.Space) || (Input.touchCount > 0);
+        }
     }
 }
