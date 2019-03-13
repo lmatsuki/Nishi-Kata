@@ -1,6 +1,6 @@
-﻿using NishiKata.FirePatterns;
 ﻿using NishiKata.Audio;
 using NishiKata.Effects;
+using NishiKata.FirePatterns;
 using NishiKata.Utilities;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,6 +32,7 @@ namespace NishiKata.Managers
         private bool levelLost;
         private bool loadNextLevel;
         private bool returnToMenu;
+        private bool isLoading;
 
         protected void Start()
         {
@@ -61,9 +62,8 @@ namespace NishiKata.Managers
                 victoryText = canvas.transform.Find(Names.VictoryText).gameObject;
                 defeatText = canvas.transform.Find(Names.DefeatText).gameObject;
 
-                screenFade = Camera.main.GetComponent<ScreenFade>();
-                screenFade.SetScreenFade(false);
                 screenFade = UnityEngine.Camera.main.GetComponent<ScreenFade>();
+                screenFade.SetScreenFade(false);                
             }
 
             PlayThemeSong();
@@ -105,6 +105,33 @@ namespace NishiKata.Managers
                 return;
             }
 
+            if (!loadNextLevel && !returnToMenu)
+            {
+                if (levelBeat && !isLoading)
+                {
+                    isLoading = true;
+                    StartCoroutine(WaitBeforeNextLevel());
+                    return;
+                }
+                else if (levelLost)
+                {
+                    isLoading = true;
+                    StartCoroutine(WaitBeforeReturnToMenu());
+                }
+            }
+
+            if (loadNextLevel)
+            {
+                loadNextLevel = false;
+                LoadNextLevel();
+                return;
+            }
+            else if (returnToMenu)
+            {
+                returnToMenu = false;
+                ReturnToMenu();
+            }
+
             if (!lastEnemyShip.IsAlive() || !playerShip.IsAlive())
             {
                 DisableItems();
@@ -116,26 +143,6 @@ namespace NishiKata.Managers
 
                 screenFade.SetScreenFade(true);
                 DisplayVictoryOrDefeatText();
-            }
-
-            if (levelBeat)
-            {
-                StartCoroutine(WaitBeforeNextLevel());
-            }
-            else if (levelLost)
-            {
-                StartCoroutine(WaitBeforeReturnToMenu());
-            }
-
-            if (loadNextLevel)
-            {
-                loadNextLevel = false;
-                LoadNextLevel();
-            }
-            else if (returnToMenu)
-            {
-                returnToMenu = false;
-                ReturnToMenu();
             }
         }
 
@@ -320,6 +327,7 @@ namespace NishiKata.Managers
             levelLost = false;
             loadNextLevel = false;
             returnToMenu = false;
+            isLoading = false;
         }
 
         protected override void OnDestroy()
