@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace NishiKata.Utilities
 {
@@ -12,26 +13,31 @@ namespace NishiKata.Utilities
         /// <summary>
         /// Dictionary of pools, key is the prefab
         /// </summary>
-        //protected Dictionary<Poolable, AutoComponentPrefabPool<Poolable>> m_Pools;
+        protected Dictionary<Poolable, AutoComponentPrefabPool<Poolable>> pools;
 
-        ///// <summary>
-        ///// Gets a poolable component from the corresponding pool
-        ///// </summary>
-        ///// <param name="poolablePrefab"></param>
-        ///// <returns></returns>
-        //public Poolable GetPoolable(Poolable poolablePrefab)
-        //{
-        //    if (!m_Pools.ContainsKey(poolablePrefab))
-        //    {
-        //        m_Pools.Add(poolablePrefab, new AutoComponentPrefabPool<Poolable>(poolablePrefab, Initialize, null,
-        //                                                                          poolablePrefab.initialPoolCapacity));
-        //    }
+        /// <summary>
+        /// Gets a poolable component from the corresponding pool
+        /// </summary>
+        /// <param name="poolablePrefab"></param>
+        /// <returns></returns>
+        public Poolable GetPoolable(Poolable poolablePrefab)
+        {
+            if (!pools.ContainsKey(poolablePrefab))
+            {
+                pools.Add(poolablePrefab, new AutoComponentPrefabPool<Poolable>(poolablePrefab, Initialize, null,
+                                                                                  poolablePrefab.initialCapacity));
+            }
 
-        //    AutoComponentPrefabPool<Poolable> pool = m_Pools[poolablePrefab];
-        //    Poolable spawnedInstance = pool.Get();
+            AutoComponentPrefabPool<Poolable> pool = pools[poolablePrefab];
+            Poolable spawnedInstance = pool.Get();
 
-        //    spawnedInstance.pool = pool;
-        //    return spawnedInstance;
-        //}
+            spawnedInstance.pool = pool;
+            return spawnedInstance;
+        }
+
+        private void Initialize(Component poolable)
+        {
+            poolable.transform.SetParent(transform, false);
+        }
     }
 }
