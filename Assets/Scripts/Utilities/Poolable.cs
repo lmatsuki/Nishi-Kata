@@ -10,12 +10,12 @@ namespace NishiKata.Utilities
         public int initialCapacity = 10;
 
         /// <summary>
-        /// Pool that this poolable belongs to
+        /// Pool that this poolable belongs to.
         /// </summary>
         public Pool<Poolable> pool;
 
         /// <summary>
-        /// Repool this instance, and move us under the poolmanager
+        /// Repool this instance, and move us under the poolmanager.
         /// </summary>
         protected virtual void Repool()
         {
@@ -24,7 +24,7 @@ namespace NishiKata.Utilities
         }
 
         /// <summary>gameObject
-        /// Pool the object if possible, otherwise destroy it
+        /// Pool the object if possible, otherwise destroy it.
         /// </summary>
         /// <param name="gameObject">GameObject attempting to pool</param>
         public static void TryPool(GameObject gameObject)
@@ -41,13 +41,14 @@ namespace NishiKata.Utilities
         }
 
         /// <summary>
-        /// If the prefab is poolable returns a pooled object otherwise instantiates a new object
+        /// If the prefab is poolable returns a pooled object otherwise instantiates a new object.
         /// </summary>
         /// <param name="prefab">Prefab of object required</param>
         /// <returns>The pooled or instantiated gameObject</returns>
         public static GameObject TryGetPoolable(GameObject prefab)
         {
             var poolable = prefab.GetComponent<Poolable>();
+            
             GameObject instance = poolable != null && PoolManager.instanceExists ?
                 PoolManager.instance.GetPoolable(poolable).gameObject : Instantiate(prefab);
             return instance;

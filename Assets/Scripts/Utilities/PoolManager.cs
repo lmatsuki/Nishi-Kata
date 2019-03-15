@@ -35,6 +35,24 @@ namespace NishiKata.Utilities
             return spawnedInstance;
         }
 
+        /// <summary>
+        /// Initializes the dicionary of pools.
+        /// </summary>
+        protected void Start()
+        {
+            pools = new Dictionary<Poolable, AutoComponentPrefabPool<Poolable>>();
+
+            foreach (var poolable in poolables)
+            {
+                if (poolable == null)
+                {
+                    continue;
+                }
+                pools.Add(poolable, new AutoComponentPrefabPool<Poolable>(poolable, Initialize, null,
+                                                                            poolable.initialCapacity));
+            }
+        }
+
         private void Initialize(Component poolable)
         {
             poolable.transform.SetParent(transform, false);

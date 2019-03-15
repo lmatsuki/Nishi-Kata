@@ -1,5 +1,4 @@
 ﻿using NishiKata.Audio;
-using NishiKata.ObjectPoolers;
 using NishiKata.Utilities;
 using UnityEngine;
 
@@ -9,6 +8,7 @@ namespace NishiKata.FirePatterns
     {
         public Transform firePosition;
         public float fireRate;
+        public GameObject bullet;
 
         private float nextFireTime;
 
@@ -16,24 +16,39 @@ namespace NishiKata.FirePatterns
         {
             base.Update();
 
-            handleFireInput();
+            HandleFireInput();
         }
 
-        void handleFireInput()
+        private void HandleFireInput()
         {
             if (IsPressingFire() &&
                 canFire && Time.time > nextFireTime)
             {
                 AudioManager.instance.Play(Sounds.PlayerFire);
-                GameObject bulletPrefab = PlayerBulletPooler.current.Spawn(firePosition.position, firePosition.rotation);
+                GameObject bulletPrefab = Poolable.TryGetPoolable(bullet);
+                SetBulletTransform(bulletPrefab.transform);
                 MoveBullet(bulletPrefab);
+
                 nextFireTime = Time.time + fireRate;
             }
         }
 
-        bool IsPressingFire()
+        private bool IsPressingFire()
         {
             return Input.GetKey(KeyCode.Space) || (Input.touchCount > 0);
+        }
+
+        private void SetBulletTransform(Transform bullet)
+        {
+            bullet.position = firePosition.position;
+            bullet.rotation = firePosition.rotation;
+
+            // Also need to set child's local position and rotation
+            if (bullet.childCount > 0)
+            {
+                bullet.GetChild(0).localPosition = Vector3.zero;
+                bullet.GetChild(0).rotation = firePosition.rotation;
+            }
         }
     }
 }

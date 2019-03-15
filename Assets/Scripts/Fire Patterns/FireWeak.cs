@@ -1,5 +1,4 @@
 ﻿using NishiKata.Audio;
-using NishiKata.ObjectPoolers;
 using NishiKata.Utilities;
 using UnityEngine;
 
@@ -35,11 +34,11 @@ namespace NishiKata.FirePatterns
             }
         }
 
-        void FireShot()
+        private void FireShot()
         {
             if (Time.time > nextBulletTime)
             {
-                GameObject bulletPrefab = FirePooledBulletByName(bullets[currentBulletIndex].name, firePosition.position, firePosition.rotation);
+                GameObject bulletPrefab = GetInitializedPrefab(bullets[currentBulletIndex], firePosition.position, firePosition.rotation);
                 AimBullet(bulletPrefab.transform);
 
                 // Need to move the bullet AFTER the change in direction/forward
@@ -58,20 +57,24 @@ namespace NishiKata.FirePatterns
             }
         }
 
-        GameObject FirePooledBulletByName(string bulletName, Vector3 position, Quaternion rotation)
+        private GameObject GetInitializedPrefab(GameObject bulletPrefab, Vector3 position, Quaternion rotation)
         {
-            switch (bulletName)
+            GameObject pooledPrefab = Poolable.TryGetPoolable(bulletPrefab);
+
+            pooledPrefab.transform.position = position;
+            pooledPrefab.transform.rotation = rotation;
+
+            // Also need to set child's local position and rotation
+            if (pooledPrefab.transform.childCount > 0)
             {
-                case Names.WeakBullet:
-                    return WeakBulletPooler.current.Spawn(position, rotation);
-                case Names.StrongBullet:
-                    return StrongBulletPooler.current.Spawn(position, rotation);
-                default:
-                    return null;
+                pooledPrefab.transform.GetChild(0).localPosition = Vector3.zero;
+                pooledPrefab.transform.GetChild(0).rotation = rotation;
             }
+
+            return pooledPrefab;
         }
 
-        void AimBullet(Transform bullet)
+        private void AimBullet(Transform bullet)
         {
             if (bulletTargeter != null)
             {
@@ -79,7 +82,7 @@ namespace NishiKata.FirePatterns
             }
         }
 
-        float AddIndividualDelay()
+        private float AddIndividualDelay()
         {
             if (individualDelay != null &&
                 individualDelay.Length > currentBulletIndex)

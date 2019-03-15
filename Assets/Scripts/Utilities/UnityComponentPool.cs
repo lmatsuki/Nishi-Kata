@@ -50,5 +50,27 @@ namespace NishiKata.Utilities
 
             return element;
         }
+
+        /// <summary>
+        /// Automatically disable returned object.
+        /// </summary>
+        protected override void ReturnToPoolInternal(T element)
+        {
+            element.gameObject.SetActive(false);
+
+            base.ReturnToPoolInternal(element);
+        }
+
+        /// <summary>
+        /// Keep newly created objects disabled.
+        /// </summary>
+        protected override T AddNewElement()
+        {
+            T newElement = base.AddNewElement();
+
+            newElement.gameObject.SetActive(false);
+
+            return newElement;
+        }
     }
 }
