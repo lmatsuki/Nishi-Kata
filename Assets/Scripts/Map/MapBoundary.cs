@@ -8,7 +8,15 @@ public class MapBoundary : MonoBehaviour
     {
         if (other.CompareTag(Tags.PlayerBullet) || other.CompareTag(Tags.EnemyBullet))
         {
-            other.transform.parent.gameObject.SetActive(false);
+            if (other.name.Contains("Bullet"))
+            {
+                Poolable.TryPool(other.gameObject);
+            }
+            else
+            {
+                Poolable.TryPool(other.transform.parent.gameObject);
+            }
+
             AudioManager.instance.Play(Sounds.BulletHit);
         }
     }
