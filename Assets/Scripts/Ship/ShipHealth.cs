@@ -16,6 +16,7 @@ public class ShipHealth : MonoBehaviour
     public GameObject onDeathParticleFX;
     public string hitSoundName;
     public GameObject onHitParticleFX;
+    public Color onHitShipColor;
 
     private Color initialColor;
     private bool takingDamage;
@@ -72,8 +73,13 @@ public class ShipHealth : MonoBehaviour
             takingDamage = true;
             currentSmoothTime = 0;
             HideHealthPart();
-            PlayOnHitSoundEffect();
-            PlayOnHitParticleEffect();
+
+            // Don't play if it's last life
+            if (health > 0)
+            {
+                PlayOnHitSoundEffect();
+                PlayOnHitParticleEffect();
+            }
 
             if (health == 0)
             {
@@ -84,7 +90,7 @@ public class ShipHealth : MonoBehaviour
 
     IEnumerator BlinkEffect()
     {
-        renderer.material.color = Color.white;
+        renderer.material.color = onHitShipColor;
         yield return new WaitForSeconds(blinkTime);
         renderer.material.color = initialColor;
     }
@@ -92,7 +98,7 @@ public class ShipHealth : MonoBehaviour
     void FadeWhiteEffect()
     {
         currentSmoothTime = Mathf.SmoothDamp(currentSmoothTime, 1, ref smoothVelocity, blinkTime);
-        renderer.material.color = Color.Lerp(Color.white, initialColor, currentSmoothTime);
+        renderer.material.color = Color.Lerp(onHitShipColor, initialColor, currentSmoothTime);
 
         if (Mathf.Approximately(currentSmoothTime, 1))
         {
