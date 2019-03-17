@@ -13,8 +13,9 @@ public class ShipHealth : MonoBehaviour
     public GameObject[] healthParts;
     public string deathSoundName;
     public bool screenShakeOnDeath;
-    public GameObject onHitParticleFX;
     public GameObject onDeathParticleFX;
+    public string hitSoundName;
+    public GameObject onHitParticleFX;
 
     private Color initialColor;
     private bool takingDamage;
@@ -71,6 +72,7 @@ public class ShipHealth : MonoBehaviour
             takingDamage = true;
             currentSmoothTime = 0;
             HideHealthPart();
+            PlayOnHitSoundEffect();
             PlayOnHitParticleEffect();
 
             if (health == 0)
@@ -124,6 +126,14 @@ public class ShipHealth : MonoBehaviour
         if (screenShakeOnDeath)
         {
             CameraShaker.Instance.ShakeOnce(3f, 5f, 0, 1.5f);
+        }
+    }
+
+    void PlayOnHitSoundEffect()
+    {
+        if (!string.IsNullOrEmpty(hitSoundName))
+        {
+            AudioManager.instance.Play(hitSoundName);
         }
     }
 
