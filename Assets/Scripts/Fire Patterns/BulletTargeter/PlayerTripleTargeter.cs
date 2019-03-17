@@ -1,32 +1,36 @@
 ﻿using UnityEngine;
 
-public class PlayerTripleTargeter : BaseBulletTargeter
+namespace NishiKata.FirePatterns
 {
-    public float angleBetweenBullets;
-
-    private int currentBulletIndex;
-
-    void Start()
+    public class PlayerTripleTargeter : BaseBulletTargeter
     {
-        base.Start();
-        currentBulletIndex = -1;
-    }
+        public float angleBetweenBullets;
 
-    public override void TargetBullet(Transform bullet)
-    {
-        bullet.LookAt(player);
-        bullet.Rotate(0f, (angleBetweenBullets * currentBulletIndex), 0f);
+        private int currentBulletIndex;
 
-        IncrementBulletIndex();
-    }
-
-    void IncrementBulletIndex()
-    {
-        currentBulletIndex++;
-
-        if (currentBulletIndex >= 2)
+        void Start()
         {
+            base.Start();
             currentBulletIndex = -1;
         }
+
+        public override void TargetBullet(Transform bullet)
+        {
+            bullet.LookAt(player);
+            bullet.Rotate(0f, (angleBetweenBullets * currentBulletIndex), 0f);
+
+            IncrementBulletIndex();
+        }
+
+        void IncrementBulletIndex()
+        {
+            currentBulletIndex++;
+
+            if (currentBulletIndex >= 2)
+            {
+                currentBulletIndex = -1;
+            }
+        }
     }
+
 }

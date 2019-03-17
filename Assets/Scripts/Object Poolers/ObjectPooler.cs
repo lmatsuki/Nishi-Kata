@@ -1,46 +1,49 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ObjectPooler : MonoBehaviour
+namespace NishiKata.ObjectPoolers
 {
-    public int pooledAmount = 0;
-    public GameObject pooledPrefab;
-
-    private IList<GameObject> pooledObjects;
-
-    protected void Start()
+    public abstract class ObjectPooler : MonoBehaviour
     {
-        pooledObjects = new List<GameObject>();
+        public int pooledAmount = 0;
+        public GameObject pooledPrefab;
 
-        for (int i = 0; i < pooledAmount; i++)
-        {
-            GameObject spawnedObject = Instantiate(pooledPrefab, transform);
-            spawnedObject.SetActive(false);
-            pooledObjects.Add(spawnedObject);
-        }
-    }
+        private IList<GameObject> pooledObjects;
 
-    public GameObject Spawn(Vector3 localPosition, Quaternion localRotation)
-    {
-        for (int i = 0; i < pooledObjects.Count; i++)
+        protected void Start()
         {
-            if (!pooledObjects[i].activeInHierarchy)
+            pooledObjects = new List<GameObject>();
+
+            for (int i = 0; i < pooledAmount; i++)
             {
-                pooledObjects[i].transform.position = localPosition;
-                pooledObjects[i].transform.rotation = localRotation;
-
-                // Also need to set child's local position and rotation
-                if (pooledObjects[i].transform.childCount > 0)
-                {
-                    pooledObjects[i].transform.GetChild(0).localPosition = Vector3.zero;
-                    pooledObjects[i].transform.GetChild(0).rotation = localRotation;
-                }
-
-                pooledObjects[i].SetActive(true);
-                return pooledObjects[i];
+                GameObject spawnedObject = Instantiate(pooledPrefab, transform);
+                spawnedObject.SetActive(false);
+                pooledObjects.Add(spawnedObject);
             }
         }
 
-        return null;
+        public GameObject Spawn(Vector3 localPosition, Quaternion localRotation)
+        {
+            for (int i = 0; i < pooledObjects.Count; i++)
+            {
+                if (!pooledObjects[i].activeInHierarchy)
+                {
+                    pooledObjects[i].transform.position = localPosition;
+                    pooledObjects[i].transform.rotation = localRotation;
+
+                    // Also need to set child's local position and rotation
+                    if (pooledObjects[i].transform.childCount > 0)
+                    {
+                        pooledObjects[i].transform.GetChild(0).localPosition = Vector3.zero;
+                        pooledObjects[i].transform.GetChild(0).rotation = localRotation;
+                    }
+
+                    pooledObjects[i].SetActive(true);
+                    return pooledObjects[i];
+                }
+            }
+
+            return null;
+        }
     }
 }

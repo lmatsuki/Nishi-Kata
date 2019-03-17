@@ -1,10 +1,13 @@
-﻿public class PlayerBulletPooler : ObjectPooler
+﻿namespace NishiKata.ObjectPoolers
 {
-    public static PlayerBulletPooler current;
-
-    new void Start()
+    public class PlayerBulletPooler : ObjectPooler
     {
-        current = this;
-        base.Start();
+        public static PlayerBulletPooler current;
+
+        new void Start()
+        {
+            current = this;
+            base.Start();
+        }
     }
 }
