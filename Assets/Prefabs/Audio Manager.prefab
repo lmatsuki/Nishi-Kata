@@ -101,3 +101,10 @@ MonoBehaviour:
     audioSource: {fileID: 0}
     loop: 0
     dontStackSounds: 0
+  - name: PlayerHit
+    audioClip: {fileID: 8300000, guid: 7bc87480cd437ca4ea7efab3e22a69de, type: 3}
+    volume: 0.2
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+    dontStackSounds: 0
