@@ -8,14 +8,16 @@ public class ShipHealth : MonoBehaviour
 {
     public int health;
     public float blinkTime;
-    public float smoothVelocity;
     public Renderer renderer;
     public GameObject[] healthParts;
     public string deathSoundName;
     public bool screenShakeOnDeath;
-    public GameObject onHitParticleFX;
     public GameObject onDeathParticleFX;
+    public string hitSoundName;
+    public GameObject onHitParticleFX;
+    public Color onHitShipColor;
 
+    private float smoothVelocity;
     private Color initialColor;
     private bool takingDamage;
     private float currentSmoothTime;
@@ -71,7 +73,13 @@ public class ShipHealth : MonoBehaviour
             takingDamage = true;
             currentSmoothTime = 0;
             HideHealthPart();
-            PlayOnHitParticleEffect();
+
+            // Don't play if it's last life
+            if (health > 0)
+            {
+                PlayOnHitSoundEffect();
+                PlayOnHitParticleEffect();
+            }
 
             if (health == 0)
             {
@@ -82,7 +90,7 @@ public class ShipHealth : MonoBehaviour
 
     IEnumerator BlinkEffect()
     {
-        renderer.material.color = Color.white;
+        renderer.material.color = onHitShipColor;
         yield return new WaitForSeconds(blinkTime);
         renderer.material.color = initialColor;
     }
@@ -90,7 +98,7 @@ public class ShipHealth : MonoBehaviour
     void FadeWhiteEffect()
     {
         currentSmoothTime = Mathf.SmoothDamp(currentSmoothTime, 1, ref smoothVelocity, blinkTime);
-        renderer.material.color = Color.Lerp(Color.white, initialColor, currentSmoothTime);
+        renderer.material.color = Color.Lerp(onHitShipColor, initialColor, currentSmoothTime);
 
         if (Mathf.Approximately(currentSmoothTime, 1))
         {
@@ -124,6 +132,14 @@ public class ShipHealth : MonoBehaviour
         if (screenShakeOnDeath)
         {
             CameraShaker.Instance.ShakeOnce(3f, 5f, 0, 1.5f);
+        }
+    }
+
+    void PlayOnHitSoundEffect()
+    {
+        if (!string.IsNullOrEmpty(hitSoundName))
+        {
+            AudioManager.instance.Play(hitSoundName);
         }
     }
 

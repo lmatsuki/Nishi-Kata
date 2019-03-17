@@ -95,8 +95,15 @@ MonoBehaviour:
     loop: 1
     dontStackSounds: 0
   - name: PlayerDeath
-    audioClip: {fileID: 8300000, guid: 0038fbdd7d303d8499b6626a89ad92fe, type: 3}
-    volume: 0.6
+    audioClip: {fileID: 8300000, guid: 0d255a528cd7d0a4d8b83df835ba638c, type: 3}
+    volume: 0.8
+    pitch: 0.5
+    audioSource: {fileID: 0}
+    loop: 0
+    dontStackSounds: 0
+  - name: PlayerHit
+    audioClip: {fileID: 8300000, guid: 7bc87480cd437ca4ea7efab3e22a69de, type: 3}
+    volume: 0.2
     pitch: 1
     audioSource: {fileID: 0}
     loop: 0
