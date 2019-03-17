@@ -8,7 +8,6 @@ public class ShipHealth : MonoBehaviour
 {
     public int health;
     public float blinkTime;
-    public float smoothVelocity;
     public Renderer renderer;
     public GameObject[] healthParts;
     public string deathSoundName;
@@ -18,6 +17,7 @@ public class ShipHealth : MonoBehaviour
     public GameObject onHitParticleFX;
     public Color onHitShipColor;
 
+    private float smoothVelocity;
     private Color initialColor;
     private bool takingDamage;
     private float currentSmoothTime;
