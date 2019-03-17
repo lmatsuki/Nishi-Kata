@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 23355176729493876}
   - component: {fileID: 54761379937330440}
   - component: {fileID: 135386583018778454}
+  - component: {fileID: 4288827644200101416}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: EnemyBullet
@@ -181,6 +182,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!122 &4288827644200101416
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478413900149574}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4287957076
+  m_Size: 1
 --- !u!1 &1649604710408788
 GameObject:
   m_ObjectHideFlags: 0
