@@ -1,0 +1,21 @@
+language: objective-c
+osx_image: xcode9.2
+rvm:
+- 2.2         #see before_install for getting RVM stable.
+
+env:
+- TRAVIS_TAG="Deploy-2018.3.0f2" PROJECT_NAME="NishiKata" UNITY_PROJECT_PATH="NishiKata"
+
+cache:
+  directories:
+    - $UNITY_DOWNLOAD_CACHE
+    
+before_install:
+- chmod a+x ./Scripts/build.sh
+
+install:
+- cat /etc/hosts
+- chmod a+x ./Scripts/install.sh
+
+script:
+- ./Scripts/build.sh
