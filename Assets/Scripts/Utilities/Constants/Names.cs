@@ -10,6 +10,7 @@
 
         // UI
         public const string TransitionCanvas = "TransitionCanvas";
+        public const string PauseCanvas = "PauseCanvas";
         public const string VictoryText = "Victory Text";
         public const string DefeatText = "Defeat Text";
 
