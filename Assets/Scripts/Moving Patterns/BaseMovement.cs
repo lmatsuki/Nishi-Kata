@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NishiKata.Managers;
+using UnityEngine;
 
 public abstract class BaseMovement : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public abstract class BaseMovement : MonoBehaviour
 
     protected void EnsureMovesWhenReady()
     {
-        if (!canMove)
+        if (!canMove || LevelManager.instance.isPaused)
         {
             inPositionToMove = false;
         }

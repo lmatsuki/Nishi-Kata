@@ -21,6 +21,9 @@ namespace NishiKata.Managers
         public IPlayerMovement playerMovement;
         public BaseFire playerFire;
 
+        [HideInInspector]
+        public bool isPaused;
+
         private ShipHealth lastEnemyShip;
         private GameObject lastEnemy;
         private BaseFire lastEnemyFire;

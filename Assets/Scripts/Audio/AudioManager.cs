@@ -83,6 +83,22 @@ namespace NishiKata.Audio
             }
         }
 
+        public void PauseSong(string name)
+        {
+            Sound song;
+
+            if (!soundDict.TryGetValue(name, out song))
+            {
+                DebugExtensions.LogNotFound(this, name);
+                return;
+            }
+
+            if (song.audioSource.isPlaying)
+            {
+                song.audioSource.Pause();
+            }
+        }
+
         public string GetCurrentlyPlayingSongName()
         {
             for (int i = 0; i < sounds.Length; i++)
