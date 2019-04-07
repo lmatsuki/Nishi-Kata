@@ -58,9 +58,9 @@ namespace NishiKata.Managers
                 AssignLastEnemyComponents();
 
                 // Find inactive GameObjects
-                GameObject canvas = GameObject.Find(Names.Canvas);
-                victoryText = canvas.transform.Find(Names.VictoryText).gameObject;
-                defeatText = canvas.transform.Find(Names.DefeatText).gameObject;
+                GameObject transitionCanvas = GameObject.Find(Names.TransitionCanvas);
+                victoryText = transitionCanvas.transform.Find(Names.VictoryText).gameObject;
+                defeatText = transitionCanvas.transform.Find(Names.DefeatText).gameObject;
 
                 screenFade = UnityEngine.Camera.main.GetComponent<ScreenFade>();
                 screenFade.SetScreenFade(false);                
