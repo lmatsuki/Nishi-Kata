@@ -12,11 +12,18 @@ Inspired by hacking mode from Nier:Automata, clear levels while dodging, rotatin
 - Custom made Player Ship model with ProBuilder
 - Runs smoothly on mobile
 
-## License
+## Screenshots
 
+![Menu](https://github.com/lmatsuki/Nishi-Kata/blob/master/Screenshots/nishikata-menu.png)
+![Menu](https://github.com/lmatsuki/Nishi-Kata/blob/master/Screenshots/nishikata-play1.png)
+![Menu](https://github.com/lmatsuki/Nishi-Kata/blob/master/Screenshots/nishikata-play2.png)
+![Menu](https://github.com/lmatsuki/Nishi-Kata/blob/master/Screenshots/nishikata-death.png)
+
+## License
+```
 MIT License
 
-Copyright (c) [2018] [Leon Matsuki]
+Copyright (c) 2018-2019 Leon Matsuki
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,3 +42,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
