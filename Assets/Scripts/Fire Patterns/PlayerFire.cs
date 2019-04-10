@@ -1,4 +1,5 @@
 ﻿using NishiKata.Audio;
+using NishiKata.Managers;
 using NishiKata.Utilities;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ namespace NishiKata.FirePatterns
 
         private void HandleFireInput()
         {
-            if (IsPressingFire() &&
+            if (IsPressingFire() && !LevelManager.instance.isPaused &&
                 canFire && Time.time > nextFireTime)
             {
                 AudioManager.instance.Play(Sounds.PlayerFire);

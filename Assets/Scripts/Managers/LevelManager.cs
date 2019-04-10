@@ -21,6 +21,9 @@ namespace NishiKata.Managers
         public IPlayerMovement playerMovement;
         public BaseFire playerFire;
 
+        [HideInInspector]
+        public bool isPaused;
+
         private ShipHealth lastEnemyShip;
         private GameObject lastEnemy;
         private BaseFire lastEnemyFire;
@@ -58,9 +61,9 @@ namespace NishiKata.Managers
                 AssignLastEnemyComponents();
 
                 // Find inactive GameObjects
-                GameObject canvas = GameObject.Find(Names.Canvas);
-                victoryText = canvas.transform.Find(Names.VictoryText).gameObject;
-                defeatText = canvas.transform.Find(Names.DefeatText).gameObject;
+                GameObject transitionCanvas = GameObject.Find(Names.TransitionCanvas);
+                victoryText = transitionCanvas.transform.Find(Names.VictoryText).gameObject;
+                defeatText = transitionCanvas.transform.Find(Names.DefeatText).gameObject;
 
                 screenFade = UnityEngine.Camera.main.GetComponent<ScreenFade>();
                 screenFade.SetScreenFade(false);                

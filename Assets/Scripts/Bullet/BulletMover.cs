@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NishiKata.Managers;
+using UnityEngine;
 
 namespace NishiKata.Bullet
 {
@@ -8,7 +9,7 @@ namespace NishiKata.Bullet
 
         private Rigidbody bulletRigidbody;
 
-        void Start()
+        private void FixedUpdate()
         {
             MoveForward();
         }
@@ -18,6 +19,12 @@ namespace NishiKata.Bullet
             if (bulletRigidbody == null)
             {
                 bulletRigidbody = GetComponentInChildren<Rigidbody>();
+            }
+
+            if (LevelManager.instance.isPaused)
+            {
+                bulletRigidbody.velocity = Vector3.zero;
+                return;
             }
 
             bulletRigidbody.velocity = transform.forward * speed;

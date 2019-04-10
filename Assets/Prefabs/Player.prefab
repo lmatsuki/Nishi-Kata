@@ -2396,10 +2396,12 @@ MonoBehaviour:
   - {fileID: 5851505704060558888}
   deathSoundName: PlayerDeath
   screenShakeOnDeath: 0
-  onHitParticleFX: {fileID: 1967288118373157171, guid: 1b8eb299b5e56ea499f5ca6526f6332d,
-    type: 3}
   onDeathParticleFX: {fileID: 5820229750013656075, guid: 8b3867cf1d646ce49996f4f916317f61,
     type: 3}
+  hitSoundName: PlayerHit
+  onHitParticleFX: {fileID: 1967288118373157171, guid: 1b8eb299b5e56ea499f5ca6526f6332d,
+    type: 3}
+  onHitShipColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!65 &5851505703555131999
 BoxCollider:
   m_ObjectHideFlags: 0

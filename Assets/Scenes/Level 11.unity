@@ -1380,7 +1380,7 @@ PrefabInstance:
     - target: {fileID: 2874294929544207959, guid: 73b6803515dc9514783c7a680572810c,
         type: 3}
       propertyPath: waittimeBeforeLoad
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73b6803515dc9514783c7a680572810c, type: 3}

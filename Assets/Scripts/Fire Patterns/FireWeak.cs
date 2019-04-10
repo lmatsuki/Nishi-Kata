@@ -1,4 +1,5 @@
 ﻿using NishiKata.Audio;
+using NishiKata.Managers;
 using NishiKata.Utilities;
 using UnityEngine;
 
@@ -28,7 +29,8 @@ namespace NishiKata.FirePatterns
             base.Update();
 
             if (canFire && IsInitialDelayOver() &&
-                Time.time > nextFireTime)
+                Time.time > nextFireTime &&
+                !LevelManager.instance.isPaused)
             {
                 FireShot();
             }

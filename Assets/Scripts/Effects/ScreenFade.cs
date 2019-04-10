@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using NishiKata.Utilities;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace NishiKata.Effects
@@ -10,18 +12,19 @@ namespace NishiKata.Effects
         public float fadeOutTime;
         public float fadeInTime;
 
-        private Image image;
+        private Image fadeImage;
         private bool isFadingOut;
         private bool isFadingIn;
 
         void Start()
         {
-            image = GetComponentInChildren<Image>();
+            Image[] images = GetComponentsInChildren<Image>();
+            fadeImage = images.FirstOrDefault(i => i.name == Names.FadeImage);
 
             // Set initial gray screen alpha
-            Color newColor = image.color;
+            Color newColor = fadeImage.color;
             newColor.a = 0.42f;
-            image.color = newColor;
+            fadeImage.color = newColor;
         }
 
         void Update()
@@ -49,11 +52,11 @@ namespace NishiKata.Effects
 
         void TweenScreenAlphaToValue(float value)
         {
-            if (!Mathf.Approximately(image.color.a, value))
+            if (!Mathf.Approximately(fadeImage.color.a, value))
             {
-                Color newColor = image.color;
+                Color newColor = fadeImage.color;
                 newColor.a = Mathf.SmoothDamp(newColor.a, value, ref smoothScreenFadeVelocity, fadeOutTime);
-                image.color = newColor;
+                fadeImage.color = newColor;
             }
         }
 
@@ -65,14 +68,14 @@ namespace NishiKata.Effects
 
         public void InstantlyClearScreen()
         {
-            if (image == null)
+            if (fadeImage == null)
             {
-                image = GetComponentInChildren<Image>();
+                fadeImage = GetComponentInChildren<Image>();
             }
 
-            Color newColor = image.color;
+            Color newColor = fadeImage.color;
             newColor.a = 0f;
-            image.color = newColor;
+            fadeImage.color = newColor;
         }
     }
 }

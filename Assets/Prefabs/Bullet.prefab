@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 23711469599337796}
   - component: {fileID: 65803974051687216}
   - component: {fileID: 54948837451860250}
+  - component: {fileID: 1847647325017828957}
   m_Layer: 0
   m_Name: Cube
   m_TagString: PlayerBullet
@@ -167,3 +168,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!122 &1847647325017828957
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765441244489854}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4281160787
+  m_Size: 1.15
